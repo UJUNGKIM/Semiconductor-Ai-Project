@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "random_state": 42,
+  "test_size": 0.2,
+  "model_threshold_source": "repeated_5x3_oof_train_only",
+  "policy_selection_uses_test_labels": false,
+  "automated_defect_rule": "both_models_above_threshold",
+  "locked_review_rule": "either_model_alert OR normalized_risk_ratio>=0.75 OR severe_OOD",
+  "locked_boundary_margin": 0.25,
+  "thresholds": {
+    "CatBoost": 0.07179839120789556,
+    "XGBoost": 0.021014438321193058
+  },
+  "oof_locked_policy": {
+    "rows": 1253,
+    "reviewed_rows": 736,
+    "review_workload": 0.587390263367917,
+    "auto_rows": 517,
+    "auto_coverage": 0.412609736632083,
+    "auto_accuracy": 0.9787234042553191,
+    "errors": 322,
+    "captured_errors": 311,
+    "error_capture": 0.9658385093167702,
+    "false_negatives": 28,
+    "captured_false_negatives": 17,
+    "false_negative_capture": 0.6071428571428571,
+    "false_positives": 294,
+    "captured_false_positives": 294,
+    "false_positive_capture": 1.0,
+    "post_review_recall": 0.8674698795180723,
+    "dataset": "OOF train",
+    "policy": "locked_25pct_boundary",
+    "additional_normal_budget": null
+  },
+  "test_locked_policy": {
+    "rows": 314,
+    "reviewed_rows": 166,
+    "review_workload": 0.5286624203821656,
+    "auto_rows": 148,
+    "auto_coverage": 0.4713375796178344,
+    "auto_accuracy": 0.9594594594594594,
+    "errors": 67,
+    "captured_errors": 61,
+    "error_capture": 0.9104477611940298,
+    "false_negatives": 9,
+    "captured_false_negatives": 3,
+    "false_negative_capture": 0.3333333333333333,
+    "false_positives": 58,
+    "captured_false_positives": 58,
+    "false_positive_capture": 1.0,
+    "post_review_recall": 0.7142857142857143,
+    "dataset": "fixed test",
+    "policy": "locked_25pct_boundary",
+    "additional_normal_budget": null
+  },
+  "test_ood_counts": {
+    "in_distribution": 289,
+    "review": 22,
+    "out_of_distribution": 3
+  },
+  "interpretation": "검토된 행을 전문가가 올바르게 판정한다고 가정한 정책 시뮬레이션이며, 실제 생산 성능은 전향적 외부 검증이 필요합니다."
+}

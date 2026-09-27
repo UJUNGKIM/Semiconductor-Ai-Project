@@ -1,0 +1,23 @@
+﻿check_id,title,status,evidence,required_action
+DATA_CONTRACT,데이터·전처리 계약,PASS,"590개 원변수 → 결측/상수 제거 후 446개, 고정 stratified split",
+DEPENDENCY_SECURITY_AUDIT,Python 의존성 취약점 감사,PASS,"pip-audit 2.10.1·PyPI advisory로 78개 distribution 검사, 알려진 취약점 0건",
+SOURCE_SECURITY_AUDIT,Python 소스 보안 정적분석,PASS,"Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 76개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
+DATA_LINEAGE,원본→분할 데이터 계보,PASS,"원본·라벨·전처리 SHA-256, 행·열·값·median 재현, 모의 오염 탐지",
+ENVIRONMENT_REPRODUCIBILITY,실행환경 재현성·소프트웨어 명세,PASS,exact pin·설치 버전·pip 의존성·실행 파일 해시·역직렬화 전 해시 게이트 검증,
+WINDOWS_DEPENDENCY_LOCK,Windows 전이 의존성·wheel 무결성 잠금,PASS,Python 3.11.9용 80개 package와 80개 wheel 버전·SHA-256 고정,
+LINUX_CI_DEPENDENCY_LOCK,Linux CI 전이 의존성·wheel 무결성 잠금,PASS,Ubuntu/Python 3.11.9에서 81개 package의 wheel·SHA-256·실제 설치 버전 일치 검증,
+STREAMLIT_DEPENDENCY_LOCK,Streamlit Linux 의존성 해석 잠금,WARN,Ubuntu에서 99개 package·wheel SHA-256 해석 완료; Community Cloud 설치 적용·재현 검증은 미완료,배포 서비스의 pylock 지원 확인 후 잠금 설치를 적용하고 smoke test 재검증
+MODEL_INTEGRITY,배포 모델 무결성,PASS,CatBoost·XGBoost SHA-256이 안전 기준 파일과 일치,
+MODEL_FAILOVER_DRILL,모델 무결성·장애 복구 훈련,PASS,"운영 모델 손상 탐지, 대기 모델·입력 계약 검증, 자동 전환 금지",
+TEST_LOCK,Test 라벨 잠금,PASS,모델 임계값·검토정책은 반복 train OOF에서 고정,
+OOD_AND_XAI_SCOPE,OOD·XAI 기준 범위,PASS,"OOD는 fixed train에만 적합, XAI 물리 인과관계 미주장",
+SHAP_RELIABILITY,SHAP 설명 안정성·충실도,PASS,고정 test 사후 감사에서 두 모델 모두 안정성·마스킹 guardrail 통과,
+BATCH_CIRCUIT_BREAKER,배치 안전 차단기,PASS,"clean=PASS, stress STOP=45/50",
+SENSOR_ROBUSTNESS,센서 오류 강건성,WARN,사전 정의 10개 조건 중 9개 통과; 실패=가우시안 노이즈 1.00 IQR,강한 노이즈 입력은 자동판정 차단 및 실제 장비 교란 전향 검증
+SENSOR_FAILURE_CONTAINMENT,센서 성능 실패 안전격리,PASS,강건성 실패 1개 조건의 모든 반복에서 배치 STOP·자동판정 금지 확인,
+HUMAN_GOVERNANCE,검수·재학습·승격 통제,PASS,"행 단위 전체 검수, train OOF guardrail, 자동 재학습·승격 금지",
+TAMPER_EVIDENT_AUDIT_CHAIN,변조 감지형 감사 원장,PASS,"SHA-256 연결, JSONL 재검증, 센서 원본 미저장, 위변조 데모 탐지 성공",
+TEMPORAL_VALIDATION,시간 외삽 검증,PASS,유효한 시간순 검증 결과 존재,실제 timestamp가 있는 신규 기간 데이터를 확보해 시간 외삽 평가
+SENSOR_SEMANTICS,센서 의미·단위 사전,BLOCK,590개 입력 템플릿과 검증 gate는 준비됐으나 실제 장비 담당자 매핑은 0/590,실제 장비의 센서명·단위·허용범위·담당 공정 매핑 확보
+PROSPECTIVE_EXTERNAL_VALIDATION,외부 전향 검증,BLOCK,모델 해시·임계값·최소 표본·합격 기준은 사전 고정했으나 독립 신규 데이터 대기 중,모델·임계값 고정 후 신규 lot에서 재현율·오탐률·검토부하 평가
+PERSISTENT_AUDIT_STORE,영구 감사 로그 저장소,BLOCK,"SQLite 재연결·트랜잭션·UPDATE/DELETE 차단·해시 검증 프로토타입 통과, 운영 접근통제·보존·외부 백업은 미연결","SSO/RBAC, 승인된 보존기간, 암호화 외부 백업·복원 훈련, 불변 체인 앵커 연결"

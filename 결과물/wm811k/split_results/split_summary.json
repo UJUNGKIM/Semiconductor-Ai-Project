@@ -1,0 +1,75 @@
+{
+  "random_state": 42,
+  "outer_splits": 7,
+  "inner_splits": 6,
+  "total_rows": 172950,
+  "total_lots": 10762,
+  "class_count": 9,
+  "lot_overlap": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "test_fold_selection": {
+    "selected_fold": 5,
+    "score": 2.8711376463938856e-05,
+    "maximum_class_prevalence_error": 5.0809438626453485e-05,
+    "size_error": 1.2390038409110238e-05
+  },
+  "validation_fold_selection": {
+    "selected_fold": 3,
+    "score": 4.784016217362006e-05,
+    "maximum_class_prevalence_error": 4.733491117558941e-05,
+    "size_error": 3.0355155317213223e-05
+  },
+  "splits": {
+    "train": {
+      "rows": 123542,
+      "fraction": 0.714322058398381,
+      "lots": 7696,
+      "class_counts": {
+        "none": 105311,
+        "Edge-Ring": 6914,
+        "Edge-Loc": 3707,
+        "Center": 3068,
+        "Loc": 2567,
+        "Scratch": 853,
+        "Random": 618,
+        "Donut": 397,
+        "Near-full": 107
+      }
+    },
+    "validation": {
+      "rows": 24703,
+      "fraction": 0.14283318878288523,
+      "lots": 1531,
+      "class_counts": {
+        "none": 21059,
+        "Edge-Ring": 1383,
+        "Edge-Loc": 741,
+        "Center": 613,
+        "Loc": 513,
+        "Scratch": 170,
+        "Random": 124,
+        "Donut": 79,
+        "Near-full": 21
+      }
+    },
+    "test": {
+      "rows": 24705,
+      "fraction": 0.14284475281873374,
+      "lots": 1535,
+      "class_counts": {
+        "none": 21061,
+        "Edge-Ring": 1383,
+        "Edge-Loc": 741,
+        "Center": 613,
+        "Loc": 513,
+        "Scratch": 170,
+        "Random": 124,
+        "Donut": 79,
+        "Near-full": 21
+      }
+    }
+  }
+}

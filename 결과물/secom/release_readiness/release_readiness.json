@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "release_id": "A724719F29289321",
+  "demo_readiness": "READY_WITH_WARNINGS",
+  "production_readiness": "BLOCKED",
+  "demo_blocker_count": 0,
+  "demo_warning_count": 2,
+  "production_blocker_count": 3,
+  "checks": [
+    {
+      "check_id": "DATA_CONTRACT",
+      "title": "데이터·전처리 계약",
+      "status": "PASS",
+      "evidence": "590개 원변수 → 결측/상수 제거 후 446개, 고정 stratified split",
+      "required_action": ""
+    },
+    {
+      "check_id": "DEPENDENCY_SECURITY_AUDIT",
+      "title": "Python 의존성 취약점 감사",
+      "status": "PASS",
+      "evidence": "pip-audit 2.10.1·PyPI advisory로 78개 distribution 검사, 알려진 취약점 0건",
+      "required_action": ""
+    },
+    {
+      "check_id": "SOURCE_SECURITY_AUDIT",
+      "title": "Python 소스 보안 정적분석",
+      "status": "PASS",
+      "evidence": "Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 76개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
+      "required_action": ""
+    },
+    {
+      "check_id": "DATA_LINEAGE",
+      "title": "원본→분할 데이터 계보",
+      "status": "PASS",
+      "evidence": "원본·라벨·전처리 SHA-256, 행·열·값·median 재현, 모의 오염 탐지",
+      "required_action": ""
+    },
+    {
+      "check_id": "ENVIRONMENT_REPRODUCIBILITY",
+      "title": "실행환경 재현성·소프트웨어 명세",
+      "status": "PASS",
+      "evidence": "exact pin·설치 버전·pip 의존성·실행 파일 해시·역직렬화 전 해시 게이트 검증",
+      "required_action": ""
+    },
+    {
+      "check_id": "WINDOWS_DEPENDENCY_LOCK",
+      "title": "Windows 전이 의존성·wheel 무결성 잠금",
+      "status": "PASS",
+      "evidence": "Python 3.11.9용 80개 package와 80개 wheel 버전·SHA-256 고정",
+      "required_action": ""
+    },
+    {
+      "check_id": "LINUX_CI_DEPENDENCY_LOCK",
+      "title": "Linux CI 전이 의존성·wheel 무결성 잠금",
+      "status": "PASS",
+      "evidence": "Ubuntu/Python 3.11.9에서 81개 package의 wheel·SHA-256·실제 설치 버전 일치 검증",
+      "required_action": ""
+    },
+    {
+      "check_id": "STREAMLIT_DEPENDENCY_LOCK",
+      "title": "Streamlit Linux 의존성 해석 잠금",
+      "status": "WARN",
+      "evidence": "Ubuntu에서 99개 package·wheel SHA-256 해석 완료; Community Cloud 설치 적용·재현 검증은 미완료",
+      "required_action": "배포 서비스의 pylock 지원 확인 후 잠금 설치를 적용하고 smoke test 재검증"
+    },
+    {
+      "check_id": "MODEL_INTEGRITY",
+      "title": "배포 모델 무결성",
+      "status": "PASS",
+      "evidence": "CatBoost·XGBoost SHA-256이 안전 기준 파일과 일치",
+      "required_action": ""
+    },
+    {
+      "check_id": "MODEL_FAILOVER_DRILL",
+      "title": "모델 무결성·장애 복구 훈련",
+      "status": "PASS",
+      "evidence": "운영 모델 손상 탐지, 대기 모델·입력 계약 검증, 자동 전환 금지",
+      "required_action": ""
+    },
+    {
+      "check_id": "TEST_LOCK",
+      "title": "Test 라벨 잠금",
+      "status": "PASS",
+      "evidence": "모델 임계값·검토정책은 반복 train OOF에서 고정",
+      "required_action": ""
+    },
+    {
+      "check_id": "OOD_AND_XAI_SCOPE",
+      "title": "OOD·XAI 기준 범위",
+      "status": "PASS",
+      "evidence": "OOD는 fixed train에만 적합, XAI 물리 인과관계 미주장",
+      "required_action": ""
+    },
+    {
+      "check_id": "SHAP_RELIABILITY",
+      "title": "SHAP 설명 안정성·충실도",
+      "status": "PASS",
+      "evidence": "고정 test 사후 감사에서 두 모델 모두 안정성·마스킹 guardrail 통과",
+      "required_action": ""
+    },
+    {
+      "check_id": "BATCH_CIRCUIT_BREAKER",
+      "title": "배치 안전 차단기",
+      "status": "PASS",
+      "evidence": "clean=PASS, stress STOP=45/50",
+      "required_action": ""
+    },
+    {
+      "check_id": "SENSOR_ROBUSTNESS",
+      "title": "센서 오류 강건성",
+      "status": "WARN",
+      "evidence": "사전 정의 10개 조건 중 9개 통과; 실패=가우시안 노이즈 1.00 IQR",
+      "required_action": "강한 노이즈 입력은 자동판정 차단 및 실제 장비 교란 전향 검증"
+    },
+    {
+      "check_id": "SENSOR_FAILURE_CONTAINMENT",
+      "title": "센서 성능 실패 안전격리",
+      "status": "PASS",
+      "evidence": "강건성 실패 1개 조건의 모든 반복에서 배치 STOP·자동판정 금지 확인",
+      "required_action": ""
+    },
+    {
+      "check_id": "HUMAN_GOVERNANCE",
+      "title": "검수·재학습·승격 통제",
+      "status": "PASS",
+      "evidence": "행 단위 전체 검수, train OOF guardrail, 자동 재학습·승격 금지",
+      "required_action": ""
+    },
+    {
+      "check_id": "TAMPER_EVIDENT_AUDIT_CHAIN",
+      "title": "변조 감지형 감사 원장",
+      "status": "PASS",
+      "evidence": "SHA-256 연결, JSONL 재검증, 센서 원본 미저장, 위변조 데모 탐지 성공",
+      "required_action": ""
+    },
+    {
+      "check_id": "TEMPORAL_VALIDATION",
+      "title": "시간 외삽 검증",
+      "status": "PASS",
+      "evidence": "유효한 시간순 검증 결과 존재",
+      "required_action": "실제 timestamp가 있는 신규 기간 데이터를 확보해 시간 외삽 평가"
+    },
+    {
+      "check_id": "SENSOR_SEMANTICS",
+      "title": "센서 의미·단위 사전",
+      "status": "BLOCK",
+      "evidence": "590개 입력 템플릿과 검증 gate는 준비됐으나 실제 장비 담당자 매핑은 0/590",
+      "required_action": "실제 장비의 센서명·단위·허용범위·담당 공정 매핑 확보"
+    },
+    {
+      "check_id": "PROSPECTIVE_EXTERNAL_VALIDATION",
+      "title": "외부 전향 검증",
+      "status": "BLOCK",
+      "evidence": "모델 해시·임계값·최소 표본·합격 기준은 사전 고정했으나 독립 신규 데이터 대기 중",
+      "required_action": "모델·임계값 고정 후 신규 lot에서 재현율·오탐률·검토부하 평가"
+    },
+    {
+      "check_id": "PERSISTENT_AUDIT_STORE",
+      "title": "영구 감사 로그 저장소",
+      "status": "BLOCK",
+      "evidence": "SQLite 재연결·트랜잭션·UPDATE/DELETE 차단·해시 검증 프로토타입 통과, 운영 접근통제·보존·외부 백업은 미연결",
+      "required_action": "SSO/RBAC, 승인된 보존기간, 암호화 외부 백업·복원 훈련, 불변 체인 앵커 연결"
+    }
+  ],
+  "interpretation": "대학생 대회 시연 준비도와 실제 반도체 생산 배포 승인은 서로 다른 판정입니다. READY는 성능 보증이나 규제 승인을 의미하지 않습니다."
+}

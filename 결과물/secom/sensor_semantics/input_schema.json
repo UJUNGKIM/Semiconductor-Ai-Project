@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "required_columns": [
+    "feature",
+    "sensor_name",
+    "unit",
+    "process_step",
+    "equipment_scope",
+    "description",
+    "valid_min",
+    "valid_max",
+    "owner",
+    "source_reference",
+    "verification_status",
+    "verified_at"
+  ],
+  "expected_rows": 590,
+  "feature_contract": "feature_0 through feature_589 exactly once",
+  "statuses": [
+    "UNMAPPED",
+    "PROVISIONAL",
+    "VERIFIED"
+  ],
+  "verified_requires": [
+    "actual sensor name and unit",
+    "process step and equipment scope",
+    "physical description and valid_min/valid_max",
+    "named owner and source reference",
+    "timezone-aware verified_at"
+  ],
+  "placeholder_values_for_mapped_rows_allowed": false,
+  "raw_sensor_values_in_dictionary_allowed": false
+}

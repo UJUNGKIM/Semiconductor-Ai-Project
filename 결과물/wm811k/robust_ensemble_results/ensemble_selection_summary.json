@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "experiment_type": "wm811k_baseline_robust_validation_stress_ensemble",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "selection_split": "validation",
+  "stress_modes": [
+    "clean",
+    "shift4",
+    "dropout1"
+  ],
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "search_strategy": "coarse_0.05_then_top3_local_0.01",
+  "evaluated_configuration_count": 1105,
+  "eligible_configuration_count": 442,
+  "selected_robust_weight": 0.5,
+  "selected_none_logit_bias": 0.1,
+  "ensemble_validation_gate_passed": true,
+  "checks": {
+    "clean_weak_recall_mean_improved": true,
+    "clean_macro_f1_mean_improved": true,
+    "clean_none_recall_guardrail_all_seeds": true,
+    "clean_balanced_accuracy_guardrail_all_seeds": true,
+    "clean_accuracy_guardrail_all_seeds": true,
+    "shift4_weak_recall_mean_improved": true,
+    "shift4_macro_f1_mean_improved": true,
+    "shift4_none_recall_guardrail_all_seeds": true,
+    "shift4_balanced_accuracy_guardrail_all_seeds": true,
+    "shift4_accuracy_guardrail_all_seeds": true,
+    "dropout1_weak_recall_mean_improved": true,
+    "dropout1_macro_f1_mean_improved": true,
+    "dropout1_none_recall_guardrail_all_seeds": true,
+    "dropout1_balanced_accuracy_guardrail_all_seeds": true,
+    "dropout1_accuracy_guardrail_all_seeds": true
+  },
+  "mean_deltas": {
+    "clean": {
+      "accuracy": 0.003413890350699685,
+      "balanced_accuracy": 0.034003668576743716,
+      "macro_f1": 0.020310159868529205,
+      "weighted_f1": 0.0036992268340860037,
+      "weak_recall": 0.05437136218009975,
+      "none_recall": -0.001218797980277612
+    },
+    "shift4": {
+      "accuracy": 0.004911684140927537,
+      "balanced_accuracy": 0.04258154166477901,
+      "macro_f1": 0.025919308186796403,
+      "weighted_f1": 0.005405777172071802,
+      "weak_recall": 0.06299128638309921,
+      "none_recall": -0.0017886256074204354,
+      "prediction_stability": 0.0033059412487012794
+    },
+    "dropout1": {
+      "accuracy": 0.004979152329676532,
+      "balanced_accuracy": 0.02908893983200896,
+      "macro_f1": 0.01875875985787871,
+      "weighted_f1": 0.005136876386358402,
+      "weak_recall": 0.061779945646474675,
+      "none_recall": -9.497127119043973e-05,
+      "prediction_stability": 0.005100595069424729
+    }
+  },
+  "deployment_model_changed": false,
+  "next_step": "run_one_locked_seed42_test_evaluation"
+}

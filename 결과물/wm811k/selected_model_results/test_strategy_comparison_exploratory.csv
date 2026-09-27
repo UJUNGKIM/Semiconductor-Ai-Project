@@ -1,0 +1,4 @@
+strategy,test_macro_f1_exploratory,test_balanced_accuracy_exploratory,test_accuracy_exploratory,selected_on_validation
+weighted_ce_shuffle,0.8862201919294865,0.9224960499188184,0.9766848816029143,False
+ce_sqrt_balanced,0.8828173704348624,0.8671665975940692,0.9772920461445052,True
+focal_shuffle,0.8280245678854993,0.8534275009897228,0.9677798016595831,False

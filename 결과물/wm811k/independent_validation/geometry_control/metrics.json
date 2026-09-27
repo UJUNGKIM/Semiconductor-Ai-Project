@@ -1,0 +1,120 @@
+{
+  "purpose": "화소를 쓰지 않는 하한선 대조 모델. 결함 분류기가 아님.",
+  "features": [
+    "original_height",
+    "original_width",
+    "die_area",
+    "aspect_ratio",
+    "longer_side",
+    "shorter_side",
+    "wafer_index",
+    "lot_size",
+    "position_in_lot"
+  ],
+  "cv": {
+    "n_folds": 5,
+    "splitter": "StratifiedGroupKFold(lot 묶음)",
+    "macro_f1_mean": 0.26810581516210585,
+    "macro_f1_std": 0.007207421235808703,
+    "balanced_accuracy_mean": 0.4322556618799093,
+    "balanced_accuracy_std": 0.019352060294410077
+  },
+  "validation": {
+    "macro_f1": 0.26131822305613883,
+    "balanced_accuracy": 0.4578905443962155,
+    "accuracy": 0.44452090839169334,
+    "weighted_f1": 0.570800059126822,
+    "per_class_recall": {
+      "none": 0.43040980103518683,
+      "Center": 0.6280587275693311,
+      "Donut": 0.7088607594936709,
+      "Edge-Loc": 0.27800269905533065,
+      "Edge-Ring": 0.7809110629067245,
+      "Loc": 0.13840155945419103,
+      "Near-full": 0.42857142857142855,
+      "Random": 0.29838709677419356,
+      "Scratch": 0.4294117647058823
+    },
+    "per_class_f1": {
+      "none": 0.5951216309379206,
+      "Center": 0.6492411467116358,
+      "Donut": 0.08364451082897685,
+      "Edge-Loc": 0.14889772316588362,
+      "Edge-Ring": 0.7309644670050761,
+      "Loc": 0.059117402164862616,
+      "Near-full": 0.006746626686656672,
+      "Random": 0.03898840885142255,
+      "Scratch": 0.039142091152815014
+    },
+    "support": {
+      "none": 21059,
+      "Center": 613,
+      "Donut": 79,
+      "Edge-Loc": 741,
+      "Edge-Ring": 1383,
+      "Loc": 513,
+      "Near-full": 21,
+      "Random": 124,
+      "Scratch": 170
+    }
+  },
+  "test": {
+    "macro_f1": 0.2735514878557479,
+    "balanced_accuracy": 0.46116199530224794,
+    "accuracy": 0.4568306010928962,
+    "weighted_f1": 0.5834489904232546,
+    "per_class_recall": {
+      "none": 0.4409572195052467,
+      "Center": 0.6427406199021207,
+      "Donut": 0.7215189873417721,
+      "Edge-Loc": 0.3225371120107962,
+      "Edge-Ring": 0.8214027476500362,
+      "Loc": 0.10136452241715399,
+      "Near-full": 0.3333333333333333,
+      "Random": 0.3548387096774194,
+      "Scratch": 0.4117647058823529
+    },
+    "per_class_f1": {
+      "none": 0.6055093724531377,
+      "Center": 0.686411149825784,
+      "Donut": 0.09484193011647254,
+      "Edge-Loc": 0.16061827956989247,
+      "Edge-Ring": 0.7796842827728209,
+      "Loc": 0.04599734630694383,
+      "Near-full": 0.005208333333333333,
+      "Random": 0.04442200908632004,
+      "Scratch": 0.03927068723702665
+    },
+    "support": {
+      "none": 21061,
+      "Center": 613,
+      "Donut": 79,
+      "Edge-Loc": 741,
+      "Edge-Ring": 1383,
+      "Loc": 513,
+      "Near-full": 21,
+      "Random": 124,
+      "Scratch": 170
+    }
+  },
+  "baseline_cnn_test": {
+    "macro_f1": 0.8828173704348624,
+    "balanced_accuracy": 0.8671665975940692,
+    "accuracy": 0.9772920461445052,
+    "per_class_recall": {
+      "none": 0.993827453587199,
+      "Center": 0.938009787928222,
+      "Donut": 0.8481012658227848,
+      "Edge-Loc": 0.8029689608636977,
+      "Edge-Ring": 0.9624005784526392,
+      "Loc": 0.7738791423001949,
+      "Near-full": 0.9047619047619048,
+      "Random": 0.8629032258064516,
+      "Scratch": 0.7176470588235294
+    }
+  },
+  "expected_local_model_file": "geometry_control_model.joblib",
+  "model_artifact_committed": false,
+  "python": "3.11.3",
+  "random_state": 42
+}

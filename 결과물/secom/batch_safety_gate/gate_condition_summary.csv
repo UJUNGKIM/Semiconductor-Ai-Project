@@ -1,0 +1,11 @@
+scenario,scenario_korean,kind,severity,replicates,stop_rate,caution_rate,pass_rate
+Column loss 10%,센서 열 드롭아웃 10%,column_dropout,0.1,5,1.0,0.0,0.0
+Column loss 5%,센서 열 드롭아웃 5%,column_dropout,0.05,5,1.0,0.0,0.0
+Missing 10%,무작위 결측 10%,random_missing,0.1,5,1.0,0.0,0.0
+Missing 20%,무작위 결측 20%,random_missing,0.2,5,1.0,0.0,0.0
+Missing 5%,무작위 결측 5%,random_missing,0.05,5,1.0,0.0,0.0
+Noise 0.25 IQR,가우시안 노이즈 0.25 IQR,gaussian_noise,0.25,5,1.0,0.0,0.0
+Noise 0.50 IQR,가우시안 노이즈 0.50 IQR,gaussian_noise,0.5,5,1.0,0.0,0.0
+Noise 1.00 IQR,가우시안 노이즈 1.00 IQR,gaussian_noise,1.0,5,1.0,0.0,0.0
+Spike 1%,센서 스파이크 1% · 5 IQR,sensor_spike,0.01,5,0.0,0.0,1.0
+Spike 5%,센서 스파이크 5% · 5 IQR,sensor_spike,0.05,5,1.0,0.0,0.0

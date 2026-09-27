@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "strategy": "ce_sqrt_balanced",
+  "method": "temperature_scaled_max_probability",
+  "fitted_on": "validation",
+  "selection_uses_test": false,
+  "target_validation_automatic_coverage": 0.9,
+  "temperature": 1.047171711723721,
+  "review_threshold": 0.974998285716378,
+  "validation_nll_before": 0.06462771088860964,
+  "validation_nll_after": 0.06446229395790196,
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "probability_columns": [
+    "probability_center",
+    "probability_donut",
+    "probability_edge_loc",
+    "probability_edge_ring",
+    "probability_loc",
+    "probability_near_full",
+    "probability_random",
+    "probability_scratch",
+    "probability_none"
+  ],
+  "validation_metrics": {
+    "rows": 24703,
+    "automatic_count": 22232,
+    "review_count": 2471,
+    "automatic_coverage": 0.8999716633607254,
+    "review_rate": 0.10002833663927459,
+    "overall_accuracy": 0.9780188641055743,
+    "automatic_accuracy": 0.9982457718603814,
+    "total_errors": 543,
+    "captured_errors": 504,
+    "error_capture_rate": 0.9281767955801105,
+    "review_error_rate": 0.20396600566572237
+  },
+  "test_evaluation": {
+    "rows": 24705,
+    "automatic_count": 22335,
+    "review_count": 2370,
+    "automatic_coverage": 0.9040680024286581,
+    "review_rate": 0.09593199757134184,
+    "overall_accuracy": 0.9772920461445052,
+    "automatic_accuracy": 0.9983881799865681,
+    "total_errors": 561,
+    "captured_errors": 525,
+    "error_capture_rate": 0.9358288770053476,
+    "review_error_rate": 0.22151898734177214
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "exploratory_validation_only_weak_score_adjustment",
+  "source_predictions": "결과물\\wm811k\\weak_class_validation_results\\baseline\\validation_predictions.csv",
+  "source_split": "validation",
+  "rows": 24703,
+  "lots": 1531,
+  "test_evaluated": false,
+  "deployment_changed": false,
+  "candidate_multipliers": [
+    1.0,
+    1.05,
+    1.1,
+    1.15,
+    1.2
+  ],
+  "selected_multiplier": 1.2,
+  "selection_metric": "weak_recall_with_macro_f1_and_none_recall_guardrails",
+  "macro_f1_tolerance": 0.005,
+  "none_recall_tolerance": 0.002,
+  "baseline": {
+    "accuracy": 0.9736469254746387,
+    "balanced_accuracy": 0.9312559361294789,
+    "macro_f1": 0.8947930489640513,
+    "weak_recall": 0.8633028440045983,
+    "none_recall": 0.9819554584738117
+  },
+  "selected": {
+    "accuracy": 0.9728373072096507,
+    "balanced_accuracy": 0.9313591206752057,
+    "macro_f1": 0.8922247896731434,
+    "weak_recall": 0.8690123162775382,
+    "none_recall": 0.9807683175839309
+  },
+  "deltas": {
+    "accuracy": -0.0008096182649880435,
+    "balanced_accuracy": 0.00010318454572677549,
+    "macro_f1": -0.0025682592909078705,
+    "weak_recall": 0.005709472272939831,
+    "none_recall": -0.0011871408898808111
+  },
+  "lot_folds": 5,
+  "weak_recall_improved_folds": 4,
+  "weak_recall_not_worse_folds": 5,
+  "macro_f1_guardrail_pass_folds": 4,
+  "decision": "evidence_for_margin_training_not_for_deployment",
+  "next_step": "train_validation_only_weak_vs_none_margin_candidates"
+}

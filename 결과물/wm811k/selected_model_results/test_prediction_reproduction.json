@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "purpose": "reproduce_deployed_test_predictions_for_post_selection_demo_samples",
+  "used_for_model_selection": false,
+  "split": "test",
+  "rows": 24705,
+  "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "checkpoint_best_epoch": 10,
+  "maps_sha256": "9343a861917b68a6e30036e375c43571a37f00ad734b7c93fbcf62a994aa2d42",
+  "labels_sha256": "5d719444f79a49fc1f2641befaa742badb1059bfeeae7e6f50b97ec755e4843e",
+  "maps_shape": [
+    172950,
+    64,
+    64
+  ],
+  "assignments": {
+    "file_name": "split_assignments.csv",
+    "raw_sha256": "8a4f3f24b0c939fc3db24c2aa069fa220a379294b2bf6bb80694922c6fe79a63",
+    "canonical_sha256": "8a4f3f24b0c939fc3db24c2aa069fa220a379294b2bf6bb80694922c6fe79a63",
+    "canonicalization": "UTF-8 bytes with CRLF and CR converted to LF"
+  },
+  "policy_sha256": "1d4c1acced42204accae45fe6b2ab99e771ecf3aaa96eab2fc905326a4f44bd9",
+  "temperature": 1.047171711723721,
+  "review_threshold": 0.974998285716378,
+  "predictions_file_name": "deployed_test_predictions.csv",
+  "predictions_sha256": "c58bd631b1603e9dee69bfe088aa7ae408ee5ec7a09e1aeb62bd104d2211d0a9",
+  "predictions_tracked_in_git": false,
+  "inference_device": "cpu",
+  "references": {
+    "classification_report": {
+      "file_name": "test_classification_report.csv",
+      "raw_sha256": "8e3d6c93e239d97c36f77f14325ba0f6750023f9e7a8375e501064e0d6651aeb",
+      "canonical_sha256": "8e3d6c93e239d97c36f77f14325ba0f6750023f9e7a8375e501064e0d6651aeb",
+      "canonicalization": "UTF-8 bytes with CRLF and CR converted to LF"
+    },
+    "confusion_matrix": {
+      "file_name": "test_confusion_matrix.csv",
+      "raw_sha256": "d780d2c3188035ad8b4b4eff25d5e5579732445995609822f57132765a613c7f",
+      "canonical_sha256": "d780d2c3188035ad8b4b4eff25d5e5579732445995609822f57132765a613c7f",
+      "canonicalization": "UTF-8 bytes with CRLF and CR converted to LF"
+    },
+    "xai_bundle": {
+      "file_name": "xai_deployed_model_results.zip",
+      "sha256": "9f76848b2d73f1417ff5f316e42eb280766abb20b0cc85cc73d01e1e9f9d97a5"
+    },
+    "legacy_demo_manifest": {
+      "description": "commit facff1b의 기존 27개 대표 샘플 선정 manifest (Colab 기록값)",
+      "raw_sha256": "563c51739cc5afb87f4c5c069aeefc1a1d36c91252b4d257df1c9d2dbd443411",
+      "canonical_sha256": "563c51739cc5afb87f4c5c069aeefc1a1d36c91252b4d257df1c9d2dbd443411",
+      "canonicalization": "UTF-8 bytes with CRLF and CR converted to LF"
+    }
+  },
+  "verification": {
+    "max_classification_report_difference": 1.1102230246251565e-16,
+    "review_policy_counts": {
+      "rows": 24705,
+      "automatic_count": 22335,
+      "review_count": 2370,
+      "total_errors": 561,
+      "captured_errors": 525
+    },
+    "committed_review_policy_counts": {
+      "rows": 24705,
+      "automatic_count": 22335,
+      "review_count": 2370,
+      "total_errors": 561,
+      "captured_errors": 525
+    },
+    "xai_bundle_reference": {
+      "samples_compared": 421,
+      "prediction_mismatches": 0,
+      "max_calibrated_confidence_difference": 1.7745535468849383e-06
+    },
+    "rows_within_1e-5_of_review_threshold": 0,
+    "legacy_demo_reference": {
+      "samples_compared": 27,
+      "prediction_mismatches": 0,
+      "max_calibrated_confidence_difference": 1.3582941007506122e-06
+    },
+    "checks": {
+      "classification_report_matches": true,
+      "confusion_matrix_identical": true,
+      "review_policy_counts_identical": true,
+      "xai_bundle_predictions_identical": true,
+      "xai_bundle_confidences_within_tolerance": true,
+      "legacy_demo_predictions_identical": true,
+      "legacy_demo_confidences_within_tolerance": true
+    },
+    "all_checks_passed": true
+  },
+  "limitations": [
+    "예측표는 로컬 전처리 배열에서 다시 계산했으며 Git에는 해시만 기록합니다.",
+    "대표 샘플 선정 전용이며 성능 재평가나 모델·임계값 조정에 사용하지 않습니다.",
+    "CPU 재계산이라 Colab GPU 기록과 보정 신뢰도가 1e-5 이하로 다를 수 있습니다."
+  ]
+}

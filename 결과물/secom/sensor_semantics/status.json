@@ -1,0 +1,18 @@
+{
+  "report_version": 1,
+  "validation_status": "AWAITING_MAPPING",
+  "row_count": 590,
+  "expected_feature_count": 590,
+  "verified_count": 0,
+  "provisional_count": 0,
+  "unmapped_count": 590,
+  "verified_coverage": 0.0,
+  "complete_owner_verified_mapping": false,
+  "dictionary_digest": "678E26B424740CFD00B78C21F9A592CDAE5F41564CC50908007FB0EB3782A215",
+  "raw_sensor_values_present": false,
+  "status": "AWAITING_OWNER_MAPPING",
+  "production_claim_allowed": false,
+  "template_path": "데이터/SECOM 데이터셋/sensor_dictionary_template.csv",
+  "installed_dictionary_path": "데이터/SECOM 데이터셋/sensor_dictionary.csv",
+  "next_action": "장비·공정 담당자가 실제 의미와 근거를 입력하고 검증 스크립트를 실행"
+}

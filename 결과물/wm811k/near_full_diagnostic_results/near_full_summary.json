@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "purpose": "post_selection_near_full_explanation_diagnostic",
+  "used_for_model_selection": false,
+  "thresholds_retuned": false,
+  "deployment_model_changed": false,
+  "test_sample_count": 21,
+  "test_accuracy": 0.9047619047619048,
+  "mean_calibrated_confidence": 0.9175930619239807,
+  "review_threshold": 0.974998285716378,
+  "low_confidence_review_count": 6,
+  "ood_review_count": 3,
+  "combined_review_count": 6,
+  "unique_lot_count": 20,
+  "geometry_count": 12,
+  "methods": {
+    "Grad-CAM": {
+      "mean_top10_confidence_drop": 0.07214040397888136,
+      "mean_random10_confidence_drop": 0.15874842745030207,
+      "mean_bottom10_confidence_drop": 0.038390458694526106,
+      "mean_top_vs_random_advantage": -0.08660802347142071,
+      "top_vs_random_95ci": [
+        -0.22373515220713758,
+        0.06388877410818598
+      ],
+      "mean_top_vs_bottom_advantage": 0.033749945284355265,
+      "top_exceeds_random_rate": 0.14285714285714285,
+      "top_exceeds_bottom_rate": 0.47619047619047616,
+      "mean_active_attribution_lift": 0.9656249718116546,
+      "prediction_change_rate_after_top10_mask": 0.047619047619047616
+    },
+    "Integrated Gradients": {
+      "mean_top10_confidence_drop": 0.20294088256126824,
+      "mean_random10_confidence_drop": 0.15874842745030207,
+      "mean_bottom10_confidence_drop": 0.04783680467378521,
+      "mean_top_vs_random_advantage": 0.04419245511096614,
+      "top_vs_random_95ci": [
+        0.0006080480964599215,
+        0.09649580173605671
+      ],
+      "mean_top_vs_bottom_advantage": 0.15510407788748298,
+      "top_exceeds_random_rate": 0.7619047619047619,
+      "top_exceeds_bottom_rate": 0.7619047619047619,
+      "mean_active_attribution_lift": 1.288771074825163,
+      "prediction_change_rate_after_top10_mask": 0.23809523809523808
+    }
+  },
+  "paired_ig_minus_gradcam_top_vs_random": 0.13080047858238686,
+  "paired_ig_minus_gradcam_95ci": [
+    -0.0010514113902207684,
+    0.2635050204675192
+  ],
+  "interpretation": "Near-full은 21개 중 19개를 맞혔으며 패턴이 국소 결함이 아니라 넓게 분포하므로 활성 die의 국소 10% 제거는 설명 충실도를 과소평가할 수 있습니다.",
+  "recommended_action": "모델·임계값은 유지하고 Near-full 설명에는 국소 삭제 점수보다 전체 결함 면적·연결성·경계 유지 지표를 함께 사용합니다.",
+  "limitations": [
+    "Near-full test가 21개뿐이므로 정밀한 모집단 추정이 아닙니다.",
+    "10% die 제거는 실제 공정 개입이 아닙니다.",
+    "확산형 패턴에서는 무작위 삭제도 중요한 영역을 포함하기 쉬워 top-minus-random 지표가 보수적입니다."
+  ]
+}

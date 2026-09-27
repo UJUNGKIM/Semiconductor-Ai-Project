@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "experiment_type": "wm811k_robust_flat_shared_none_bias_validation",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "selection_split": "validation",
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "selected_none_logit_bias": 1.155,
+  "eligible_bias_count": 49,
+  "clean_validation_gate_passed": true,
+  "checks": {
+    "mean_weak_recall_improved": true,
+    "weak_recall_improved_at_least_two_seeds": true,
+    "macro_f1_guardrail_all_seeds": true,
+    "none_recall_guardrail_all_seeds": true,
+    "balanced_accuracy_guardrail_all_seeds": true,
+    "accuracy_guardrail_all_seeds": true
+  },
+  "mean_deltas": {
+    "accuracy": 0.003670269467945871,
+    "balanced_accuracy": 0.03212451434081861,
+    "macro_f1": 0.022153126443050526,
+    "weighted_f1": 0.0038353522248631236,
+    "weak_recall": 0.043876407963095256,
+    "none_recall": -0.0002532567231745553
+  },
+  "deployment_model_changed": false,
+  "next_step": "replay_validation_shift4_and_dropout1_with_selected_bias"
+}

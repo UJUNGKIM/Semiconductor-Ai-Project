@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "random_state": 42,
+  "test_rows": 314,
+  "test_defects": 21,
+  "replicates_per_scenario": 5,
+  "test_used_for_model_or_threshold_selection": false,
+  "perturbation_statistics_source": "fixed_train_only_iqr",
+  "scenarios_predeclared": true,
+  "spike_magnitude_iqr": 5.0,
+  "guardrails": {
+    "maximum_recall_drop": 0.2,
+    "maximum_prediction_flip_rate": 0.2,
+    "minimum_safety_auto_accuracy": 0.9
+  },
+  "baseline": {
+    "pr_auc": 0.25833574003113335,
+    "roc_auc": 0.6977084349098002,
+    "precision": 0.17142857142857143,
+    "recall": 0.5714285714285714,
+    "f2": 0.38961038961038963,
+    "tp": 12,
+    "fp": 58,
+    "fn": 9,
+    "tn": 235,
+    "prediction_flip_rate": 0.0,
+    "model_disagreement_rate": 0.2229299363057325,
+    "cat_probability_mae": 0.0,
+    "xgb_probability_mae": 0.0,
+    "ood_review_rate": 0.07961783439490445,
+    "ood_severe_rate": 0.009554140127388535,
+    "standard_review_workload": 0.5286624203821656,
+    "standard_false_negative_capture": 0.3333333333333333,
+    "standard_auto_accuracy": 0.9594594594594594,
+    "safety_review_workload": 0.6210191082802548,
+    "safety_false_negative_capture": 0.5555555555555556,
+    "safety_auto_accuracy": 0.9663865546218487
+  },
+  "scenario_count": 10,
+  "guardrail_pass_count": 9,
+  "guardrail_fail_count": 1,
+  "failed_scenarios": [
+    "가우시안 노이즈 1.00 IQR"
+  ],
+  "worst_recall_scenario": "가우시안 노이즈 1.00 IQR",
+  "worst_recall_mean": 0.17142857142857143,
+  "limitation": "합성 센서 교란은 실제 장비 고장 분포를 재현하지 않습니다. 고정 test의 민감도 분석이며 신규 장비·lot 전향 검증을 대체하지 않습니다."
+}

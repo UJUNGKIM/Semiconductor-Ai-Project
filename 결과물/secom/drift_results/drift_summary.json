@@ -1,0 +1,46 @@
+{
+  "fit_rows": 940,
+  "future_rows": 314,
+  "monitored_features": 444,
+  "severity_counts": {
+    "high": 297,
+    "moderate": 98,
+    "low": 49
+  },
+  "ks_significant_after_fdr": 375,
+  "domain_classifier_auc": 0.9992783575010165,
+  "model_score_drift": {
+    "CatBoost": {
+      "fit_mean": 0.03691638945117239,
+      "calibration_mean": 0.03514628932430754,
+      "future_mean": 0.034846250025516244,
+      "calibration_to_future_ks": 0.08205978714311878,
+      "calibration_to_future_p_value": 0.21864412821060722
+    },
+    "XGBoost": {
+      "fit_mean": 0.05164588615298271,
+      "calibration_mean": 0.03514432907104492,
+      "future_mean": 0.036499276757240295,
+      "calibration_to_future_ks": 0.050273702203862354,
+      "calibration_to_future_p_value": 0.7915139093053608
+    }
+  },
+  "top_monitoring_priorities": [
+    "feature_59",
+    "feature_247",
+    "feature_519",
+    "feature_487",
+    "feature_116",
+    "feature_132",
+    "feature_80",
+    "feature_385",
+    "feature_112",
+    "feature_22",
+    "feature_562",
+    "feature_548",
+    "feature_58",
+    "feature_90",
+    "feature_40"
+  ],
+  "psi_note": "PSI >=0.10 moderate, >=0.25 high; heuristics, not universal laws."
+}

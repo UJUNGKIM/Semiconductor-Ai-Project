@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "status": "validated",
+  "bundle_sha256": "75cf80d003f9234ea88476ce55000de58b1f0f8a2f1fbaef6a5983f107a2a79a",
+  "file_count": 48,
+  "uncompressed_bytes": 42827715,
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "strategies": [
+    "baseline",
+    "weak_none_margin_005"
+  ],
+  "validation_rows_per_run": 24703,
+  "validation_prediction_rows_checked": 148218,
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "deployment_changed": false,
+  "selected_candidate": "baseline",
+  "eligible": false,
+  "checks": {
+    "mean_weak_recall_improved": true,
+    "weak_recall_improved_at_least_two_seeds": true,
+    "macro_f1_guardrail_all_seeds": false,
+    "none_recall_guardrail_all_seeds": false,
+    "balanced_accuracy_guardrail_all_seeds": false,
+    "eligible": false
+  },
+  "weak_recall_improved_seed_count": 2,
+  "mean_deltas": {
+    "validation_accuracy": 0.0012549083107314333,
+    "validation_balanced_accuracy": -0.007309263541456133,
+    "validation_macro_f1": -0.001863100365116033,
+    "validation_weighted_f1": 0.0014752233041922665,
+    "validation_weak_recall": 0.034345332074950365,
+    "validation_none_recall": -0.00020577108757949993
+  },
+  "strategy_metrics": {
+    "baseline": {
+      "validation_accuracy": {
+        "mean": 0.9755495283973606,
+        "std": 0.0017779371943486,
+        "min": 0.9736469254746388,
+        "max": 0.9771687649273368
+      },
+      "validation_balanced_accuracy": {
+        "mean": 0.922838205378918,
+        "std": 0.0199528520530262,
+        "min": 0.9000559003165939,
+        "max": 0.9372027796906812
+      },
+      "validation_macro_f1": {
+        "mean": 0.8955487493234443,
+        "std": 0.0071894427420865,
+        "min": 0.888767006311705,
+        "max": 0.9030861926945762
+      },
+      "validation_weighted_f1": {
+        "mean": 0.9759586947884898,
+        "std": 0.0016775707063539,
+        "min": 0.9745757533172744,
+        "max": 0.977824834898948
+      },
+      "validation_weak_recall": {
+        "mean": 0.8452629814858916,
+        "std": 0.0513550229684334,
+        "min": 0.7873220843293082,
+        "max": 0.8851640161237683
+      },
+      "validation_none_recall": {
+        "mean": 0.9861500229513904,
+        "std": 0.0052048964525106,
+        "min": 0.9819554584738116,
+        "max": 0.9919749275844058
+      }
+    },
+    "weak_none_margin_005": {
+      "validation_accuracy": {
+        "mean": 0.976804436708092,
+        "std": 0.001721747991591,
+        "min": 0.9754685665708618,
+        "max": 0.9787475205440634
+      },
+      "validation_balanced_accuracy": {
+        "mean": 0.9155289418374618,
+        "std": 0.0153214674809392,
+        "min": 0.8980556545385956,
+        "max": 0.9266656977755056
+      },
+      "validation_macro_f1": {
+        "mean": 0.8936856489583281,
+        "std": 0.0106184716512649,
+        "min": 0.8814698123581084,
+        "max": 0.9007056759834623
+      },
+      "validation_weighted_f1": {
+        "mean": 0.9774339180926822,
+        "std": 0.0015409546877772,
+        "min": 0.97617849665172,
+        "max": 0.9791536357288748
+      },
+      "validation_weak_recall": {
+        "mean": 0.8796083135608419,
+        "std": 0.0058586510079149,
+        "min": 0.8756673399604257,
+        "max": 0.886340663120849
+      },
+      "validation_none_recall": {
+        "mean": 0.9859442518638112,
+        "std": 0.0023034204540833,
+        "min": 0.983285056270478,
+        "max": 0.9873213352960728
+      }
+    }
+  },
+  "metrics_by_run": {
+    "seed_17/baseline": {
+      "validation_accuracy": 0.9771687649273367,
+      "validation_balanced_accuracy": 0.9372027796906812,
+      "validation_macro_f1": 0.9030861926945762,
+      "validation_weighted_f1": 0.9778248348989479,
+      "validation_weak_recall": 0.8851640161237685,
+      "validation_none_recall": 0.9845196827959543
+    },
+    "seed_17/weak_none_margin_005": {
+      "validation_accuracy": 0.9787475205440634,
+      "validation_balanced_accuracy": 0.9218654731982843,
+      "validation_macro_f1": 0.9007056759834623,
+      "validation_weighted_f1": 0.9791536357288749,
+      "validation_weak_recall": 0.8756673399604257,
+      "validation_none_recall": 0.9872263640248825
+    },
+    "seed_42/baseline": {
+      "validation_accuracy": 0.9736469254746387,
+      "validation_balanced_accuracy": 0.9312559361294789,
+      "validation_macro_f1": 0.8947930489640513,
+      "validation_weighted_f1": 0.9745757533172743,
+      "validation_weak_recall": 0.8633028440045983,
+      "validation_none_recall": 0.9819554584738117
+    },
+    "seed_42/weak_none_margin_005": {
+      "validation_accuracy": 0.9761972230093511,
+      "validation_balanced_accuracy": 0.9266656977755056,
+      "validation_macro_f1": 0.8988814585334137,
+      "validation_weighted_f1": 0.9769696218974516,
+      "validation_weak_recall": 0.8863406631208489,
+      "validation_none_recall": 0.9832850562704781
+    },
+    "seed_2026/baseline": {
+      "validation_accuracy": 0.9758328947901065,
+      "validation_balanced_accuracy": 0.9000559003165939,
+      "validation_macro_f1": 0.888767006311705,
+      "validation_weighted_f1": 0.9754754961492476,
+      "validation_weak_recall": 0.7873220843293084,
+      "validation_none_recall": 0.9919749275844058
+    },
+    "seed_2026/weak_none_margin_005": {
+      "validation_accuracy": 0.9754685665708618,
+      "validation_balanced_accuracy": 0.8980556545385956,
+      "validation_macro_f1": 0.8814698123581084,
+      "validation_weighted_f1": 0.9761784966517201,
+      "validation_weak_recall": 0.8768169376012515,
+      "validation_none_recall": 0.9873213352960729
+    }
+  },
+  "checkpoint_sha256": {
+    "seed_17/baseline": "7b0cbe1375f6336b7ee0bda96528e6d40624eeaf42bcc222312c799574b79842",
+    "seed_17/weak_none_margin_005": "49aa16ec0d85111fb3844fc32a5591bfecab09acf695fe932acb48ccdce60ad8",
+    "seed_42/baseline": "37ad4a86fcf460afc4a582861028d574a5c4e4bea438f0fb54994e286e0cd02c",
+    "seed_42/weak_none_margin_005": "b3bcb5faad9c4cb0b7ff78e1fd99a2995adad0cbbf3f279735599cb2c6301eb5",
+    "seed_2026/baseline": "f95dd9549d7d2949d44cd966e96c45f2cc509c548b86b004a24237e80e692940",
+    "seed_2026/weak_none_margin_005": "7b2d92a2654c63712304c99148acdc315347163cd61c27654020449d721ab250"
+  },
+  "seed42_reuse_sha_matches": {
+    "baseline": true,
+    "weak_none_margin_005": true
+  },
+  "decision": "keep_baseline_because_multiseed_guardrails_failed"
+}

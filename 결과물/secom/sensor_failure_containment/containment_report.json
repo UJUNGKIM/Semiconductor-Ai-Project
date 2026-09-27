@@ -1,0 +1,43 @@
+{
+  "evaluated_at": "2026-09-18T03:13:55.330335Z",
+  "report_version": 1,
+  "status": "PASS",
+  "scope": "post_selection_fixed_test_sensor_stress_containment",
+  "model_robustness_guardrail_status": "WARN",
+  "model_robustness_improved_by_this_audit": false,
+  "failed_scenario_count": 1,
+  "failed_scenarios": [
+    "가우시안 노이즈 1.00 IQR"
+  ],
+  "failed_scenario_containment": [
+    {
+      "scenario": "가우시안 노이즈 1.00 IQR",
+      "expected_replicates": 5,
+      "matched_replicates": 5,
+      "stop_count": 5,
+      "automatic_decision_blocked_count": 5,
+      "stop_rate": 1.0,
+      "contained": true
+    }
+  ],
+  "all_failed_scenarios_contained": true,
+  "clean_batch_status": "PASS",
+  "clean_batch_automatic_decision_allowed": true,
+  "stress_row_count": 51,
+  "gate_row_count": 51,
+  "cross_artifact_signal_match": true,
+  "test_used_for_model_or_threshold_selection": false,
+  "raw_sensor_values_persisted": false,
+  "actual_hardware_faults_validated": false,
+  "input_hashes": {
+    "robustness_summary": "905CEA4A96233C3BA33702FC7C9DE2E2480FA5347746C4E1E14813EE543F83C0",
+    "stress_replicates": "63DE0AD6F9393EDA60FDBD70FE42E64EAEE5B557E6D0519CB84BF5B228E60C46",
+    "batch_gate_summary": "9CD7715790E161489A3027F15B444950B72FB42892DA224765CEEA991EF5187B",
+    "gate_validation": "47ECFF5C7B54D6277D18C634608B697851A194050894513E2465BBF91A10B0A4"
+  },
+  "limitations": [
+    "고정 test 합성 교란의 사후 안전격리 검증이며 모델 성능 개선이 아닙니다.",
+    "실제 장비 고장·신규 lot·운영 대응시간을 검증하지 않았습니다.",
+    "배치 STOP은 원인 진단이 아니라 자동판정 보류와 재측정 요구입니다."
+  ]
+}

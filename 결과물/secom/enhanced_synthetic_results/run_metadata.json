@@ -1,0 +1,15 @@
+{
+  "random_state": 42,
+  "folds": 5,
+  "top_k_features": 50,
+  "diffusion_steps": 40,
+  "diffusion_epochs": 300,
+  "pool_multiplier": 3,
+  "synth_ratios": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "test_rows": 314,
+  "test_defects": 21
+}

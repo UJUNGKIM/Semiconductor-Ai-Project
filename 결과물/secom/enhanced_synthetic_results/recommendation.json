@@ -1,0 +1,14 @@
+{
+  "selection_uses_test": false,
+  "baseline_model": "CatBoost",
+  "baseline_strategy": "scale_pos_weight",
+  "baseline_cv_pr_auc": 0.1953843157778154,
+  "best_ddpm_model": "CatBoost",
+  "best_ddpm_strategy": "DDPM_0.50",
+  "best_ddpm_cv_pr_auc": 0.1615679144081989,
+  "cv_pr_auc_gain": -0.0338164013696165,
+  "paired_fold_wins": 1,
+  "minimum_gain": 0.005,
+  "adopt_for_primary_model": false,
+  "decision": "retain_scale_pos_weight"
+}

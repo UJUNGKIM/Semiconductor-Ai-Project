@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "champion": "CatBoost",
+  "challenger": "XGBoost",
+  "random_state": 42,
+  "bootstrap_draws": 2000,
+  "minimum_evidence": {
+    "batches": 3,
+    "rows": 200,
+    "defects": 30,
+    "discordant_predictions": 20
+  },
+  "guardrails": {
+    "recall_noninferiority_margin": 0.05,
+    "maximum_fpr_increase": 0.05,
+    "mcnemar_alpha": 0.05
+  },
+  "automatic_model_promotion_allowed": false,
+  "selection_data": "future fully labelled batches only",
+  "demo_data": "repeated_5x3_train_oof_predictions",
+  "fixed_test_labels_used_for_rules": false
+}

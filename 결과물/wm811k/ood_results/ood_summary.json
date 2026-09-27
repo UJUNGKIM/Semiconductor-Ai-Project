@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "method": "minimum_regularized_diagonal_mahalanobis",
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "split_rows": {
+    "train": 123542,
+    "validation": 24703,
+    "test": 24705
+  },
+  "threshold_selection": {
+    "review_quantile": 0.95,
+    "ood_quantile": 0.99,
+    "review_threshold": 1.1763898491859435,
+    "ood_threshold": 1.5754686498641968,
+    "calibration_split": "validation",
+    "test_used_for_threshold": false
+  },
+  "split_metrics": [
+    {
+      "split": "train",
+      "rows": 123542,
+      "accuracy": 0.9800796490262421,
+      "mean_score": 0.6957978010177612,
+      "review_rate": 0.04026161143578702,
+      "ood_rate": 0.009802334428777258,
+      "automatic_coverage": 0.9499360541354357
+    },
+    {
+      "split": "validation",
+      "rows": 24703,
+      "accuracy": 0.9780188641055743,
+      "mean_score": 0.6973072290420532,
+      "review_rate": 0.03999514229041007,
+      "ood_rate": 0.010039266485851921,
+      "automatic_coverage": 0.949965591223738
+    },
+    {
+      "split": "test",
+      "rows": 24705,
+      "accuracy": 0.9772920461445052,
+      "mean_score": 0.6869454383850098,
+      "review_rate": 0.03537745395668893,
+      "ood_rate": 0.00922890103217972,
+      "automatic_coverage": 0.9553936450111313
+    }
+  ],
+  "stress_metrics": {
+    "split": "spatial_shuffle_stress",
+    "rows": 5000,
+    "mean_score": 2.544785976409912,
+    "review_or_ood_rate": 1.0,
+    "ood_detection_rate": 0.9942
+  },
+  "limitations": [
+    "Validation 분위수로 고정한 연구용 분포 이탈 기준입니다.",
+    "공간 셔플 stress는 실제 외부 장비 데이터가 아니며 안전성 증명의 대체물이 아닙니다.",
+    "신규 장비와 신규 lot에서 별도 외부 검증이 필요합니다."
+  ],
+  "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce"
+}

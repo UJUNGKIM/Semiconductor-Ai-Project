@@ -1,0 +1,18 @@
+{
+  "candidate": "weak_defect_thinning",
+  "seed": 42,
+  "defect_dropout_max": 0.12,
+  "hard_negative_multiplier": 1.0,
+  "best_epoch": 3,
+  "epochs_ran": 7,
+  "hard_negative_count": 10532,
+  "sample_weight_min": 1.0,
+  "sample_weight_max": 8.0,
+  "validation_accuracy": 0.9523944460187022,
+  "validation_balanced_accuracy": 0.7290184582180799,
+  "validation_macro_f1": 0.7310706748018622,
+  "validation_weighted_f1": 0.945224331907829,
+  "validation_weak_recall": 0.36514073015620996,
+  "validation_none_recall": 0.9926872121183342,
+  "test_evaluated": false
+}

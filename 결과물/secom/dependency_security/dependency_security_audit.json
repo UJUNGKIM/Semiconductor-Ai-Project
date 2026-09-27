@@ -1,0 +1,26 @@
+{
+  "report_version": 1,
+  "status": "PASS",
+  "scanner": "pip-audit",
+  "scanner_version": "2.10.1",
+  "advisory_service": "pypi",
+  "audited_at": "2026-09-24T15:00:47.721668Z",
+  "scope": "resolved_requirements_graph",
+  "input_manifest": "requirements.txt",
+  "pip_version": "26.2.1",
+  "python_version": "3.11.9",
+  "requirements_sha256": "922D2ECA8B8B03969F8F1692E2E0C02E4ED67747EE6D2FA2FAFC2E5DD5BDC224",
+  "audited_distribution_count": 78,
+  "vulnerable_package_count": 0,
+  "known_vulnerability_count": 0,
+  "vulnerable_packages": [],
+  "vulnerabilities": [],
+  "network_registry_resolution_performed": true,
+  "full_package_inventory_persisted": false,
+  "raw_advisory_descriptions_persisted": false,
+  "limitations": [
+    "검사 시점에 PyPI advisory service가 알고 있는 Python distribution만 확인합니다.",
+    "운영체제·드라이버·CUDA·네이티브 라이브러리 취약점은 이 보고서 범위가 아닙니다.",
+    "미공개 취약점과 검사 이후 새로 등록된 advisory가 없음을 보증하지 않습니다."
+  ]
+}

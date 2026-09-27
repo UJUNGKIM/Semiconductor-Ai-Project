@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "post_selection_qualitative_gradcam_sanity_check",
+  "used_for_model_selection": false,
+  "thresholds_retuned": false,
+  "representative_population_estimate": false,
+  "parameters_declared_before_execution": true,
+  "sample_count": 27,
+  "mask_fraction": 0.1,
+  "random_repeats": 10,
+  "random_seed": 42,
+  "mean_active_attribution_mass": 0.852376905680025,
+  "mean_active_attribution_lift": 1.099276078663976,
+  "mean_top10_confidence_drop": 0.26391320833401566,
+  "mean_random10_confidence_drop": 0.29943576323850324,
+  "mean_bottom10_confidence_drop": 0.07604154104504872,
+  "mean_top_vs_random_advantage": -0.035522554904487594,
+  "mean_top_vs_bottom_advantage": 0.1878716672889669,
+  "top_drop_exceeds_random_rate": 0.2962962962962963,
+  "top_drop_exceeds_bottom_rate": 0.7407407407407407,
+  "top10_prediction_change_rate": 0.4074074074074074,
+  "randomized_head_heatmap_correlation_mean": 0.18310510346747647,
+  "randomized_head_heatmap_correlation_rows": 24,
+  "limitations": [
+    "클래스별로 의도적으로 고른 27개 정성 예시이며 전체 test의 대표 표본이 아닙니다.",
+    "die 제거는 실제 공정 개입이 아닌 off-manifold 민감도 점검입니다.",
+    "분류기 head만 무작위화한 상관 점검은 완전한 모델 무작위화 검정이 아닙니다.",
+    "Grad-CAM은 상관적 위치 단서이며 물리적 원인이나 인과관계를 증명하지 않습니다."
+  ]
+}

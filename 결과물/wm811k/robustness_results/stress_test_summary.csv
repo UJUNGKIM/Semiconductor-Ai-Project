@@ -1,0 +1,7 @@
+scenario,scenario_label,severity,rows,prediction_stability,changed_prediction_count,changed_prediction_capture,unreviewed_changed_count,baseline_automatic_changed_count,baseline_automatic_changed_capture,review_or_hold_rate,ood_hold_rate,mean_confidence_change,guardrail_metric,guardrail_minimum,guardrail_value,guardrail_pass
+active_die_dropout_1pct,활성 die 1% 누락,mild,135,0.8222222222222222,24,1.0,0,0,,0.7185185185185186,0.08888888888888889,0.005967460517530088,prediction_stability,0.9,0.8222222222222222,False
+active_die_dropout_5pct,활성 die 5% 누락,severe,135,0.5629629629629629,59,1.0,0,9,1.0,0.9333333333333333,0.5481481481481482,0.0749641826859227,changed_prediction_capture,0.8,1.0,True
+state_flip_1pct,die 상태 1% 반전,mild,135,0.9111111111111111,12,1.0,0,0,,0.7037037037037037,0.07407407407407407,0.01899307988308094,prediction_stability,0.85,0.9111111111111111,True
+state_flip_5pct,die 상태 5% 반전,severe,135,0.7333333333333334,36,1.0,0,0,,0.725925925925926,0.06666666666666667,0.01844519752043265,changed_prediction_capture,0.8,1.0,True
+block_sensor_loss_12px,12×12 블록 손실,severe,135,0.7259259259259259,37,0.972972972972973,1,0,,0.6666666666666666,0.11851851851851852,0.06720242456153587,changed_prediction_capture,0.8,0.972972972972973,True
+translation_shift_4px,4px 위치 이동,severe,135,0.7925925925925926,28,0.6785714285714286,9,0,,0.5555555555555556,0.07407407407407407,0.0542869351528309,changed_prediction_capture,0.8,0.6785714285714286,False

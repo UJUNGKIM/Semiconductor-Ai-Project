@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "validated",
+  "bundle_sha256": "9a5a9c959543b12848b3204f941dc5ba20343cd22f3c0a48c0afa977578c9459",
+  "file_count": 25,
+  "uncompressed_bytes": 21456648,
+  "validation_rows_per_candidate": 24703,
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "selected_candidate": "weak_none_margin_005",
+  "selected_margin_lambda": 0.05,
+  "deployment_changed": false,
+  "baseline_reuse_sha_matches": true,
+  "metrics": {
+    "baseline": {
+      "validation_accuracy": 0.9736469254746387,
+      "validation_balanced_accuracy": 0.9312559361294789,
+      "validation_macro_f1": 0.8947930489640513,
+      "validation_weighted_f1": 0.9745757533172743,
+      "validation_weak_recall": 0.8633028440045983,
+      "validation_none_recall": 0.9819554584738117
+    },
+    "weak_none_margin_005": {
+      "validation_accuracy": 0.9761972230093511,
+      "validation_balanced_accuracy": 0.9266656977755056,
+      "validation_macro_f1": 0.8988814585334137,
+      "validation_weighted_f1": 0.9769696218974516,
+      "validation_weak_recall": 0.8863406631208489,
+      "validation_none_recall": 0.9832850562704781
+    },
+    "weak_none_margin_010": {
+      "validation_accuracy": 0.9758733757033559,
+      "validation_balanced_accuracy": 0.9381659966635277,
+      "validation_macro_f1": 0.8981296544649501,
+      "validation_weighted_f1": 0.9767107701239155,
+      "validation_weak_recall": 0.8823805785622091,
+      "validation_none_recall": 0.982240372287383
+    }
+  },
+  "selected_deltas_vs_baseline": {
+    "validation_accuracy": 0.0025502975347123646,
+    "validation_balanced_accuracy": -0.004590238353973319,
+    "validation_macro_f1": 0.004088409569362406,
+    "validation_weighted_f1": 0.0023938685801773163,
+    "validation_weak_recall": 0.02303781911625058,
+    "validation_none_recall": 0.0013295977966664152
+  },
+  "checkpoint_sha256": {
+    "baseline": "37ad4a86fcf460afc4a582861028d574a5c4e4bea438f0fb54994e286e0cd02c",
+    "weak_none_margin_005": "b3bcb5faad9c4cb0b7ff78e1fd99a2995adad0cbbf3f279735599cb2c6301eb5",
+    "weak_none_margin_010": "3cf67cddb9672e8be20e9f846cf00f5c25b6a16dec06dd26801f9818b974da16"
+  },
+  "decision": "replicate_selected_candidate_across_multiple_seeds_before_deployment"
+}

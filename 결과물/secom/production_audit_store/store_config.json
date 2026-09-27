@@ -1,0 +1,37 @@
+{
+  "config_version": 1,
+  "backend": "SQLite",
+  "deployment_mode": "local_persistence_prototype",
+  "database_path_environment_variable": "SECOM_AUDIT_DB_PATH",
+  "database_committed_to_git": false,
+  "production_ready": false,
+  "raw_sensor_values_persisted": false,
+  "transaction_mode": "BEGIN IMMEDIATE",
+  "sqlite_synchronous": "FULL",
+  "append_only_controls": [
+    "UPDATE trigger block",
+    "DELETE trigger block",
+    "SHA-256 chain"
+  ],
+  "access_control": {
+    "configured": false,
+    "required": "SSO/RBAC and named service identity"
+  },
+  "retention": {
+    "configured": false,
+    "required": "approved retention and legal-hold policy"
+  },
+  "backup": {
+    "configured": false,
+    "required": "encrypted off-host backup with restore drill"
+  },
+  "external_immutable_anchor": {
+    "configured": false,
+    "required": "signed off-host chain-head anchor"
+  },
+  "limitations": [
+    "로컬 SQLite 파일은 호스트 관리자에 의한 파일 삭제를 막지 못합니다.",
+    "DB 접근 주체 인증과 역할 기반 권한은 배포 환경에서 별도로 연결해야 합니다.",
+    "외부 백업·복원 훈련과 불변 보존은 아직 구현되지 않았습니다."
+  ]
+}

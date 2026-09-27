@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "purpose": "validation_only_paired_weak_margin_multiseed_reproducibility",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "strategies": [
+    "baseline",
+    "weak_none_margin_005"
+  ],
+  "fixed_split": true,
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "deployment_changed": false,
+  "primary_metric": "validation_weak_recall",
+  "paired_guardrails": {
+    "macro_f1_tolerance_per_seed": 0.005,
+    "none_recall_tolerance_per_seed": 0.002,
+    "balanced_accuracy_tolerance_per_seed": 0.005
+  },
+  "selected_candidate": "baseline",
+  "weak_recall_improved_seed_count": 2,
+  "checks": {
+    "mean_weak_recall_improved": true,
+    "weak_recall_improved_at_least_two_seeds": true,
+    "macro_f1_guardrail_all_seeds": false,
+    "none_recall_guardrail_all_seeds": false,
+    "balanced_accuracy_guardrail_all_seeds": false,
+    "eligible": false
+  },
+  "mean_deltas": {
+    "validation_accuracy": 0.001254908310731458,
+    "validation_balanced_accuracy": -0.007309263541456186,
+    "validation_macro_f1": -0.001863100365116055,
+    "validation_weighted_f1": 0.0014752233041922895,
+    "validation_weak_recall": 0.034345332074950385,
+    "validation_none_recall": -0.00020577108757950194
+  },
+  "next_step": "keep_baseline_or_run_final_governed_evaluation_after_multiseed_gate"
+}

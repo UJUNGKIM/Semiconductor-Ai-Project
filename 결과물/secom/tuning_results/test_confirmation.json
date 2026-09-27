@@ -1,0 +1,25 @@
+{
+  "model": "CatBoost",
+  "config_id": "catboost_01",
+  "oof_metrics": {
+    "oof_pr_auc": 0.20181582857396058,
+    "oof_roc_auc": 0.7350633302440531,
+    "oof_threshold": 0.07179839120789556,
+    "oof_precision": 0.14627659574468085,
+    "oof_recall": 0.6626506024096386,
+    "oof_f2": 0.3884180790960452
+  },
+  "test_metrics": {
+    "pr_auc": 0.25051151534895366,
+    "roc_auc": 0.7011214041930766,
+    "threshold": 0.07179839120789556,
+    "precision": 0.14772727272727273,
+    "recall": 0.6190476190476191,
+    "f2": 0.37790697674418605,
+    "tp": 13,
+    "fp": 75,
+    "fn": 8,
+    "tn": 218
+  },
+  "test_note": "Fixed holdout was observed in earlier experiments; treat as confirmation, not pristine external validation."
+}

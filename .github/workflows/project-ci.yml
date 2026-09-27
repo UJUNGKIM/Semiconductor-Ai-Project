@@ -1,0 +1,98 @@
+name: Project regression tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: project-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression-tests:
+    name: Python 3.11.9 regression tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: utf-8
+      MPLBACKEND: Agg
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11.9"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-ci.txt
+            requirements-linux-ci.txt
+            pylock.github-actions.toml
+            pylock.streamlit.toml
+
+      - name: Install CPU-only exact dependencies
+        run: |
+          python -m pip install --upgrade "pip==26.2.1"
+          python -m pip install --requirement pylock.github-actions.toml
+
+      - name: Build Linux dependency locks
+        run: python 코드/secom/build_linux_dependency_locks.py --output-dir ci-linux-lock
+
+      - name: Verify committed Linux locks are current
+        run: python 코드/secom/verify_committed_linux_locks.py --generated-dir ci-linux-lock
+
+      - name: Upload Linux dependency lock evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: secom-linux-dependency-lock
+          path: ci-linux-lock
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Verify dependencies, data, release evidence, and tests
+        run: python 코드/verify_ci.py
+
+      - name: Install pinned dependency audit tool
+        run: python -m pip install "pip-audit==2.10.1"
+
+      - name: Audit installed Python dependencies
+        run: python 코드/secom/build_dependency_security_audit.py --output-dir ci-security-audit
+
+      - name: Upload dependency audit evidence
+        if: ${{ always() && hashFiles('ci-security-audit/**') != '' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: secom-dependency-security-audit
+          path: ci-security-audit
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Install pinned source security scanner
+        run: python -m pip install "bandit==1.9.4"
+
+      - name: Audit SECOM Python source
+        run: python 코드/secom/build_source_security_audit.py --output-dir ci-source-security-audit
+
+      - name: Upload source security evidence
+        if: ${{ always() && hashFiles('ci-source-security-audit/**') != '' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: secom-source-security-audit
+          path: ci-source-security-audit
+          if-no-files-found: error
+          retention-days: 30

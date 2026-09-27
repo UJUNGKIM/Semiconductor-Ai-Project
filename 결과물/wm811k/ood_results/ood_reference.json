@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "method": "minimum_regularized_diagonal_mahalanobis",
+  "feature_layer": "adaptive_average_pool_256",
+  "feature_dim": 256,
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "variance_shrinkage": 0.1,
+  "thresholds": {
+    "review_quantile": 0.95,
+    "ood_quantile": 0.99,
+    "review_threshold": 1.1763898491859435,
+    "ood_threshold": 1.5754686498641968
+  },
+  "geometry_reference": {
+    "global": {
+      "wafer_coverage": {
+        "lower_0_1pct": 0.724609375,
+        "lower_1pct": 0.740478515625,
+        "median": 0.77001953125,
+        "upper_99pct": 0.80224609375,
+        "upper_99_9pct": 0.80712890625
+      },
+      "defect_ratio": {
+        "lower_0_1pct": 0.010996775701642036,
+        "lower_1pct": 0.018085848540067673,
+        "median": 0.1060698926448822,
+        "upper_99pct": 0.3651142716407776,
+        "upper_99_9pct": 0.7081379294395447
+      }
+    },
+    "by_class": {
+      "Center": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7517253160476685,
+          "lower_1pct": 0.75390625,
+          "median": 0.7626953125,
+          "upper_99pct": 0.798828125,
+          "upper_99_9pct": 0.802734375
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.022064421325922012,
+          "lower_1pct": 0.03515790030360222,
+          "median": 0.2509603202342987,
+          "upper_99pct": 0.550290584564209,
+          "upper_99_9pct": 0.6934509873390198
+        }
+      },
+      "Donut": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7554336190223694,
+          "lower_1pct": 0.7626953125,
+          "median": 0.77001953125,
+          "upper_99pct": 0.7998046875,
+          "upper_99_9pct": 0.80224609375
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.07059965282678604,
+          "lower_1pct": 0.11150006204843521,
+          "median": 0.25523144006729126,
+          "upper_99pct": 0.5521497130393982,
+          "upper_99_9pct": 0.6200572848320007
+        }
+      },
+      "Edge-Loc": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7438828349113464,
+          "lower_1pct": 0.74560546875,
+          "median": 0.771728515625,
+          "upper_99pct": 0.80224609375,
+          "upper_99_9pct": 0.80712890625
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.016628891229629517,
+          "lower_1pct": 0.030689213424921036,
+          "median": 0.15757204592227936,
+          "upper_99pct": 0.5944837927818298,
+          "upper_99_9pct": 0.7026264071464539
+        }
+      },
+      "Edge-Ring": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.751953125,
+          "lower_1pct": 0.7607421875,
+          "median": 0.783447265625,
+          "upper_99pct": 0.805908203125,
+          "upper_99_9pct": 0.80615234375
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.024251075461506844,
+          "lower_1pct": 0.039331063628196716,
+          "median": 0.14103344082832336,
+          "upper_99pct": 0.3059679865837097,
+          "upper_99_9pct": 0.3957766592502594
+        }
+      },
+      "Loc": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7281699180603027,
+          "lower_1pct": 0.751953125,
+          "median": 0.7763671875,
+          "upper_99pct": 0.80712890625,
+          "upper_99_9pct": 0.814697265625
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.007410692051053047,
+          "lower_1pct": 0.009798960760235786,
+          "median": 0.14294789731502533,
+          "upper_99pct": 0.49128034710884094,
+          "upper_99_9pct": 0.6466036438941956
+        }
+      },
+      "Near-full": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.738839328289032,
+          "lower_1pct": 0.7457665801048279,
+          "median": 0.77392578125,
+          "upper_99pct": 0.8061718940734863,
+          "upper_99_9pct": 0.807077169418335
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.7201103568077087,
+          "lower_1pct": 0.7204368710517883,
+          "median": 0.9009463787078857,
+          "upper_99pct": 1.0,
+          "upper_99_9pct": 1.0
+        }
+      },
+      "Random": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7012792825698853,
+          "lower_1pct": 0.7570434808731079,
+          "median": 0.7744140625,
+          "upper_99pct": 0.8022363781929016,
+          "upper_99_9pct": 0.8092795014381409
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.17448298633098602,
+          "lower_1pct": 0.23986057937145233,
+          "median": 0.4730103015899658,
+          "upper_99pct": 0.7207725644111633,
+          "upper_99_9pct": 0.7509345412254333
+        }
+      },
+      "Scratch": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.74560546875,
+          "lower_1pct": 0.7512500286102295,
+          "median": 0.77978515625,
+          "upper_99pct": 0.80712890625,
+          "upper_99_9pct": 0.80712890625
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.009907308965921402,
+          "lower_1pct": 0.012130637653172016,
+          "median": 0.09217171370983124,
+          "upper_99pct": 0.28816676139831543,
+          "upper_99_9pct": 0.35133329033851624
+        }
+      },
+      "none": {
+        "wafer_coverage": {
+          "lower_0_1pct": 0.7239526510238647,
+          "lower_1pct": 0.7392578125,
+          "median": 0.7685546875,
+          "upper_99pct": 0.80224609375,
+          "upper_99_9pct": 0.80712890625
+        },
+        "defect_ratio": {
+          "lower_0_1pct": 0.011486917734146118,
+          "lower_1pct": 0.017870761454105377,
+          "median": 0.09865470975637436,
+          "upper_99pct": 0.2448849081993103,
+          "upper_99_9pct": 0.29660293459892273
+        }
+      }
+    }
+  },
+  "fit_split": "train",
+  "calibration_split": "validation",
+  "test_used_for_threshold": false,
+  "seed": 42,
+  "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce",
+  "checkpoint_best_epoch": 10
+}

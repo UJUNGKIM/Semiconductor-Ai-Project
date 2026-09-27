@@ -1,0 +1,7 @@
+{
+  "selected_strategy": "ce_sqrt_balanced",
+  "primary_metric": "validation_macro_f1",
+  "tie_breaker": "validation_balanced_accuracy",
+  "selection_uses_test": false,
+  "random_state": 42
+}

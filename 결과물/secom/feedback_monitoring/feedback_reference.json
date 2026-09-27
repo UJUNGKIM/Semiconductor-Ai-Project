@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "created_from": "repeated_5x3_oof_train_only",
+  "test_labels_used_for_guardrails": false,
+  "alert_rule": "CatBoost OR XGBoost alert at OOF-selected thresholds",
+  "profile": "balanced_f2",
+  "thresholds": {
+    "CatBoost": 0.07179839120789556,
+    "XGBoost": 0.021014438321193058
+  },
+  "oof_reference": {
+    "rows": 1253,
+    "defects": 83,
+    "prevalence": 0.06624102154828412,
+    "true_positive": 69,
+    "false_positive": 572,
+    "false_negative": 14,
+    "true_negative": 598,
+    "precision": 0.10764430577223089,
+    "recall": 0.8313253012048193
+  },
+  "minimum_evidence": {
+    "batches": 3,
+    "rows": 200,
+    "defects": 30
+  },
+  "guardrails": {
+    "recall_drop_margin": 0.15,
+    "persistent_batches": 3,
+    "prevalence_ratio_warning": 2.0
+  },
+  "model_hashes": {
+    "CatBoost": "6EDAE5D62708ADC98E4ADFA8F23D7CBAAB41E75A0202E5B27C7C7729ADCBB49A",
+    "XGBoost": "82A3883F180DEF641F433399895F308B775C3D8EA9023B5152CD11B5ADCBE6B1"
+  },
+  "automatic_retraining_allowed": false
+}

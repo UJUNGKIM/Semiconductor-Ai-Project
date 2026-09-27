@@ -1,0 +1,58 @@
+{
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "loss": "focal",
+  "focal_gamma": 2.0,
+  "class_weight_beta": 0.9999,
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "class_counts": [
+    3068,
+    397,
+    3707,
+    6914,
+    2567,
+    107,
+    618,
+    853,
+    105311
+  ],
+  "class_weights": [
+    0.20898547768592834,
+    1.4185727834701538,
+    0.17825566232204437,
+    0.11062320321798325,
+    0.2438800185918808,
+    5.18784761428833,
+    0.9213237166404724,
+    0.6752931475639343,
+    0.05521826818585396
+  ],
+  "best_epoch": 9,
+  "epochs_ran": 13,
+  "validation_metrics": {
+    "loss": 0.008111111248916473,
+    "accuracy": 0.9684653685787151,
+    "balanced_accuracy": 0.8692112978852902,
+    "macro_f1": 0.8441504848882663,
+    "weighted_f1": 0.9684435870084398
+  },
+  "test_metrics": {
+    "loss": 0.009468971916633298,
+    "accuracy": 0.9677798016595831,
+    "balanced_accuracy": 0.8534275009897228,
+    "macro_f1": 0.8280245678854993,
+    "weighted_f1": 0.9676010387620361
+  },
+  "elapsed_seconds": 404.59146505600006
+}

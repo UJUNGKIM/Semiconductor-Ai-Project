@@ -1,3 +1,79 @@
+# Python virtual environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Runtime leftovers
+*.log
+*.tmp
+~$*
+
+# 1.95 GB external dataset: keep locally, never commit to Git
+/데이터/WM-811K(LSWMD) 데이터셋/LSWMD.pkl
+
+# Raw Colab comparison bundle stays local; compact selected results are tracked.
+/결과물/wm811k/colab_가져오기/wm811k_strategy_comparison_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_strategy_comparison_results/
+
+# Raw demo export bundle is validated and compacted before deployment.
+/결과물/wm811k/colab_가져오기/wm811k_demo_samples.zip
+/결과물/wm811k/colab_가져오기/wm811k_demo_samples/
+
+# Deployed-model test predictions rebuilt locally for demo-sample selection.
+# Only the compact reproduction summary with hashes is tracked.
+/결과물/wm811k/local_reproduction/
+
+# Raw OOD reference bundle is validated before compact dashboard integration.
+/결과물/wm811k/colab_가져오기/wm811k_ood_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_ood_results/
+
+# Imported multi-seed summary evidence is tracked under multiseed_results.
+/결과물/wm811k/colab_가져오기/wm811k_multiseed_reproducibility_results.zip
+
+# Raw robust-classifier exports stay local; compact validated evidence is tracked.
+/결과물/wm811k/colab_가져오기/wm811k_robust_hierarchical_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_robust_flat_predictions.zip
+/결과물/wm811k/colab_가져오기/wm811k_robust_flat_stress_replay_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_stress_bias_calibration_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_robust_ensemble_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_robust_ensemble_locked_test_results.zip
+
+# Raw self-supervised learning bundles stay local; validated summaries are tracked.
+/결과물/wm811k/colab_가져오기/wm811k_ssl_validation_results.zip
+/결과물/wm811k/colab_가져오기/wm811k_ssl_oof_calibration_results.zip
+
+# Independent-validation retraining produces large or executable artifacts locally.
+# Only compact JSON/CSV/Markdown evidence is committed.
+/결과물/wm811k/independent_validation/cache/
+/결과물/wm811k/independent_validation/**/*.joblib
+/결과물/wm811k/independent_validation/**/*predictions.csv
+/결과물/secom/independent_validation/*.joblib
+/결과물/secom/independent_validation/test_predictions.csv
+/결과물/secom/independent_validation/*.png
+
+# Runtime SECOM audit databases contain operational records and stay local.
+/결과물/secom/production_audit_store/*.sqlite3
+/결과물/secom/production_audit_store/*.sqlite3-wal
+/결과물/secom/production_audit_store/*.sqlite3-shm
+
+# ---------------------------------------------------------------
+# GitHub Python template kept from the public repository
+# ---------------------------------------------------------------
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

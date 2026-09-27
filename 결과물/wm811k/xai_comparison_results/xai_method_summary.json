@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "purpose": "post_selection_class_balanced_xai_comparison",
+  "used_for_model_selection": false,
+  "thresholds_retuned": false,
+  "population_representative": false,
+  "sample_count": 421,
+  "per_class_cap": 50,
+  "mask_fraction": 0.1,
+  "random_repeats": 5,
+  "integrated_gradients_steps": 24,
+  "random_seed": 42,
+  "device": "cuda",
+  "methods": {
+    "Grad-CAM": {
+      "macro_top_vs_random_advantage": 0.004941736568443894,
+      "top_vs_random_95ci": [
+        -0.02822812752709959,
+        0.04934078009873707
+      ],
+      "macro_top_vs_bottom_advantage": 0.3561028861157211,
+      "macro_active_attribution_lift": 1.1078239391948768,
+      "top_exceeds_random_rate": 0.5534441805225653,
+      "top_exceeds_bottom_rate": 0.8242280285035629
+    },
+    "Integrated Gradients": {
+      "macro_top_vs_random_advantage": 0.173679332681315,
+      "top_vs_random_95ci": [
+        0.15247712749227282,
+        0.21444110989573364
+      ],
+      "macro_top_vs_bottom_advantage": 0.24027880420308698,
+      "macro_active_attribution_lift": 1.2886938133122103,
+      "top_exceeds_random_rate": 0.7695961995249406,
+      "top_exceeds_bottom_rate": 0.7719714964370546
+    }
+  },
+  "limitations": [
+    "클래스별 동일 상한 표본이므로 실제 test 클래스 비율의 전체 평균이 아닙니다.",
+    "0 기준 Integrated Gradients와 die 제거는 실제 공정 개입이 아닌 민감도 점검입니다.",
+    "설명법은 물리적 원인이나 인과관계를 증명하지 않습니다."
+  ],
+  "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce",
+  "temperature": 1.047171711723721,
+  "paired_ig_minus_gradcam": 0.17135084173848641,
+  "paired_ig_minus_gradcam_95ci": [
+    0.13667628902515225,
+    0.20952265099681294
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "prospective_collection": false,
+  "independent_source": false,
+  "labels_finalized_before_scoring": false,
+  "model_outputs_hidden_from_labelers": false,
+  "data_collected_after_protocol_freeze": false
+}

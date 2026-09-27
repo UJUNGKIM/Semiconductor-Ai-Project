@@ -1,0 +1,12 @@
+{
+  "valid": true,
+  "entry_count": 3,
+  "latest_hash": "6fa61e8f940189032273f92cc9c06dd7f49574688861dba4189809a0ed776a4d",
+  "event_type_counts": {
+    "BATCH_DIAGNOSIS": 1,
+    "LABEL_FEEDBACK": 1,
+    "RELEASE_READINESS": 1
+  },
+  "contains_raw_sensor_values": false,
+  "algorithm": "SHA-256"
+}

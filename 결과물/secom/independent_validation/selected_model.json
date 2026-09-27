@@ -1,0 +1,22 @@
+{
+  "candidate": "extra_trees",
+  "description": "분위수 정규화 + ANOVA 250변수 + ExtraTrees 500그루(balanced_subsample)",
+  "selection_rule": "OOF recall >= 0.6 조건에서 F2 최대",
+  "oof_metrics": {
+    "oof_pr_auc": 0.18927167960304403,
+    "oof_roc_auc": 0.7242508495520543,
+    "fold_pr_auc_mean": 0.2120998736929982,
+    "fold_pr_auc_std": 0.076532156691351,
+    "oof_precision": 0.13297872340425532,
+    "oof_recall": 0.6024096385542169,
+    "oof_f1": 0.2178649237472767,
+    "oof_f2": 0.3531073446327684,
+    "oof_threshold": 0.0981091966321243,
+    "recall_constraint_met": true
+  },
+  "threshold": 0.0981091966321243,
+  "expected_local_model_file": "independent_extra_trees.joblib",
+  "model_sha256": "d0f8dfd9b1413e4092622840021f20e2dfa444f1d833afa616247af1006db7c2",
+  "artifact_committed": false,
+  "artifact_policy": "현재 환경에서 재학습하고 SHA-256을 재검증한 뒤에만 사용"
+}

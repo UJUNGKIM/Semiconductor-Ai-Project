@@ -1,0 +1,21 @@
+{
+  "run_mode": "paper",
+  "random_state": 42,
+  "train_steps": 30000,
+  "diffusion_timesteps": 100,
+  "raw_rows": 1567,
+  "retained_features": 446,
+  "train_rows": 1002,
+  "validation_rows": 251,
+  "test_rows": 314,
+  "training_seconds": 323.887193166,
+  "gpu": "Tesla T4",
+  "selection_uses_test": false,
+  "threshold_metric": "F2_on_validation",
+  "validation_protocol": "fixed_stratified_train_validation_test",
+  "selected_model": "CatBoost",
+  "selected_strategy": "TabDDPM_1.00",
+  "official_repository": "https://github.com/yandex-research/tab-ddpm",
+  "official_commit": "b476257dd460b778ba09eb97f7a51d6490fa17f8",
+  "dataset_source": "https://archive.ics.uci.edu/static/public/179/secom.zip"
+}

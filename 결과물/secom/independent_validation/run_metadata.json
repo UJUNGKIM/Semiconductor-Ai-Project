@@ -1,0 +1,35 @@
+{
+  "python": "3.11.3",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "random_state": 42,
+  "cv": {
+    "n_splits": 5,
+    "n_repeats": 3
+  },
+  "min_recall": 0.6,
+  "rows": {
+    "train": 1253,
+    "train_positive": 83,
+    "test": 314,
+    "test_positive": 21
+  },
+  "raw_data_sha256": {
+    "secom.data": "4503bdb42e63687d1c7586bdc1796df9a7cb5ae9cc9c0443d84957a446de3aaf",
+    "secom_labels.data": "2fb2e8b5dfe77ba96ecf0960ff00f2ba9311795383a8342d4588a7cb37c816ef"
+  },
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1",
+    "joblib": "1.6.0",
+    "matplotlib": "3.11.2"
+  },
+  "generated_local_plots": [
+    "candidate_oof_f2.png",
+    "selected_pr_curves.png",
+    "test_threshold_sweep.png"
+  ],
+  "plots_committed": false,
+  "matplotlib_font": "Malgun Gothic"
+}

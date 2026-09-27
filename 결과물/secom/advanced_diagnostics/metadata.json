@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "random_state": 42,
+  "fit_scope": "fixed_train_only",
+  "train_rows": 1253,
+  "train_defect_rows": 83,
+  "retained_features": 446,
+  "ood_pca_components": 20,
+  "ood_pca_explained_variance": 0.39761266888672564,
+  "ood_thresholds": {
+    "distance_review": 8.878999392789245,
+    "distance_outlier": 18.734906748527223,
+    "missing_review": 0.08135593220338982,
+    "missing_outlier": 0.144813559322034,
+    "range_review": 0.042986425339366516,
+    "range_outlier": 0.06291601018058418
+  },
+  "signature_clusters": 4,
+  "signature_silhouette": 0.3345920875440837,
+  "signature_bootstrap_stability_ari": 0.8634228117184577,
+  "signature_candidates": {
+    "2": {
+      "silhouette": 0.31996411146280934,
+      "minimum_cluster_size": 40
+    },
+    "3": {
+      "silhouette": 0.3251722920262926,
+      "minimum_cluster_size": 22
+    },
+    "4": {
+      "silhouette": 0.3345920875440837,
+      "minimum_cluster_size": 13
+    }
+  },
+  "model_hashes": {
+    "CatBoost": "6EDAE5D62708ADC98E4ADFA8F23D7CBAAB41E75A0202E5B27C7C7729ADCBB49A",
+    "XGBoost": "82A3883F180DEF641F433399895F308B775C3D8EA9023B5152CD11B5ADCBE6B1"
+  },
+  "physical_causality_claimed": false
+}

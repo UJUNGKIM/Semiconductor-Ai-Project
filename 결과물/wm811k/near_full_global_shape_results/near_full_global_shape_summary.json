@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "purpose": "post_selection_near_full_global_shape_diagnostic",
+  "used_for_model_selection": false,
+  "thresholds_retuned": false,
+  "deployment_model_changed": false,
+  "split": "test",
+  "class_name": "Near-full",
+  "class_id": 5,
+  "sample_count": 21,
+  "connectivity": "8-neighbor",
+  "center_band": "normalized radius <= 0.35",
+  "edge_band": "normalized radius >= 0.70",
+  "metrics": {
+    "defect_ratio": {
+      "mean": 0.8652027193910558,
+      "median": 0.8644888082274652,
+      "min": 0.7493606138107417,
+      "max": 1.0
+    },
+    "component_count_8": {
+      "mean": 3.238095238095238,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 9.0
+    },
+    "largest_component_fraction": {
+      "mean": 0.9922209397717149,
+      "median": 1.0,
+      "min": 0.9528301886792453,
+      "max": 1.0
+    },
+    "mean_normalized_radius": {
+      "mean": 0.6411181887260577,
+      "median": 0.6470362489207618,
+      "min": 0.6071753627584988,
+      "max": 0.6625099366464096
+    },
+    "center_defect_fraction": {
+      "mean": 0.1336285768959793,
+      "median": 0.12989886219974717,
+      "min": 0.10657051282051282,
+      "max": 0.1660377358490566
+    },
+    "edge_defect_fraction": {
+      "mean": 0.4611031425817699,
+      "median": 0.46873706004140786,
+      "min": 0.3971843003412969,
+      "max": 0.5176258992805756
+    },
+    "boundary_defect_coverage": {
+      "mean": 0.8477508512200825,
+      "median": 0.8828828828828829,
+      "min": 0.5769230769230769,
+      "max": 1.0
+    },
+    "defect_bbox_fraction": {
+      "mean": 0.9985119047619048,
+      "median": 1.0,
+      "min": 0.96875,
+      "max": 1.0
+    },
+    "defect_centroid_offset": {
+      "mean": 0.05450133852615674,
+      "median": 0.04701898840403455,
+      "min": 0.0,
+      "max": 0.14340869111114457
+    },
+    "radial_entropy_4bin": {
+      "mean": 0.8931055149668795,
+      "median": 0.88971045248789,
+      "min": 0.8666226679511263,
+      "max": 0.9268234221155521
+    }
+  },
+  "interpretation_rule": "Use area, connectedness, radial distribution, and boundary coverage together; no single descriptor is a causal process diagnosis."
+}

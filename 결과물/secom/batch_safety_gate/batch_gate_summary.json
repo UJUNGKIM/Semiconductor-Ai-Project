@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "test_used_for_threshold_selection": false,
+  "reference_fit_scope": "fixed_train_and_repeated_oof_only",
+  "clean_test_decision": {
+    "status": "PASS",
+    "batch_rows": 314,
+    "automatic_decision_allowed": true,
+    "reasons": [
+      "모든 배치 안전 신호가 허용 범위 이내"
+    ],
+    "signals": {
+      "ood_any_rate": {
+        "value": 0.07961783439490445,
+        "warning_limit": 0.2,
+        "stop_limit": 0.35
+      },
+      "ood_severe_rate": {
+        "value": 0.009554140127388535,
+        "warning_limit": 0.05,
+        "stop_limit": 0.1
+      },
+      "model_disagreement_rate": {
+        "value": 0.2229299363057325,
+        "warning_limit": 0.5,
+        "stop_limit": 0.65
+      }
+    }
+  },
+  "stress_batches": 50,
+  "stress_stop_count": 45,
+  "stress_caution_count": 0,
+  "stress_pass_count": 5,
+  "conditions_with_stop": [
+    "센서 열 드롭아웃 10%",
+    "센서 열 드롭아웃 5%",
+    "무작위 결측 10%",
+    "무작위 결측 20%",
+    "무작위 결측 5%",
+    "가우시안 노이즈 0.25 IQR",
+    "가우시안 노이즈 0.50 IQR",
+    "가우시안 노이즈 1.00 IQR",
+    "센서 스파이크 5% · 5 IQR"
+  ],
+  "limitation": "배치 차단은 자동판정을 보류하는 안전장치이지 센서 고장 원인을 진단하는 기능이 아닙니다. 실제 공정에서 경보율과 대응 시간을 전향 검증해야 합니다."
+}

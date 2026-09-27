@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "champion_frozen",
+  "automatic_promotion_performed": false,
+  "deployment": {
+    "model_id": "wm811k_ce_sqrt_balanced_seed42",
+    "strategy": "ce_sqrt_balanced",
+    "seed": 42,
+    "checkpoint_path": "결과물/wm811k/selected_model_results/best_model.pt",
+    "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+    "class_count": 9,
+    "validation_macro_f1": 0.8965338122291533,
+    "frozen_test_macro_f1": 0.8828173704348624,
+    "selection_uses_test": false
+  },
+  "safety_artifacts": {
+    "uncertainty_policy_path": "결과물/wm811k/selected_model_results/uncertainty_policy.json",
+    "uncertainty_policy_sha256": "1d4c1acced42204accae45fe6b2ab99e771ecf3aaa96eab2fc905326a4f44bd9",
+    "ood_reference_path": "결과물/wm811k/ood_results/ood_reference.json",
+    "ood_reference_sha256": "7eabed063634bf18ed4748b0aa063c4d6861f466631f4546840a974dba7b77df",
+    "ood_checkpoint_matches_champion": true
+  },
+  "reproducibility": {
+    "seeds": [
+      17,
+      42,
+      2026
+    ],
+    "strategy": "ce_sqrt_balanced",
+    "validation_macro_f1_mean": 0.8915657689496842,
+    "validation_macro_f1_std": 0.008184681548260034,
+    "test_macro_f1_mean": 0.8814607970648823,
+    "test_macro_f1_std": 0.002380251602292551,
+    "seed42_checkpoint_matches_champion": true
+  },
+  "latest_challenger_gate": {
+    "candidate": "baseline_robust_ensemble_50_50_bias_010",
+    "eligible": false,
+    "validation_gate_passed": true,
+    "validation_eligible_configuration_count": 442,
+    "robust_weight": 0.5,
+    "none_logit_bias": 0.1,
+    "weak_recall_delta": 0.07305795912607049,
+    "macro_f1_delta": 0.020872705245009726,
+    "accuracy_delta": 0.0029953450718478436,
+    "none_recall_delta": -0.0028013864488865003,
+    "failed_guardrails": [
+      "none_recall_guardrail"
+    ],
+    "test_sample_count": 24705,
+    "test_evaluated": true,
+    "used_test_for_selection": false
+  },
+  "candidate_decisions": [
+    {
+      "candidate": "ce_sqrt_balanced_seed42",
+      "role": "champion",
+      "status": "deployed",
+      "selection_scope": "validation-selected; test evaluated after freeze",
+      "reason": "validation winner, checkpoint-linked OOD policy, three-seed stability evidence"
+    },
+    {
+      "candidate": "weak_class_retraining_family",
+      "role": "challenger",
+      "status": "rejected",
+      "selection_scope": "validation only",
+      "reason": "augmentation candidates failed macro-F1 guardrail; family baseline retained only inside experiment"
+    },
+    {
+      "candidate": "weak_none_margin_005",
+      "role": "challenger",
+      "status": "rejected",
+      "selection_scope": "paired validation across seeds 17, 42, 2026",
+      "reason": "weak recall improved but per-seed macro-F1, none recall, and balanced-accuracy guardrails failed"
+    },
+    {
+      "candidate": "baseline_robust_ensemble_50_50_bias_010",
+      "role": "challenger",
+      "status": "rejected",
+      "selection_scope": "three-seed validation stress selection; one-time locked test",
+      "reason": "locked test improved weak recall and macro-F1 but exceeded the pre-registered none-recall loss guardrail"
+    }
+  ],
+  "decision": "keep_existing_champion_and_freeze_current_model_selection"
+}

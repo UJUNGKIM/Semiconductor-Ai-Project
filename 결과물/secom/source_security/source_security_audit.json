@@ -1,0 +1,28 @@
+{
+  "report_version": 1,
+  "status": "PASS",
+  "scanner": "bandit",
+  "scanner_version": "1.9.4",
+  "scanned_at": "2026-09-27T14:25:17.542242Z",
+  "scope": "secom_and_integrated_dashboard_python_source",
+  "targets": [
+    "app.py",
+    "dashboard_ui",
+    "코드/secom"
+  ],
+  "minimum_severity": "MEDIUM",
+  "minimum_confidence": "MEDIUM",
+  "scanned_file_count": 76,
+  "source_sha256": "6E979C2F5063C881301478C5536D341DB79D89519CB2D4109A33D13D50C22EAF",
+  "lines_of_code": 21549,
+  "suppression_count": 0,
+  "scanner_error_count": 0,
+  "issue_count": 0,
+  "issues": [],
+  "source_code_snippets_persisted": false,
+  "limitations": [
+    "Python AST 기반 규칙 검사이며 실행 시점의 모든 취약 동작을 증명하지 않습니다.",
+    "SECOM 코드와 통합 app.py·dashboard_ui만 대상으로 하며 WM-811K 코드는 별도 작업 범위입니다.",
+    "중간 이상 심각도·신뢰도만 릴리스 차단 대상으로 사용합니다."
+  ]
+}

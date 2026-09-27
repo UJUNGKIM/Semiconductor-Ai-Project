@@ -1,0 +1,57 @@
+{
+  "decision": "HISTORICAL_DEMO_ONLY",
+  "automatic_promotion_performed": false,
+  "champion": "CatBoost",
+  "challenger": "XGBoost",
+  "batch_count": 5,
+  "rows": 1253,
+  "defects": 83,
+  "discordant_predictions": 293,
+  "champion_only_correct": 251,
+  "challenger_only_correct": 42,
+  "mcnemar_exact_p_value": 1.984209688079683e-37,
+  "champion_metrics": {
+    "true_positive": 54,
+    "false_positive": 321,
+    "false_negative": 29,
+    "true_negative": 849,
+    "precision": 0.144,
+    "recall": 0.6506024096385542,
+    "false_positive_rate": 0.2743589743589744,
+    "f2": 0.38189533239038187
+  },
+  "challenger_metrics": {
+    "true_positive": 69,
+    "false_positive": 545,
+    "false_negative": 14,
+    "true_negative": 625,
+    "precision": 0.11237785016286644,
+    "recall": 0.8313253012048193,
+    "false_positive_rate": 0.4658119658119658,
+    "f2": 0.36469344608879495
+  },
+  "paired_bootstrap_delta_challenger_minus_champion": {
+    "recall": {
+      "mean": 0.1798433734939759,
+      "ci_low": 0.09638554216867479,
+      "ci_high": 0.2650602409638554
+    },
+    "false_positive_rate": {
+      "mean": 0.1910717948717949,
+      "ci_low": 0.16666666666666669,
+      "ci_high": 0.2179487179487179
+    },
+    "f2": {
+      "mean": -0.017275171081782816,
+      "ci_low": -0.06273033193238858,
+      "ci_high": 0.02971704224946632
+    }
+  },
+  "recall_noninferiority_pass": true,
+  "false_positive_guardrail_pass": false,
+  "improvement_evidence": false,
+  "minimum_evidence_met": true,
+  "reasons": [
+    "OOF 재생 자료는 실제 모델 승격 근거가 아닙니다."
+  ]
+}

@@ -1,0 +1,5 @@
+﻿candidate,role,status,selection_scope,reason
+ce_sqrt_balanced_seed42,champion,deployed,validation-selected; test evaluated after freeze,"validation winner, checkpoint-linked OOD policy, three-seed stability evidence"
+weak_class_retraining_family,challenger,rejected,validation only,augmentation candidates failed macro-F1 guardrail; family baseline retained only inside experiment
+weak_none_margin_005,challenger,rejected,"paired validation across seeds 17, 42, 2026","weak recall improved but per-seed macro-F1, none recall, and balanced-accuracy guardrails failed"
+baseline_robust_ensemble_50_50_bias_010,challenger,rejected,three-seed validation stress selection; one-time locked test,locked test improved weak recall and macro-F1 but exceeded the pre-registered none-recall loss guardrail

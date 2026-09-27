@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "experiment_type": "wm811k_robust_flat_joint_stress_bias_validation",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "selection_split": "validation",
+  "stress_modes": [
+    "clean",
+    "shift4",
+    "dropout1"
+  ],
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "selected_none_logit_bias": null,
+  "eligible_bias_count": 0,
+  "stress_calibration_gate_passed": false,
+  "checks": {
+    "clean_weak_recall_mean_improved": true,
+    "clean_macro_f1_mean_improved": true,
+    "clean_none_recall_guardrail_all_seeds": false,
+    "clean_balanced_accuracy_guardrail_all_seeds": true,
+    "clean_accuracy_guardrail_all_seeds": true,
+    "shift4_weak_recall_mean_improved": true,
+    "shift4_macro_f1_mean_improved": true,
+    "shift4_none_recall_guardrail_all_seeds": false,
+    "shift4_balanced_accuracy_guardrail_all_seeds": true,
+    "shift4_accuracy_guardrail_all_seeds": true,
+    "dropout1_weak_recall_mean_improved": true,
+    "dropout1_macro_f1_mean_improved": true,
+    "dropout1_none_recall_guardrail_all_seeds": false,
+    "dropout1_balanced_accuracy_guardrail_all_seeds": true,
+    "dropout1_accuracy_guardrail_all_seeds": true
+  },
+  "mean_deltas": {
+    "clean": {
+      "accuracy": -0.0002158982039967746,
+      "balanced_accuracy": 0.045470322949245356,
+      "macro_f1": 0.012257250234237368,
+      "weighted_f1": 0.0006410487933203498,
+      "weak_recall": 0.07785902385145597,
+      "none_recall": -0.007850958418411805
+    },
+    "shift4": {
+      "accuracy": 0.0005802264232414404,
+      "balanced_accuracy": 0.06290633226172489,
+      "macro_f1": 0.014734300343259584,
+      "weighted_f1": 0.0019700454263973377,
+      "weak_recall": 0.10175938421552451,
+      "none_recall": -0.011206610000474812,
+      "prediction_stability": 0.0016327301677259525
+    },
+    "dropout1": {
+      "accuracy": 0.0022129565909673556,
+      "balanced_accuracy": 0.04627610641089789,
+      "macro_f1": 0.013222848188588468,
+      "weighted_f1": 0.0029508176025356083,
+      "weak_recall": 0.10438081965429735,
+      "none_recall": -0.006711303164126196,
+      "prediction_stability": 0.007529449864388897
+    }
+  },
+  "deployment_model_changed": false,
+  "next_step": "keep_deployed_baseline"
+}

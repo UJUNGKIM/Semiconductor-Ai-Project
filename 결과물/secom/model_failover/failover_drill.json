@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "drill_scope": "offline_integrity_and_human_controlled_failover_simulation",
+  "active_model": "CatBoost",
+  "standby_model": "XGBoost",
+  "active_integrity_before_drill": true,
+  "simulated_active_corruption_detected": true,
+  "real_model_file_modified": false,
+  "standby_integrity_verified": true,
+  "input_schema_compatible": true,
+  "label_mapping_compatible": true,
+  "automatic_failover_allowed": false,
+  "recommended_action": "HALT_AND_REQUIRE_HUMAN_APPROVAL_FOR_STANDBY",
+  "fixed_test_post_selection_audit_only": true,
+  "test_rows": 314,
+  "model_metrics": {
+    "CatBoost": {
+      "precision": 0.14772727272727273,
+      "recall": 0.6190476190476191,
+      "f2": 0.37790697674418605,
+      "true_positive": 13,
+      "false_positive": 75,
+      "false_negative": 8,
+      "true_negative": 218
+    },
+    "XGBoost": {
+      "precision": 0.11475409836065574,
+      "recall": 0.6666666666666666,
+      "f2": 0.33980582524271846,
+      "true_positive": 14,
+      "false_positive": 108,
+      "false_negative": 7,
+      "true_negative": 185
+    }
+  },
+  "model_prediction_disagreement_rate": 0.2229299363057325,
+  "limitations": [
+    "실제 서비스 장애가 아니라 모델 바이트 손상을 메모리에서 모의한 훈련입니다.",
+    "XGBoost 대기 모델 활성화는 자동으로 수행하지 않으며 책임자 승인이 필요합니다.",
+    "고정 test 지표는 대기 모델 재선택이나 임계값 변경에 사용하지 않습니다.",
+    "실제 배포에서는 영구 레지스트리, 접근통제, 서명, 백업과 복구 훈련이 필요합니다."
+  ]
+}

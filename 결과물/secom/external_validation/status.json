@@ -1,0 +1,7 @@
+{
+  "status": "AWAITING_INDEPENDENT_DATA",
+  "protocol_id": "DC6F68673693A0FBB71A",
+  "validated_summary_present": false,
+  "production_claim_allowed": false,
+  "next_action": "신규 장비·기간·lot에서 라벨 확정 후 evaluate_external_validation.py 실행"
+}

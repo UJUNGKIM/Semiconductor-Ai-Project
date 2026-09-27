@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "source_split": "validation",
+  "source_record_path": "결과물/wm811k/ood_results/ood_score_records.csv",
+  "source_record_sha256": "51271207D41B2C5C62A6550BA6A589FF35691E1F174FDE9C8453948E2E5E5488",
+  "model_checkpoint_sha256": "77EA8394F593CCD0E1FFA85CE1B8E59C52FCD44B109D7E3587C66F7290D4557B",
+  "validation_sample_count": 24703,
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "class_probabilities": {
+    "Center": 0.024693357082135773,
+    "Donut": 0.003521839452698053,
+    "Edge-Loc": 0.025260089867627414,
+    "Edge-Ring": 0.054851637452940936,
+    "Loc": 0.022466906853418612,
+    "Near-full": 0.000850099178237461,
+    "Random": 0.004938671416427154,
+    "Scratch": 0.006638869772902077,
+    "none": 0.8567785289236125
+  },
+  "ood_status_probabilities": {
+    "in_distribution": 0.949965591223738,
+    "review": 0.03999514229041007,
+    "out_of_distribution": 0.010039266485851921
+  },
+  "ood_score_quantiles": {
+    "p50": 0.6331922,
+    "p95": 1.17638983,
+    "p99": 1.5754686519999999
+  },
+  "above_p95_rate": 0.050034408776261995,
+  "monitoring_config": {
+    "minimum_batch_size": 20,
+    "bootstrap_quantile": 0.99,
+    "bootstrap_repetitions": 4000,
+    "seed": 42
+  },
+  "test_split_used": false,
+  "labels_required_during_monitoring": false,
+  "automatic_retraining": false
+}

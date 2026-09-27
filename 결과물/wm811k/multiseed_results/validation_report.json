@@ -1,0 +1,22 @@
+{
+  "bundle": "wm811k_multiseed_reproducibility_results.zip",
+  "zip_sha256": "f45293b8f96517f1e32eb98ff4e8ed67a2a0a056cabdbcb11d6baa965947853a",
+  "entries": 14,
+  "uncompressed_bytes": 58562,
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "strategy_id": "ce_sqrt_balanced",
+  "validation_macro_f1_mean": 0.8915657689496842,
+  "validation_macro_f1_std": 0.008184681548260034,
+  "assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce",
+  "deployment_model_changed": false,
+  "validation_passed": true,
+  "class_reports_reconciled": true,
+  "seed42_checkpoint_matches_deployment": true,
+  "deployed_checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "class_recall_rows": 18,
+  "test_used_for_selection": false
+}

@@ -1,0 +1,16 @@
+{
+  "rows": 1567,
+  "raw_features": 590,
+  "normal_rows": 1463,
+  "defect_rows": 104,
+  "high_missing_removed": 28,
+  "constant_removed": 116,
+  "retained_features": 446,
+  "train_rows": 1253,
+  "test_rows": 314,
+  "smote_train_rows": 2340,
+  "random_state": 42,
+  "test_size": 0.2,
+  "cv_splits": 5,
+  "threshold_rule": "maximize F1 on each validation fold; final=median"
+}

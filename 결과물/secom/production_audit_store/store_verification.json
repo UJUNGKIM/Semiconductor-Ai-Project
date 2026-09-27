@@ -1,0 +1,14 @@
+{
+  "evidence_version": 1,
+  "demo_only": true,
+  "database_committed": false,
+  "persistence_reopen_verified": true,
+  "sqlite_integrity_verified": true,
+  "hash_chain_verified": true,
+  "append_only_update_blocked": true,
+  "append_only_delete_blocked": true,
+  "control_removal_then_tamper_detected": true,
+  "tamper_error": "1행 이벤트 해시가 일치하지 않습니다.",
+  "contains_raw_sensor_values": false,
+  "entry_count": 2
+}

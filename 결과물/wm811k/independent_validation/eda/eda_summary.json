@@ -1,0 +1,77 @@
+{
+  "n_total": 811457,
+  "n_labeled": 172950,
+  "n_unlabeled": 638507,
+  "failure_type_counts": {
+    "none": 147431,
+    "Edge-Ring": 9680,
+    "Edge-Loc": 5189,
+    "Center": 4294,
+    "Loc": 3593,
+    "Scratch": 1193,
+    "Random": 866,
+    "Donut": 555,
+    "Near-full": 149
+  },
+  "train_test_flat_counts": {
+    "nan": 638507,
+    "Test": 118595,
+    "Training": 54355
+  },
+  "n_lots_total": 46293,
+  "n_lots_labeled": 10762,
+  "wafers_per_lot_labeled": {
+    "mean": 16.070433005017655,
+    "median": 23.0,
+    "min": 1,
+    "max": 25
+  },
+  "wafer_map_shape_labeled_top": {
+    "25x27": 18781,
+    "26x26": 14366,
+    "30x34": 12400,
+    "29x26": 11751,
+    "27x25": 10682,
+    "39x37": 10173,
+    "33x29": 8125,
+    "42x44": 6724,
+    "44x41": 6134,
+    "41x33": 5091,
+    "35x31": 4331,
+    "25x26": 4174,
+    "41x38": 4152,
+    "33x37": 3729,
+    "29x27": 2872
+  },
+  "wafer_map_shape_unlabeled_sample_top": {
+    "32x29": 893,
+    "25x27": 358,
+    "49x39": 309,
+    "33x33": 176,
+    "30x34": 149,
+    "52x59": 127,
+    "31x31": 117,
+    "39x31": 112,
+    "26x26": 106,
+    "64x71": 97,
+    "31x28": 81,
+    "33x29": 81,
+    "35x40": 78,
+    "44x44": 71,
+    "51x59": 70
+  },
+  "die_count_labeled": {
+    "mean": 1042.232373518358,
+    "median": 776.0,
+    "min": 3,
+    "max": 22372,
+    "n_zero_die": 0
+  },
+  "defect_count_labeled": {
+    "mean": 105.84454466608847,
+    "median": 85.0,
+    "min": 0,
+    "max": 5494
+  },
+  "n_duplicate_lot_waferindex": 0
+}

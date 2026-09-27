@@ -1,0 +1,18 @@
+{
+  "candidate": "weak_none_margin_005",
+  "seed": 42,
+  "weak_margin_lambda": 0.05,
+  "weak_margin_value": 0.2,
+  "best_epoch": 17,
+  "epochs_ran": 20,
+  "sample_weight_min": 1.0,
+  "sample_weight_max": 8.0,
+  "validation_accuracy": 0.9761972230093511,
+  "validation_balanced_accuracy": 0.9266656977755056,
+  "validation_macro_f1": 0.8988814585334137,
+  "validation_weighted_f1": 0.9769696218974516,
+  "validation_weak_recall": 0.886340663120849,
+  "validation_none_recall": 0.983285056270478,
+  "test_evaluated": false,
+  "baseline_reused": false
+}

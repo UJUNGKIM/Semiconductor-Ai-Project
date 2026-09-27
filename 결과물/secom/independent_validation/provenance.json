@@ -1,0 +1,16 @@
+{
+  "integration_policy": "compact evidence and reproducible code only; no branch merge",
+  "source_branch": "compare/friend-ai",
+  "source_commit": "cd7b94e",
+  "code_location": "experiments/independent_validation/secom",
+  "imported": [
+    "OOF candidate-selection code",
+    "compact benchmark tables and metadata"
+  ],
+  "excluded": [
+    "serialized ExtraTrees model",
+    "row-level test predictions",
+    "legacy standalone dashboard code"
+  ],
+  "deployment_status": "reference_only"
+}

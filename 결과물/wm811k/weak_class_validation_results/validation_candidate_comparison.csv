@@ -1,0 +1,4 @@
+candidate,seed,defect_dropout_max,hard_negative_multiplier,best_epoch,epochs_ran,hard_negative_count,sample_weight_min,sample_weight_max,validation_accuracy,validation_balanced_accuracy,validation_macro_f1,validation_weighted_f1,validation_weak_recall,validation_none_recall,test_evaluated,macro_f1_guardrail,none_recall_guardrail,eligible
+baseline,42,0.0,1.0,12,16,10532,1.0,8.0,0.9736469254746387,0.9312559361294789,0.8947930489640513,0.9745757533172743,0.8633028440045983,0.9819554584738116,False,True,True,True
+weak_defect_thinning,42,0.12,1.0,3,7,10532,1.0,8.0,0.9523944460187022,0.7290184582180799,0.7310706748018622,0.945224331907829,0.36514073015620996,0.9926872121183342,False,False,True,False
+weak_thinning_hard_negative,42,0.12,2.0,10,14,10532,1.0,8.0,0.957697445654374,0.7870992694393368,0.7771819489015619,0.9510279382358784,0.4240568742116729,0.9942542380929767,False,False,True,False

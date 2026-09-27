@@ -1,0 +1,11 @@
+{
+  "status": "validated",
+  "checks": {
+    "champion_checkpoint_hash_valid": true,
+    "uncertainty_policy_hash_valid": true,
+    "ood_reference_hash_valid": true,
+    "test_not_used_for_selection": true,
+    "challenger_not_promoted": true,
+    "automatic_promotion_disabled": true
+  }
+}

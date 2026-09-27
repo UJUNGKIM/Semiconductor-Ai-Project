@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "experiment_type": "wm811k_robust_flat_bias_stress_replay",
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "selection_split": "validation",
+  "test_evaluated": false,
+  "used_test_for_selection": false,
+  "selected_none_logit_bias": 1.155,
+  "stress_modes": [
+    "clean",
+    "shift4",
+    "dropout1"
+  ],
+  "stress_gate_passed": false,
+  "checks": {
+    "clean_weak_recall_mean_improved": true,
+    "clean_macro_f1_guardrail_all_seeds": true,
+    "clean_none_recall_guardrail_all_seeds": true,
+    "clean_balanced_accuracy_guardrail_all_seeds": true,
+    "shift_macro_f1_mean_improved": true,
+    "shift_none_recall_guardrail_all_seeds": false,
+    "shift_balanced_accuracy_guardrail_all_seeds": true,
+    "dropout_macro_f1_mean_improved": true,
+    "dropout_none_recall_guardrail_all_seeds": true,
+    "dropout_balanced_accuracy_guardrail_all_seeds": true
+  },
+  "mean_deltas": {
+    "clean": {
+      "accuracy": 0.003670269467945871,
+      "balanced_accuracy": 0.03212451434081861,
+      "macro_f1": 0.022153126443050526,
+      "weak_recall": 0.043876407963095256,
+      "none_recall": -0.0002532567231745553
+    },
+    "shift4": {
+      "accuracy": 0.005289505997921958,
+      "balanced_accuracy": 0.049567321697121226,
+      "macro_f1": 0.027730594325522013,
+      "weak_recall": 0.0680600025285268,
+      "none_recall": -0.002469253050952062,
+      "prediction_stability": 0.004196521340188146
+    },
+    "dropout1": {
+      "accuracy": 0.006382490655655881,
+      "balanced_accuracy": 0.03250967540363692,
+      "macro_f1": 0.023780096032367786,
+      "weak_recall": 0.06878729699507125,
+      "none_recall": 0.0012662836158728503,
+      "prediction_stability": 0.008581953608873372
+    }
+  },
+  "deployment_model_changed": false,
+  "next_step": "keep_deployed_baseline"
+}

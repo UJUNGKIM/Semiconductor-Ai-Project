@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-17T19:40:20+09:00",
+  "url": "https://shapgpt-semiconductor-diagnosis.streamlit.app/",
+  "deployed_commit_evidence": "c758987ccd9a019e403210cb81945f3e503e89ff",
+  "deployed_commit_evidence_method": "The public UI displayed the Champion registry introduced by this commit.",
+  "checks": {
+    "public_url_reachable": true,
+    "sleep_state_detected": true,
+    "wake_action_succeeded": true,
+    "secom_module_rendered": true,
+    "wm811k_module_rendered": true,
+    "champion_registry_rendered": true,
+    "wm811k_builtin_sample_inference_succeeded": true,
+    "integrated_gradients_rendered": true,
+    "gradcam_rendered": true,
+    "python_traceback_absent": true,
+    "missing_artifact_error_absent": true
+  },
+  "champion_observation": {
+    "status": "Champion 고정",
+    "strategy": "ce_sqrt_balanced",
+    "seed": 42,
+    "latest_challenger": "승격 거부",
+    "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+    "test_accuracy": 0.9773,
+    "test_balanced_accuracy": 0.8672,
+    "test_macro_f1": 0.883
+  },
+  "diagnosis_observation": {
+    "source": "built-in frozen test example",
+    "true_class": "Center",
+    "predicted_class": "Center",
+    "decision": "불량 · Center",
+    "calibrated_confidence": 1.0,
+    "ood_score": 0.7096,
+    "input_reliability": "분포 내 입력",
+    "review_policy": "자동 분류 가능",
+    "user_file_uploaded": false
+  },
+  "evidence": {
+    "wm811k_registry.png": "7B888FB7F1359A3CD6BD036C5163FA9249CEAA1D5532509F7FE853616A4D8E43",
+    "wm811k_diagnosis.png": "4533C8F22A4A3E0AE6F43C9B5D7D31F586FB8B932F7E1ABD244420A50B1FA36C"
+  },
+  "limitations": [
+    "This is a UI deployment smoke test, not a new model performance evaluation.",
+    "The diagnosis used one existing frozen demonstration sample and did not upload user data.",
+    "A sleeping Community Cloud app may require a wake-up delay on the next visit."
+  ]
+}

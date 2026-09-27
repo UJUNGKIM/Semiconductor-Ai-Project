@@ -1,0 +1,33 @@
+{
+  "status": "STABLE",
+  "ready": true,
+  "reasons": [
+    "사전 고정된 재현율·불량률 감시 기준 이내입니다."
+  ],
+  "profile": "balanced_f2",
+  "catboost_model_hash": "6EDAE5D62708ADC98E4ADFA8F23D7CBAAB41E75A0202E5B27C7C7729ADCBB49A",
+  "xgboost_model_hash": "82A3883F180DEF641F433399895F308B775C3D8EA9023B5152CD11B5ADCBE6B1",
+  "confirmed_batches": 5,
+  "confirmed_rows": 1253,
+  "confirmed_defects": 83,
+  "true_positive": 69,
+  "false_positive": 572,
+  "false_negative": 14,
+  "true_negative": 598,
+  "precision": 0.10764430577223089,
+  "recall": 0.8313253012048193,
+  "recall_ci_low": 0.7365568909919545,
+  "recall_ci_high": 0.8967801272113028,
+  "actual_defect_rate": 0.06624102154828412,
+  "reference_recall": 0.8313253012048193,
+  "recall_guardrail": 0.6813253012048193,
+  "reference_prevalence": 0.06624102154828412,
+  "prevalence_ratio": 1.0,
+  "candidate_batch_ids": [
+    "oof-replay-01",
+    "oof-replay-02",
+    "oof-replay-03",
+    "oof-replay-04",
+    "oof-replay-05"
+  ]
+}

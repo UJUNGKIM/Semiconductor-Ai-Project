@@ -1,0 +1,14 @@
+﻿check,passed
+manifest_hashes_valid,True
+train_row_order_reproduced,True
+test_row_order_reproduced,True
+feature_order_reproduced,True
+train_values_reproduced,True
+test_values_reproduced,True
+train_labels_reproduced,True
+test_labels_reproduced,True
+train_fitted_medians_reproduced,True
+train_test_rows_disjoint,True
+all_raw_rows_covered_once,True
+raw_data_tamper_detected,True
+raw_label_tamper_detected,True

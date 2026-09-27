@@ -1,0 +1,5 @@
+cluster,pattern,training_defect_rows,top_risk_features,top_protective_features,representative_row_id,share,silhouette
+0,패턴 A,35,feature_59; feature_103; feature_33; feature_477; feature_205,feature_488; feature_423; feature_121; feature_480; feature_123,244,0.42168674698795183,0.3345920875440837
+1,패턴 B,14,feature_488; feature_33; feature_81; feature_200; feature_480,feature_103; feature_59; feature_477; feature_21; feature_341,1342,0.1686746987951807,0.3345920875440837
+2,패턴 C,21,feature_103; feature_21; feature_33; feature_480; feature_31,feature_59; feature_477; feature_341; feature_333; feature_144,1327,0.25301204819277107,0.3345920875440837
+3,패턴 D,13,feature_21; feature_577; feature_81; feature_33; feature_31,feature_103; feature_488; feature_59; feature_63; feature_64,1238,0.1566265060240964,0.3345920875440837

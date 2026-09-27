@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "validation_scope": "local_environment_reproducibility_and_integrity",
+  "python_version": "3.11.9",
+  "direct_dependency_count": 18,
+  "installed_distribution_count": 103,
+  "checks": {
+    "all_direct_dependencies_exactly_pinned": true,
+    "all_direct_versions_match_environment": true,
+    "pip_dependency_check_passed": true,
+    "simulated_version_drift_detected": true,
+    "project_file_hashes_valid": true,
+    "pre_deserialization_hash_gate_declared": true
+  },
+  "pip_check_output": "No broken requirements found.",
+  "vulnerability_scan_performed": false,
+  "known_vulnerability_count": null,
+  "limitations": [
+    "이 SBOM은 로컬 설치 스냅샷이며 패키지 취약점 검사를 수행하지 않았습니다.",
+    "Windows와 Linux CI는 별도 pylock으로 잠갔지만 Streamlit lock의 실제 설치 적용은 미검증입니다.",
+    "해시 기준 manifest 자체는 외부 서명·투명성 로그에 고정되지 않았습니다.",
+    "joblib/pickle은 신뢰된 해시의 프로젝트 artifact에만 사용해야 합니다."
+  ]
+}

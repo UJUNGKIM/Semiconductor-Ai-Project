@@ -1,0 +1,26 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.data text eol=lf
+*.ps1 text eol=crlf
+*.joblib binary
+*.pkl binary
+*.png binary
+*.names binary
+
+# Intentional Markdown hard breaks and generated report strings
+결과물/**/summary.md whitespace=-trailing-space
+코드/secom/compare_synthetic_augmentation.py whitespace=-trailing-space
+run_dashboard.ps1 whitespace=-blank-at-eof
+
+# Copied byte-for-byte from the private working repository, where these files
+# already end with a blank line. Keep their bytes (independent-validation
+# outputs and the scripts that produced them) rather than rewriting them.
+experiments/independent_validation/** whitespace=-blank-at-eof
+결과물/secom/independent_validation/** whitespace=-blank-at-eof
+결과물/wm811k/independent_validation/** whitespace=-blank-at-eof
+dashboard_ui/__init__.py whitespace=-blank-at-eof
+dashboard_ui/reports.py whitespace=-blank-at-eof

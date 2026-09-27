@@ -1,0 +1,12 @@
+{
+  "weight_multiplier": 1.25,
+  "top_k": 200,
+  "random_strength": 0.5,
+  "learning_rate": 0.04,
+  "l2_leaf_reg": 7.0,
+  "iterations": 400,
+  "depth": 4,
+  "border_count": 128,
+  "model": "CatBoost",
+  "config_id": "catboost_01"
+}

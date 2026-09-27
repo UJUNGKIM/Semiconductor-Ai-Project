@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "profile": "balanced_f2",
+  "fit_scope": "fixed_train_and_repeated_oof_only",
+  "test_used_for_threshold_selection": false,
+  "minimum_batch_rows": 20,
+  "adaptive_limit_method": "baseline rate + one-sided normal limit; z=2.326 warning, z=3.090 stop",
+  "signals": {
+    "ood_any_rate": {
+      "baseline_rate": 0.10853950518754989,
+      "warning_floor": 0.2,
+      "stop_floor": 0.35
+    },
+    "ood_severe_rate": {
+      "baseline_rate": 0.025538707102952914,
+      "warning_floor": 0.05,
+      "stop_floor": 0.1
+    },
+    "model_disagreement_rate": {
+      "baseline_rate": 0.2338387869114126,
+      "warning_floor": 0.5,
+      "stop_floor": 0.65
+    }
+  },
+  "row_level_severe_ood_always_held": true,
+  "automatic_decision_on_stop": false
+}

@@ -1,0 +1,11 @@
+{
+  "status": "CRITICAL",
+  "batch_count": 21,
+  "latest_gate_status": "STOP",
+  "stop_count": 20,
+  "caution_count": 0,
+  "recent_nonpass_count": 5,
+  "consecutive_nonpass": 20,
+  "recent_ood_any_mean": 0.9643312101910828,
+  "recent_disagreement_mean": 0.2522292993630573
+}

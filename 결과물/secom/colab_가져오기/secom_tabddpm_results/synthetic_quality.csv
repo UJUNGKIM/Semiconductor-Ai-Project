@@ -1,0 +1,2 @@
+generator,real_defect_rows,synthetic_defect_rows,ks_similarity_mean,correlation_similarity,discriminator_auc,exact_copy_rate,nearest_real_distance_median
+official_TabDDPM,66,870,0.5070040906982302,0.9419250463633453,1.0,0.0,69.56123733520508

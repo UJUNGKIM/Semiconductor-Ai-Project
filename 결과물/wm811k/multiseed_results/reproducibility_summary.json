@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "experiment_type": "wm811k_multiseed_reproducibility",
+  "purpose": "stability_evidence_not_model_selection",
+  "strategy_id": "ce_sqrt_balanced",
+  "loss": "cross_entropy",
+  "sampling": "sqrt_balanced",
+  "sampling_max_multiplier": 8.0,
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "epochs": 20,
+  "batch_size": 256,
+  "patience": 4,
+  "minimum_delta": 0.0001,
+  "fixed_split": true,
+  "split_assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce",
+  "selection_split": "validation",
+  "primary_metric": "validation_macro_f1",
+  "test_used_for_selection": false,
+  "deployment_model_changed": false,
+  "existing_deployment_seed": 42,
+  "seed_count": 3,
+  "std_ddof": 1,
+  "metrics": {
+    "validation_accuracy": {
+      "mean": 0.977290207667085,
+      "std": 0.0009336973318763909,
+      "min": 0.9762377039226005,
+      "max": 0.9780188641055743
+    },
+    "validation_balanced_accuracy": {
+      "mean": 0.9001764555010033,
+      "std": 0.005686496058745842,
+      "min": 0.8943101295753605,
+      "max": 0.9056642030732535
+    },
+    "validation_macro_f1": {
+      "mean": 0.8915657689496842,
+      "std": 0.008184681548260034,
+      "min": 0.8821191384938218,
+      "max": 0.8965338122291533
+    },
+    "test_accuracy": {
+      "mean": 0.9764824934223841,
+      "std": 0.0009274591570443064,
+      "min": 0.9754705525197328,
+      "max": 0.9772920461445052
+    },
+    "test_balanced_accuracy": {
+      "mean": 0.8833406753669847,
+      "std": 0.01833663458576744,
+      "min": 0.8671665975940692,
+      "max": 0.9032612079927708
+    },
+    "test_macro_f1": {
+      "mean": 0.8814607970648823,
+      "std": 0.002380251602292551,
+      "min": 0.8787123946321352,
+      "max": 0.8828526261276495
+    }
+  },
+  "completed_at_utc": "2026-09-15T09:54:48.485884+00:00"
+}

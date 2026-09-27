@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "purpose": "post_selection_test_lot_generalization_diagnostics",
+  "strategy": "ce_sqrt_balanced",
+  "source_split": "test",
+  "used_for_model_selection": false,
+  "used_for_threshold_selection": false,
+  "rows": 24705,
+  "lot_count": 1535,
+  "lot_support_min": 1,
+  "lot_support_median": 23.0,
+  "lot_support_max": 25,
+  "global_accuracy": 0.9772920461445052,
+  "unweighted_mean_lot_accuracy": 0.9553114208552359,
+  "median_lot_accuracy": 1.0,
+  "cluster_bootstrap_accuracy_ci95": [
+    0.9749212260242661,
+    0.979738859544636
+  ],
+  "bootstrap_repeats": 2000,
+  "bootstrap_seed": 42,
+  "eligible_lot_definition": "support >= 20",
+  "eligible_lot_count": 923,
+  "eligible_lot_accuracy_p10": 0.92,
+  "eligible_lot_perfect_rate": 0.6803900325027086,
+  "geometry_count": 175,
+  "eligible_geometry_definition": "support >= 100",
+  "eligible_geometry_count": 38,
+  "eligible_geometry_accuracy_min": 0.8554913294797688,
+  "lowest_eligible_geometry": "26x30",
+  "lowest_eligible_geometry_support": 173,
+  "test_review_or_ood_rate": 0.04460635498886865,
+  "test_ood_hold_rate": 0.00922890103217972,
+  "assignments_sha256": "6c6994db76fbeebcc8e3b64d9791ca5a9a0cf2dfb861f68316f3a924867139ce",
+  "ood_records_sha256": "51271207d41b2c5c62a6550ba6a589ff35691e1f174fde9c8453948e2e5e5488",
+  "limitations": [
+    "각 lot은 최대 25개로 작아 개별 lot 순위의 불확실성이 큽니다.",
+    "웨이퍼 크기 그룹은 결함 클래스 구성 차이의 영향을 함께 받으므로 크기의 인과효과가 아닙니다.",
+    "동일한 고정 test의 사후 진단이며 신규 장비·공정 외부 검증이 아닙니다.",
+    "test 결과로 모델이나 검토/OOD 임계값을 변경하지 않습니다."
+  ]
+}

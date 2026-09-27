@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "purpose": "post_selection_geometry_confounding_analysis",
+  "minimum_support": 100,
+  "validation_gap_cutoff": -0.05,
+  "threshold_preregistered_before_dataset_analysis": false,
+  "selection_split": "validation",
+  "test_used_for_candidate_selection": false,
+  "candidate_only": true,
+  "deployed": false,
+  "selected_geometries": [
+    "43x42",
+    "26x30"
+  ],
+  "selected_geometry_count": 2,
+  "selected_test_rows": 373,
+  "selected_test_review_rate": 0.015098158267557175,
+  "selected_test_accuracy": 0.8820375335120644,
+  "selected_test_error_count": 44,
+  "selected_test_error_share": 0.0784313725490196,
+  "all_selected_geometries_negative_on_test": true,
+  "test_geometry_results": [
+    {
+      "geometry": "26x30",
+      "support": 173,
+      "observed_accuracy": 0.8554913294797688,
+      "class_mix_expected_accuracy": 0.9590253735500254,
+      "class_adjusted_gap": -0.10353404407025657,
+      "error_count": 25
+    },
+    {
+      "geometry": "43x42",
+      "support": 200,
+      "observed_accuracy": 0.905,
+      "class_mix_expected_accuracy": 0.9825004595908373,
+      "class_adjusted_gap": -0.07750045959083729,
+      "error_count": 19
+    }
+  ],
+  "feature_ood_review_rate": 0.04460635498886865,
+  "feature_ood_error_capture_rate": 0.1622103386809269,
+  "hypothetical_combined_review_rate": 0.056709168184578024,
+  "hypothetical_combined_error_capture_rate": 0.21746880570409982,
+  "hypothetical_added_review_rows": 299,
+  "hypothetical_added_captured_errors": 31,
+  "limitations": [
+    "후보 기준은 validation에서 정했지만 데이터 분석 전에 사전 등록된 기준은 아닙니다.",
+    "웨이퍼 크기는 장비·공정·결함 형태 등 관측되지 않은 요인의 대리변수일 수 있습니다.",
+    "feature OOD와의 결합 수치는 가상 정책 평가이며 현재 대시보드 판정 규칙에 적용하지 않습니다."
+  ]
+}

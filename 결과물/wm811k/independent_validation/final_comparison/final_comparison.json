@@ -1,0 +1,207 @@
+{
+  "purpose": "새 학습 없이 기존 산출물만 읽어 만든 WM-811K 3모델 비교",
+  "test_rows": 24705,
+  "class_count": 9,
+  "same_test_split": true,
+  "verification": {
+    "checked_items": 46,
+    "all_passed": true,
+    "shape_metrics_source": "결과물/wm811k/independent_validation/shape_model/metrics.json",
+    "shape_predictions_source": "로컬 재현용 비추적 파일: 결과물/wm811k/independent_validation/shape_model/test_predictions.csv",
+    "baseline_cnn_source": "결과물/wm811k/selected_model_results/test_classification_report.csv",
+    "control_source": "결과물/wm811k/independent_validation/geometry_control/metrics.json"
+  },
+  "models": {
+    "control": {
+      "label": "메타데이터 대조 (화소 미사용)",
+      "macro_f1": 0.2735514878557479,
+      "balanced_accuracy": 0.46116199530224794,
+      "accuracy": 0.4568306010928962,
+      "per_class_recall": {
+        "none": 0.4409572195052467,
+        "Center": 0.6427406199021207,
+        "Donut": 0.7215189873417721,
+        "Edge-Loc": 0.3225371120107962,
+        "Edge-Ring": 0.8214027476500362,
+        "Loc": 0.10136452241715399,
+        "Near-full": 0.3333333333333333,
+        "Random": 0.3548387096774194,
+        "Scratch": 0.4117647058823529
+      },
+      "support": {
+        "none": 21061,
+        "Center": 613,
+        "Donut": 79,
+        "Edge-Loc": 741,
+        "Edge-Ring": 1383,
+        "Loc": 513,
+        "Near-full": 21,
+        "Random": 124,
+        "Scratch": 170
+      }
+    },
+    "shape": {
+      "label": "52개 형태 서술자 + HistGB (CPU)",
+      "macro_f1": 0.8793887268825606,
+      "balanced_accuracy": 0.881835756998117,
+      "accuracy": 0.9731228496255818,
+      "per_class_recall": {
+        "none": 0.9865153601443426,
+        "Center": 0.9396411092985318,
+        "Donut": 0.8354430379746836,
+        "Edge-Loc": 0.8609986504723347,
+        "Edge-Ring": 0.9833694866232827,
+        "Loc": 0.7251461988304093,
+        "Near-full": 1.0,
+        "Random": 0.9112903225806451,
+        "Scratch": 0.6941176470588235
+      },
+      "support": {
+        "none": 21061,
+        "Center": 613,
+        "Donut": 79,
+        "Edge-Loc": 741,
+        "Edge-Ring": 1383,
+        "Loc": 513,
+        "Near-full": 21,
+        "Random": 124,
+        "Scratch": 170
+      }
+    },
+    "cnn": {
+      "label": "기준선 CNN (GPU)",
+      "macro_f1": 0.8828173704348624,
+      "balanced_accuracy": 0.8671665975940692,
+      "accuracy": 0.9772920461445052,
+      "per_class_recall": {
+        "none": 0.993827453587199,
+        "Center": 0.938009787928222,
+        "Donut": 0.8481012658227848,
+        "Edge-Loc": 0.8029689608636977,
+        "Edge-Ring": 0.9624005784526392,
+        "Loc": 0.7738791423001949,
+        "Near-full": 0.9047619047619048,
+        "Random": 0.8629032258064516,
+        "Scratch": 0.7176470588235294
+      },
+      "support": {
+        "none": 21061,
+        "Center": 613,
+        "Donut": 79,
+        "Edge-Loc": 741,
+        "Edge-Ring": 1383,
+        "Loc": 513,
+        "Near-full": 21,
+        "Random": 124,
+        "Scratch": 170
+      }
+    }
+  },
+  "shape_cv": {
+    "n_folds": 5,
+    "splitter": "StratifiedGroupKFold(lot 묶음)",
+    "macro_f1_mean": 0.8655399023677891,
+    "macro_f1_std": 0.0046591201333511904,
+    "balanced_accuracy_mean": 0.8683868864475885,
+    "balanced_accuracy_std": 0.003346461340956629
+  },
+  "focus_classes": [
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Random",
+    "Scratch",
+    "Near-full"
+  ],
+  "small_sample_threshold": 200,
+  "small_sample_classes": {
+    "Donut": 79,
+    "Near-full": 21,
+    "Random": 124,
+    "Scratch": 170
+  },
+  "descriptor_top10": [
+    {
+      "rank": 1,
+      "descriptor": "largest_component_ratio",
+      "group": "덩어리 모양",
+      "meaning": "가장 큰 연결 불량 덩어리가 전체 불량에서 차지하는 비율",
+      "importance_mean": 0.08593,
+      "importance_std": 0.00374
+    },
+    {
+      "rank": 2,
+      "descriptor": "radial_bin_3",
+      "group": "반경·위치",
+      "meaning": "중심→가장자리 4번째 고리(반경 38~50%)의 불량 비율 — 중간 고리 쪽",
+      "importance_mean": 0.08567,
+      "importance_std": 0.00887
+    },
+    {
+      "rank": 3,
+      "descriptor": "radial_bin_0",
+      "group": "반경·위치",
+      "meaning": "중심→가장자리 1번째 고리(반경 0~12%)의 불량 비율 — 중심 쪽",
+      "importance_mean": 0.06782,
+      "importance_std": 0.00319
+    },
+    {
+      "rank": 4,
+      "descriptor": "radial_bin_7",
+      "group": "반경·위치",
+      "meaning": "중심→가장자리 8번째 고리(반경 88~100%)의 불량 비율 — 가장자리 쪽",
+      "importance_mean": 0.05329,
+      "importance_std": 0.00591
+    },
+    {
+      "rank": 5,
+      "descriptor": "centroid_offset",
+      "group": "반경·위치",
+      "meaning": "불량 die 중심이 웨이퍼 중심에서 벗어난 정도(편심)",
+      "importance_mean": 0.04636,
+      "importance_std": 0.00779
+    },
+    {
+      "rank": 6,
+      "descriptor": "component_count",
+      "group": "덩어리 모양",
+      "meaning": "서로 떨어진 불량 덩어리의 개수",
+      "importance_mean": 0.03745,
+      "importance_std": 0.00579
+    },
+    {
+      "rank": 7,
+      "descriptor": "radius_mean",
+      "group": "반경·위치",
+      "meaning": "불량 die가 웨이퍼 중심에서 떨어진 평균 거리",
+      "importance_mean": 0.02898,
+      "importance_std": 0.00334
+    },
+    {
+      "rank": 8,
+      "descriptor": "largest_extent",
+      "group": "덩어리 모양",
+      "meaning": "가장 큰 덩어리가 자기 경계상자를 채운 정도",
+      "importance_mean": 0.02636,
+      "importance_std": 0.01059
+    },
+    {
+      "rank": 9,
+      "descriptor": "largest_boundary_ratio",
+      "group": "덩어리 모양",
+      "meaning": "가장 큰 덩어리 중 웨이퍼 가장자리에 닿은 비율",
+      "importance_mean": 0.02439,
+      "importance_std": 0.00392
+    },
+    {
+      "rank": 10,
+      "descriptor": "component_size_mean",
+      "group": "덩어리 모양",
+      "meaning": "불량 덩어리 하나의 평균 크기",
+      "importance_mean": 0.02364,
+      "importance_std": 0.00388
+    }
+  ],
+  "font": "Malgun Gothic",
+  "python": "3.11.3"
+}

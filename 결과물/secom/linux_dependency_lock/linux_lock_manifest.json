@@ -1,0 +1,56 @@
+{
+  "manifest_version": 1,
+  "status": "PASS",
+  "format": "PEP 751 pylock.toml",
+  "generator": "pip",
+  "generator_version": "26.2.1",
+  "experimental_tooling": true,
+  "python_version": "3.11.9",
+  "python_implementation": "CPython",
+  "platform_system": "Linux",
+  "platform_machine": "x86_64",
+  "github_actions": {
+    "lock_path": "pylock.github-actions.toml",
+    "source_requirements": "requirements-linux-ci.txt",
+    "source_requirements_sha256": "DA6C8A67340D9B9EEB799D1E201D0221ED0B186BA09CD3489246EE18178A9E56",
+    "lock_sha256": "F2A2C9DED745BDFFF3C8A8C1F869599E356C1C027487546DEC66352923C968BA",
+    "package_count": 81,
+    "wheel_count": 81,
+    "sdist_count": 0,
+    "direct_dependency_count": 20,
+    "all_locked_versions_match_tested_environment": true,
+    "allowed_artifact_hosts": [
+      "files.pythonhosted.org",
+      "download.pytorch.org",
+      "download-r2.pytorch.org"
+    ]
+  },
+  "streamlit": {
+    "lock_path": "pylock.streamlit.toml",
+    "source_requirements": "requirements.txt",
+    "source_requirements_sha256": "922D2ECA8B8B03969F8F1692E2E0C02E4ED67747EE6D2FA2FAFC2E5DD5BDC224",
+    "lock_sha256": "A16DEFA4540C4025E639D8E324E5F94CB6E12A982A7D83FDF42A17FE2F61380B",
+    "package_count": 99,
+    "wheel_count": 99,
+    "sdist_count": 0,
+    "direct_dependency_count": 18,
+    "all_locked_versions_match_tested_environment": false,
+    "resolution_validated_on_target_platform": true,
+    "installation_validated_by_this_step": false,
+    "allowed_artifact_hosts": [
+      "files.pythonhosted.org"
+    ]
+  },
+  "all_artifacts_hashed": true,
+  "only_binary": true,
+  "urls_sanitized": true,
+  "vulnerability_scan_performed": false,
+  "network_registry_resolution_performed": true,
+  "limitations": [
+    "pip lock은 experimental 기능입니다.",
+    "GitHub Actions lock은 Ubuntu CPU 실행환경에서 설치 버전까지 대조했습니다.",
+    "Streamlit lock은 Ubuntu에서 해석했지만 이 단계에서 별도 설치하지 않았습니다.",
+    "Streamlit Community Cloud가 named pylock을 자동 사용한다는 가정은 하지 않습니다.",
+    "wheel hash는 무결성을 검증하지만 취약점 부재를 보증하지 않습니다."
+  ]
+}

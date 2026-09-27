@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "evaluation_scope": "fixed_test_post_selection_audit_only",
+  "test_rows": 314,
+  "test_defects": 21,
+  "random_state": 42,
+  "top_k": 10,
+  "stability_repeats": 3,
+  "noise_fraction_of_train_iqr": 0.05,
+  "random_mask_repeats": 5,
+  "model_selection_uses_results": false,
+  "threshold_selection_uses_results": false,
+  "physical_causality_claimed": false,
+  "model_hashes": {
+    "CatBoost": "6EDAE5D62708ADC98E4ADFA8F23D7CBAAB41E75A0202E5B27C7C7729ADCBB49A",
+    "XGBoost": "82A3883F180DEF641F433399895F308B775C3D8EA9023B5152CD11B5ADCBE6B1"
+  },
+  "models": {
+    "CatBoost": {
+      "rows": 314,
+      "stability_repeats": 3,
+      "median_top10_jaccard": 0.8181818181818182,
+      "p10_top10_jaccard": 0.6666666666666666,
+      "median_top10_sign_agreement": 1.0,
+      "median_absolute_rank_spearman": 0.9570362981102782,
+      "median_probability_change_under_noise": 0.004821606617184513,
+      "prediction_flip_rate_under_noise": 0.058386411889596604,
+      "median_top_shap_mask_effect": 0.0931603602315527,
+      "median_random_mask_effect": 0.0046030046774933105,
+      "median_fidelity_advantage": 0.08534004206070181,
+      "top_shap_mask_win_rate": 0.9745222929936306,
+      "guardrails": {
+        "median_top10_jaccard_at_least_0_70": true,
+        "median_sign_agreement_at_least_0_80": true,
+        "median_fidelity_advantage_positive": true,
+        "top_shap_mask_win_rate_above_0_50": true
+      },
+      "status": "PASS"
+    },
+    "XGBoost": {
+      "rows": 314,
+      "stability_repeats": 3,
+      "median_top10_jaccard": 0.8181818181818182,
+      "p10_top10_jaccard": 0.6666666666666666,
+      "median_top10_sign_agreement": 1.0,
+      "median_absolute_rank_spearman": 0.9643495793478392,
+      "median_probability_change_under_noise": 0.002423812635242939,
+      "prediction_flip_rate_under_noise": 0.06900212314225053,
+      "median_top_shap_mask_effect": 0.011814811266958714,
+      "median_random_mask_effect": 0.002730851643718779,
+      "median_fidelity_advantage": 0.007442438509315252,
+      "top_shap_mask_win_rate": 0.8662420382165605,
+      "guardrails": {
+        "median_top10_jaccard_at_least_0_70": true,
+        "median_sign_agreement_at_least_0_80": true,
+        "median_fidelity_advantage_positive": true,
+        "top_shap_mask_win_rate_above_0_50": true
+      },
+      "status": "PASS"
+    }
+  },
+  "limitations": [
+    "고정 test를 사용한 사후 설명 감사이며 모델·임계값 선택에 재사용하지 않습니다.",
+    "5% train IQR 독립 노이즈는 실제 장비 고장 분포를 대체하지 않습니다.",
+    "변수 마스킹은 train 중앙값 대체 실험이며 센서 개입의 물리적 효과가 아닙니다.",
+    "익명 변수의 SHAP 안정성은 물리적 원인이나 인과관계를 증명하지 않습니다."
+  ]
+}

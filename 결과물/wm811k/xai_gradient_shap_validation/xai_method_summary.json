@@ -1,0 +1,138 @@
+{
+  "schema_version": 3,
+  "purpose": "post_selection_class_balanced_xai_comparison",
+  "used_for_model_selection": false,
+  "thresholds_retuned": false,
+  "population_representative": false,
+  "sample_count": 421,
+  "per_class_cap": 50,
+  "mask_fraction": 0.1,
+  "random_repeats": 5,
+  "integrated_gradients_steps": 24,
+  "random_seed": 42,
+  "device": "cpu",
+  "methods": {
+    "Grad-CAM": {
+      "macro_top_vs_random_advantage": 0.0049417098378260966,
+      "top_vs_random_95ci": [
+        -0.0282281627461879,
+        0.049340766046730676
+      ],
+      "macro_top_vs_bottom_advantage": 0.35608789714940176,
+      "macro_active_attribution_lift": 1.1078239329031154,
+      "top_exceeds_random_rate": 0.5534441805225653,
+      "top_exceeds_bottom_rate": 0.8242280285035629,
+      "defect_flip": {
+        "evaluated_wafers": 421,
+        "macro_top_vs_random_advantage": 0.18282269777896504,
+        "top_vs_random_95ci": [
+          0.16685706937549552,
+          0.22867693060750377
+        ],
+        "macro_top_vs_bottom_advantage": 0.23608680174118193,
+        "top_exceeds_random_rate": 0.6342042755344418,
+        "top_exceeds_bottom_rate": 0.838479809976247
+      }
+    },
+    "Integrated Gradients": {
+      "macro_top_vs_random_advantage": 0.1736750926188998,
+      "top_vs_random_95ci": [
+        0.1525992589911714,
+        0.2137889464228941
+      ],
+      "macro_top_vs_bottom_advantage": 0.24168034896369217,
+      "macro_active_attribution_lift": 1.288693814437932,
+      "top_exceeds_random_rate": 0.7695961995249406,
+      "top_exceeds_bottom_rate": 0.7814726840855107,
+      "defect_flip": {
+        "evaluated_wafers": 421,
+        "macro_top_vs_random_advantage": 0.1567358011770099,
+        "top_vs_random_95ci": [
+          0.13444109612228075,
+          0.2000436482478233
+        ],
+        "macro_top_vs_bottom_advantage": 0.18144451740518056,
+        "top_exceeds_random_rate": 0.7125890736342043,
+        "top_exceeds_bottom_rate": 0.7600950118764845
+      }
+    },
+    "Gradient SHAP": {
+      "macro_top_vs_random_advantage": 0.19919397483939866,
+      "top_vs_random_95ci": [
+        0.17506847536432504,
+        0.24116235335525574
+      ],
+      "macro_top_vs_bottom_advantage": 0.4326672847243069,
+      "macro_active_attribution_lift": 1.2886938203361469,
+      "top_exceeds_random_rate": 0.7624703087885986,
+      "top_exceeds_bottom_rate": 0.7695961995249406,
+      "defect_flip": {
+        "evaluated_wafers": 421,
+        "macro_top_vs_random_advantage": 0.4615437955286882,
+        "top_vs_random_95ci": [
+          0.43661161147287697,
+          0.5038140938021173
+        ],
+        "macro_top_vs_bottom_advantage": 0.5723777512339525,
+        "top_exceeds_random_rate": 0.9857482185273159,
+        "top_exceeds_bottom_rate": 0.997624703087886
+      }
+    }
+  },
+  "limitations": [
+    "클래스별 동일 상한 표본이므로 실제 test 클래스 비율의 전체 평균이 아닙니다.",
+    "0 기준 Integrated Gradients와 die 제거는 실제 공정 개입이 아닌 민감도 점검입니다.",
+    "설명법은 물리적 원인이나 인과관계를 증명하지 않습니다.",
+    "Gradient SHAP 가산성 점검은 사후 보정 전 원시 attribution 합계로 계산했습니다. 유한 표본 Expected Gradients 근사라 잔차가 남을 수 있으며 허용오차를 넘은 웨이퍼는 통과로 세지 않습니다.",
+    "결함 die → 정상 die 교란은 모델 민감도 점검이며 실제 공정 개입이나 원인 확인이 아닙니다."
+  ],
+  "methods_compared": [
+    "Grad-CAM",
+    "Integrated Gradients",
+    "Gradient SHAP"
+  ],
+  "checkpoint_sha256": "77ea8394f593ccd0e1ffa85ce1b8e59c52fcd44b109d7e3587c66f7290d4557b",
+  "assignments_sha256": "8a4f3f24b0c939fc3db24c2aa069fa220a379294b2bf6bb80694922c6fe79a63",
+  "assignments_canonical_sha256": "8a4f3f24b0c939fc3db24c2aa069fa220a379294b2bf6bb80694922c6fe79a63",
+  "maps_sha256": "9343a861917b68a6e30036e375c43571a37f00ad734b7c93fbcf62a994aa2d42",
+  "labels_sha256": "5d719444f79a49fc1f2641befaa742badb1059bfeeae7e6f50b97ec755e4843e",
+  "temperature": 1.047171711723721,
+  "defect_flip_fraction": 0.1,
+  "defect_flip_note": "상위·하위·무작위 결함 die를 정상 die로 바꿉니다. Gradient SHAP 기준(같은 형상의 모든 die 정상)과 같은 방향의 교란입니다.",
+  "paired_ig_minus_gradcam": 0.17082024581688274,
+  "paired_ig_minus_gradcam_95ci": [
+    0.13620742363601732,
+    0.20835387644094577
+  ],
+  "paired_gradient_shap_minus_integrated_gradients_defect_flip": 0.30100660933997525,
+  "paired_gradient_shap_minus_integrated_gradients_defect_flip_95ci": [
+    0.2675613747976362,
+    0.3348424343840305
+  ],
+  "paired_gradient_shap_minus_gradcam_defect_flip": 0.27158155342298096,
+  "paired_gradient_shap_minus_gradcam_defect_flip_95ci": [
+    0.23827895373582414,
+    0.3048223508742655
+  ],
+  "gradient_shap": {
+    "baseline": "same_geometry_all_active_dies_normal",
+    "estimator": "stratified_expected_gradients",
+    "attribution_units": "selected_class_logit_before_temperature",
+    "rescaled_to_logit_delta": false,
+    "initial_samples": 64,
+    "max_samples": 256,
+    "seed": 42,
+    "relative_tolerance": 0.05,
+    "absolute_tolerance": 0.001,
+    "additivity_pass_count": 417,
+    "additivity_pass_rate": 0.9904988123515439,
+    "relative_residual_median": 0.009739684220150152,
+    "relative_residual_p90": 0.03386514264699457,
+    "relative_residual_max": 0.15164989273994697,
+    "samples_used_counts": {
+      "64": 344,
+      "128": 62,
+      "256": 15
+    }
+  }
+}

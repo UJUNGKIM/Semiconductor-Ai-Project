@@ -1,0 +1,71 @@
+{
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "seed": 17,
+  "loss": "cross_entropy",
+  "sampling": "sqrt_balanced",
+  "sampling_max_multiplier": 8.0,
+  "sampling_multipliers": [
+    5.85880708694458,
+    8.0,
+    5.32997989654541,
+    3.9027631282806396,
+    6.405070781707764,
+    8.0,
+    8.0,
+    8.0,
+    1.0
+  ],
+  "focal_gamma": 2.0,
+  "class_weight_beta": 0.9999,
+  "class_names": [
+    "Center",
+    "Donut",
+    "Edge-Loc",
+    "Edge-Ring",
+    "Loc",
+    "Near-full",
+    "Random",
+    "Scratch",
+    "none"
+  ],
+  "class_counts": [
+    3068,
+    397,
+    3707,
+    6914,
+    2567,
+    107,
+    618,
+    853,
+    105311
+  ],
+  "class_weights": [
+    0.20898547768592834,
+    1.4185727834701538,
+    0.17825566232204437,
+    0.11062320321798325,
+    0.2438800185918808,
+    5.18784761428833,
+    0.9213237166404724,
+    0.6752931475639343,
+    0.05521826818585396
+  ],
+  "best_epoch": 10,
+  "epochs_ran": 14,
+  "validation_metrics": {
+    "loss": 0.0697061130234487,
+    "accuracy": 0.9762377039226005,
+    "balanced_accuracy": 0.900555033854396,
+    "macro_f1": 0.8821191384938218,
+    "weighted_f1": 0.9763920305799488
+  },
+  "test_metrics": {
+    "loss": 0.07018983150947145,
+    "accuracy": 0.9766848816029143,
+    "balanced_accuracy": 0.9032612079927708,
+    "macro_f1": 0.8828526261276495,
+    "weighted_f1": 0.9769654952593093
+  },
+  "elapsed_seconds": 423.1629859190002
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "decision": "STABLE",
+  "automatic_retraining_started": false,
+  "profile": "balanced_f2",
+  "catboost_model_hash": "6EDAE5D62708ADC98E4ADFA8F23D7CBAAB41E75A0202E5B27C7C7729ADCBB49A",
+  "xgboost_model_hash": "82A3883F180DEF641F433399895F308B775C3D8EA9023B5152CD11B5ADCBE6B1",
+  "candidate_batch_ids": [
+    "oof-replay-01",
+    "oof-replay-02",
+    "oof-replay-03",
+    "oof-replay-04",
+    "oof-replay-05"
+  ],
+  "selection_reason": [
+    "사전 고정된 재현율·불량률 감시 기준 이내입니다."
+  ],
+  "required_next_steps": [
+    "보안 원본 저장소에서 batch_id로 센서와 행 단위 라벨을 별도 조회",
+    "라벨 품질·중복·시간 누수 점검",
+    "기존 모델과 동일한 고정 test 외 별도 미래 검증 세트에서 후보 모델 평가",
+    "사람의 승인 후에만 모델 교체"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "integration_policy": "compact evidence and reproducible code only; no branch merge",
+  "shape_validation": {
+    "source_branch": "compare/UJUNGKIM-ai",
+    "source_commit": "814e40d2180b427e6012ae2ad7d1336df59a2f14",
+    "experiment_commit": "72bba28",
+    "code_location": "experiments/independent_validation/wm811k",
+    "imported": [
+      "training and comparison code",
+      "compact JSON/CSV/Markdown evidence"
+    ]
+  },
+  "eda": {
+    "source_branch": "compare/sy-999-925-ai",
+    "source_commit": "102fa63",
+    "imported": [
+      "aggregate EDA summary",
+      "data-cleaning rationale"
+    ]
+  },
+  "excluded": [
+    "serialized model binaries",
+    "feature caches",
+    "row-level predictions",
+    "172950-row wafer detail table",
+    "legacy dashboard code"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "validation_scope": "raw_to_saved_split_reconstruction",
+  "raw_rows": 1567,
+  "raw_features": 590,
+  "retained_features": 446,
+  "removed_high_missing_features": 28,
+  "removed_constant_features": 116,
+  "train_rows": 1253,
+  "test_rows": 314,
+  "train_class_counts": {
+    "0": 1170,
+    "1": 83
+  },
+  "test_class_counts": {
+    "0": 293,
+    "1": 21
+  },
+  "checks": {
+    "manifest_hashes_valid": true,
+    "train_row_order_reproduced": true,
+    "test_row_order_reproduced": true,
+    "feature_order_reproduced": true,
+    "train_values_reproduced": true,
+    "test_values_reproduced": true,
+    "train_labels_reproduced": true,
+    "test_labels_reproduced": true,
+    "train_fitted_medians_reproduced": true,
+    "train_test_rows_disjoint": true,
+    "all_raw_rows_covered_once": true,
+    "raw_data_tamper_detected": true,
+    "raw_label_tamper_detected": true
+  },
+  "real_files_modified": false,
+  "limitations": [
+    "SHA-256은 파일 변경을 탐지하지만 데이터 수집 당시 측정의 진실성을 증명하지 않습니다.",
+    "공개 SECOM 데이터에는 장비·lot 식별자와 센서 의미·단위가 없습니다.",
+    "모의 오염은 메모리상 바이트 추가이며 실제 공급망 침해 훈련을 대체하지 않습니다."
+  ]
+}

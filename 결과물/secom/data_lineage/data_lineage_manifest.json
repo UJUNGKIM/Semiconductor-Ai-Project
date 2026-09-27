@@ -1,0 +1,85 @@
+{
+  "manifest_version": 2,
+  "dataset": "UCI SECOM",
+  "raw_sensor_values_embedded": false,
+  "text_hash_normalization": "UTF-8-with-canonical-LF",
+  "files": [
+    {
+      "stage": "raw",
+      "artifact_path": "데이터/SECOM 데이터셋/raw/secom.data",
+      "size_bytes": 5388416,
+      "sha256": "4503BDB42E63687D1C7586BDC1796DF9A7CB5AE9CC9C0443D84957A446DE3AAF",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "raw",
+      "artifact_path": "데이터/SECOM 데이터셋/raw/secom_labels.data",
+      "size_bytes": 39071,
+      "sha256": "2FB2E8B5DFE77BA96ECF0960FF00F2BA9311795383A8342D4588A7CB37C816EF",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "raw_documentation",
+      "artifact_path": "데이터/SECOM 데이터셋/raw/secom.names",
+      "size_bytes": 4223,
+      "sha256": "6D91B0B46CDEE03064EE3E3112F937C1B3F7FCD9933575794EC07974E6F1EA59",
+      "hash_mode": "raw-bytes"
+    },
+    {
+      "stage": "processed",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/X_train.csv",
+      "size_bytes": 3940558,
+      "sha256": "F4C52BB4BFC216C3A0ED162EF3BAE028C8CE7F82DA5C7DF960C98E933F1E7A73",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "processed",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/X_test.csv",
+      "size_bytes": 990685,
+      "sha256": "637955A0D8F89FC7AADED42AF98C96ACCE92B653870642DD7F8DE7E3B0974D5B",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "processed",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/y_train.csv",
+      "size_bytes": 7885,
+      "sha256": "1B21BDAFDDE8EFAE121E3560AE99CF56F8B56C2337D3B2B1336D64D58148D75C",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "processed",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/y_test.csv",
+      "size_bytes": 2000,
+      "sha256": "3AFF0847881A0ECEC90595FB2D9A86FA7C6063591CA53AA5B1E1C732A5B17F44",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    },
+    {
+      "stage": "preprocessor",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/median_imputer.joblib",
+      "size_bytes": 10471,
+      "sha256": "4DB34C7C32A9BCD8186E71DE38EDA094C0DD41655FA22B452BF714C52DE630F4",
+      "hash_mode": "raw-bytes"
+    },
+    {
+      "stage": "metadata",
+      "artifact_path": "데이터/SECOM 데이터셋/processed/preprocessing_metadata.json",
+      "size_bytes": 3009,
+      "sha256": "DB8DF3E0C79821B462661053F8C3013EC5C9478575E1564A1A44CA3CB864878A",
+      "hash_mode": "UTF-8-with-canonical-LF"
+    }
+  ],
+  "fingerprints": {
+    "raw_label_vector_sha256": "3E057CF732ACF35466946BF0D28F1840028274E152CED9BBBD33CD9AEF23F061",
+    "retained_feature_schema_sha256": "AC3A041C5825532D42253401A82461CD773AE7A0895F180FAD309D4EDBD48AAB",
+    "train_row_ids_sha256": "C40F41D87F7DE8EEFC0C04E736A2848DC1123A89002F3A3DB04213C4B1F6EFA6",
+    "test_row_ids_sha256": "5982FD08607D1344D1096DF13E5AE5F5FF4E3335ED72BCB1E3770CF77D76D411",
+    "train_median_statistics_sha256": "0DB6203F14C402BE006215C1B9BE89857A116A67B2F5E3290C0B2F18519A710D"
+  },
+  "split_contract": {
+    "method": "train_test_split_stratified",
+    "random_state": 42,
+    "test_size": 0.2,
+    "train_rows": 1253,
+    "test_rows": 314
+  }
+}

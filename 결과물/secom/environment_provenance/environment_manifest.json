@@ -1,0 +1,319 @@
+{
+  "manifest_version": 1,
+  "python_version": "3.11.9",
+  "python_implementation": "CPython",
+  "platform_snapshot": "Windows-10-10.0.26200-SP0",
+  "requirements_sha256": "922D2ECA8B8B03969F8F1692E2E0C02E4ED67747EE6D2FA2FAFC2E5DD5BDC224",
+  "text_hash_normalization": "UTF-8-with-canonical-LF",
+  "environment_fingerprint_sha256": "AA7D3B12C3167D820575338157DF0F2E249129EAFD0D6D6A9DD9B9B4AD16C2AE",
+  "direct_dependencies": [
+    {
+      "name": "Authlib",
+      "canonical_name": "authlib",
+      "version": "1.8.0",
+      "installed_version": "1.8.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/authlib@1.8.0"
+    },
+    {
+      "name": "catboost",
+      "canonical_name": "catboost",
+      "version": "1.2.10",
+      "installed_version": "1.2.10",
+      "exact_match": true,
+      "purl": "pkg:pypi/catboost@1.2.10"
+    },
+    {
+      "name": "ctgan",
+      "canonical_name": "ctgan",
+      "version": "0.12.1",
+      "installed_version": "0.12.1",
+      "exact_match": true,
+      "purl": "pkg:pypi/ctgan@0.12.1"
+    },
+    {
+      "name": "dice-ml",
+      "canonical_name": "dice-ml",
+      "version": "0.12",
+      "installed_version": "0.12",
+      "exact_match": true,
+      "purl": "pkg:pypi/dice-ml@0.12"
+    },
+    {
+      "name": "imbalanced-learn",
+      "canonical_name": "imbalanced-learn",
+      "version": "0.14.2",
+      "installed_version": "0.14.2",
+      "exact_match": true,
+      "purl": "pkg:pypi/imbalanced-learn@0.14.2"
+    },
+    {
+      "name": "joblib",
+      "canonical_name": "joblib",
+      "version": "1.6.0",
+      "installed_version": "1.6.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/joblib@1.6.0"
+    },
+    {
+      "name": "lightgbm",
+      "canonical_name": "lightgbm",
+      "version": "4.7.0",
+      "installed_version": "4.7.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/lightgbm@4.7.0"
+    },
+    {
+      "name": "matplotlib",
+      "canonical_name": "matplotlib",
+      "version": "3.11.1",
+      "installed_version": "3.11.1",
+      "exact_match": true,
+      "purl": "pkg:pypi/matplotlib@3.11.1"
+    },
+    {
+      "name": "numpy",
+      "canonical_name": "numpy",
+      "version": "2.4.6",
+      "installed_version": "2.4.6",
+      "exact_match": true,
+      "purl": "pkg:pypi/numpy@2.4.6"
+    },
+    {
+      "name": "pandas",
+      "canonical_name": "pandas",
+      "version": "2.3.3",
+      "installed_version": "2.3.3",
+      "exact_match": true,
+      "purl": "pkg:pypi/pandas@2.3.3"
+    },
+    {
+      "name": "plotly",
+      "canonical_name": "plotly",
+      "version": "7.0.0",
+      "installed_version": "7.0.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/plotly@7.0.0"
+    },
+    {
+      "name": "scikit-learn",
+      "canonical_name": "scikit-learn",
+      "version": "1.9.0",
+      "installed_version": "1.9.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/scikit-learn@1.9.0"
+    },
+    {
+      "name": "scipy",
+      "canonical_name": "scipy",
+      "version": "1.17.1",
+      "installed_version": "1.17.1",
+      "exact_match": true,
+      "purl": "pkg:pypi/scipy@1.17.1"
+    },
+    {
+      "name": "shap",
+      "canonical_name": "shap",
+      "version": "0.51.0",
+      "installed_version": "0.51.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/shap@0.51.0"
+    },
+    {
+      "name": "streamlit",
+      "canonical_name": "streamlit",
+      "version": "1.63.0",
+      "installed_version": "1.63.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/streamlit@1.63.0"
+    },
+    {
+      "name": "torch",
+      "canonical_name": "torch",
+      "version": "2.14.0",
+      "installed_version": "2.14.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/torch@2.14.0"
+    },
+    {
+      "name": "xgboost",
+      "canonical_name": "xgboost",
+      "version": "3.2.0",
+      "installed_version": "3.2.0",
+      "exact_match": true,
+      "purl": "pkg:pypi/xgboost@3.2.0"
+    },
+    {
+      "name": "xlsxwriter",
+      "canonical_name": "xlsxwriter",
+      "version": "3.2.9",
+      "installed_version": "3.2.9",
+      "exact_match": true,
+      "purl": "pkg:pypi/xlsxwriter@3.2.9"
+    }
+  ],
+  "project_files": [
+    {
+      "path": ".github/workflows/project-ci.yml",
+      "size_bytes": 3332,
+      "sha256": "89234CEC63A0A4E1F6D05446BD070683399A387D9704C287ABAB1720F9DECC0C"
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 287,
+      "sha256": "922D2ECA8B8B03969F8F1692E2E0C02E4ED67747EE6D2FA2FAFC2E5DD5BDC224"
+    },
+    {
+      "path": "app.py",
+      "size_bytes": 322927,
+      "sha256": "B0C64C359C5DA07A8F6EB8AF17A236D72FD16EA0CB7BF2DA4FC34FFC197D3540"
+    },
+    {
+      "path": "dashboard_ui/__init__.py",
+      "size_bytes": 56,
+      "sha256": "C0B7C463E3F102D43F1C5A2C01DFA9B0E9E24383C907EDBC19A75ECBCEABF407"
+    },
+    {
+      "path": "dashboard_ui/access.py",
+      "size_bytes": 7907,
+      "sha256": "09B107DFD2C036B4F7A2110E6744EF650E607D13B39F39DFDA080602A3ECBA61"
+    },
+    {
+      "path": "dashboard_ui/components.py",
+      "size_bytes": 967,
+      "sha256": "F1B50D8C256E574DE0D3453251F7A43E250AB8FF2FC8F24F8B081BC18255F8AB"
+    },
+    {
+      "path": "dashboard_ui/independent_validation.py",
+      "size_bytes": 10680,
+      "sha256": "DF0283EF01D4E6985816A8A238ED48ADBD5C03AB12A7BC033FCD541CCC49CAFD"
+    },
+    {
+      "path": "dashboard_ui/navigation.py",
+      "size_bytes": 5001,
+      "sha256": "8B76B3361F24CA76AD17077504F80306F5C59469704B045EF86960F6E1AAEE3F"
+    },
+    {
+      "path": "dashboard_ui/reports.py",
+      "size_bytes": 1417,
+      "sha256": "EE315446CE5F6160D83390AC35FC948D552F93AF847F5181F27BD5EF7E1A137E"
+    },
+    {
+      "path": "dashboard_ui/secom.py",
+      "size_bytes": 6584,
+      "sha256": "3998C0693FE6046965C591C5368AB26B4329328AA55C839E0822AA3AAB2A6CC4"
+    },
+    {
+      "path": "dashboard_ui/site.py",
+      "size_bytes": 37361,
+      "sha256": "13C9C8AA808CF2C57DA68363C4D84D10884B6D88F13E9CB82834F34BA54E62EB"
+    },
+    {
+      "path": "dashboard_ui/wafer_view.py",
+      "size_bytes": 7552,
+      "sha256": "95C5B8FA55A259BF3CFFFC29447EAA4FF1A6735A365C250873489AE9065D5864"
+    },
+    {
+      "path": "dashboard_ui/wm_gallery.py",
+      "size_bytes": 5601,
+      "sha256": "D528BE83174AEFAF07AF840BA004B4EFC5D985410495E8F456ECE221B8FF2ACC"
+    },
+    {
+      "path": "dashboard_ui/site_pages/account.py",
+      "size_bytes": 195,
+      "sha256": "02BA6EF8857BDB1AAEAC05CD4DD30552D86AB7ABA13968A88109E3FBE8841460"
+    },
+    {
+      "path": "dashboard_ui/site_pages/admin.py",
+      "size_bytes": 201,
+      "sha256": "40BC1D8372949CE3361142190507EEFCB32551D3A58F02E2FAE2104616ADB35F"
+    },
+    {
+      "path": "dashboard_ui/site_pages/home.py",
+      "size_bytes": 199,
+      "sha256": "BC65949348120F60BC19A7AC0C31C7E02C659C97454C4205EAEE1B1851CBEA34"
+    },
+    {
+      "path": "dashboard_ui/site_pages/project.py",
+      "size_bytes": 210,
+      "sha256": "10760188C5F6828D68A1B31D8FF155D2E41A4B6C01E3F7F0E2821AC3CC01D56B"
+    },
+    {
+      "path": "dashboard_ui/site_pages/secom.py",
+      "size_bytes": 203,
+      "sha256": "E92720C6D003BE9EB0D0D6D62A37B8E676B24BE834113941F0D99536DDBE357C"
+    },
+    {
+      "path": "dashboard_ui/site_pages/wm811k.py",
+      "size_bytes": 205,
+      "sha256": "5F2958198D7959A18FC6600C57AC85D1901F4B4B94A11959D6CFDCB448E067E7"
+    },
+    {
+      "path": "코드/verify_ci.py",
+      "size_bytes": 6092,
+      "sha256": "B2FC06A677B0680EA8AB18D5EF71FAF9A29EAFAFA4166E2D094F2BE8F0C5D8C0"
+    },
+    {
+      "path": "코드/secom/build_environment_provenance.py",
+      "size_bytes": 11091,
+      "sha256": "E9A4E452F912AFE42BC5E69076528A3F0B2EF0A64245FA7FF3F143839CB2EFA6"
+    },
+    {
+      "path": "코드/secom/environment_provenance.py",
+      "size_bytes": 6255,
+      "sha256": "6BD360E1F5E5AC1E16C3A5423F9B1BDC4BB138368A7AE82D3B68CBC1D43F7351"
+    },
+    {
+      "path": "코드/wm811k/diagnose_wm811k.py",
+      "size_bytes": 34213,
+      "sha256": "1AD04C83965F4D55036C2AB1D0AE4D6D8EC8828506497E1A073CA81693753232"
+    },
+    {
+      "path": "코드/wm811k/hash_evidence.py",
+      "size_bytes": 4321,
+      "sha256": "89FA0D74584930DB53046252D22FB552D5EE608FB81756487645106DAA91F4E0"
+    },
+    {
+      "path": "코드/wm811k/train_wm811k_cnn.py",
+      "size_bytes": 24121,
+      "sha256": "8C3E4082EBA23DFC226DA141AF07322E5ECF3CD847D60DD7E2A1EB6E4CC70A86"
+    },
+    {
+      "path": "코드/wm811k/validate_wm811k_gradient_shap_results.py",
+      "size_bytes": 13395,
+      "sha256": "31718D3B67803CC77C5CF30287CCC92D639CFD66940BF889AA7A4387D287A430"
+    },
+    {
+      "path": "코드/wm811k/wafer_shape.py",
+      "size_bytes": 5459,
+      "sha256": "928493EBABB8C5362D8B8BBC9A3C593CF0028ACE53D90EB03C6885F1BA10F8F9"
+    },
+    {
+      "path": "코드/wm811k/wafer_cause_guidance.py",
+      "size_bytes": 10844,
+      "sha256": "3051F6014A9D93C2F9602B753E4BD4B347938305E40B4217A37298248C7A2101"
+    },
+    {
+      "path": "코드/wm811k/wm811k_monitoring.py",
+      "size_bytes": 8498,
+      "sha256": "3A78FB0A01578CC135D76CF193192BF9E329835B28C617D38118D2247D5026FF"
+    },
+    {
+      "path": "run_tests.ps1",
+      "size_bytes": 826,
+      "sha256": "D1A9D79EE883DEB4642043CBFA24686270985FC321780AA47A0B0A9E0FD7CB1A"
+    },
+    {
+      "path": "run_pipeline.ps1",
+      "size_bytes": 6161,
+      "sha256": "3F7C9C87FB0123D09B3090DB0950DDAE88DC2A534E2AB570DB93F833827CC664"
+    }
+  ],
+  "serialization_formats": [
+    "joblib/pickle",
+    "PyTorch checkpoint"
+  ],
+  "pre_deserialization_hash_gate_declared": true,
+  "vulnerability_scan_performed": false,
+  "network_registry_resolution_performed": false
+}
