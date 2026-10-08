@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "release_id": "A724719F29289321",
+  "release_id": "5D0D2618DECAE48F",
   "demo_readiness": "READY_WITH_WARNINGS",
   "production_readiness": "BLOCKED",
   "demo_blocker_count": 0,
@@ -25,7 +25,7 @@
       "check_id": "SOURCE_SECURITY_AUDIT",
       "title": "Python 소스 보안 정적분석",
       "status": "PASS",
-      "evidence": "Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 76개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
+      "evidence": "Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 77개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
       "required_action": ""
     },
     {

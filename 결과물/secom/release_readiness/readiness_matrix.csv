@@ -1,7 +1,7 @@
 ﻿check_id,title,status,evidence,required_action
 DATA_CONTRACT,데이터·전처리 계약,PASS,"590개 원변수 → 결측/상수 제거 후 446개, 고정 stratified split",
 DEPENDENCY_SECURITY_AUDIT,Python 의존성 취약점 감사,PASS,"pip-audit 2.10.1·PyPI advisory로 78개 distribution 검사, 알려진 취약점 0건",
-SOURCE_SECURITY_AUDIT,Python 소스 보안 정적분석,PASS,"Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 76개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
+SOURCE_SECURITY_AUDIT,Python 소스 보안 정적분석,PASS,"Bandit 1.9.4로 app.py·dashboard_ui·코드/secom 77개 파일 검사, 중간 이상 이슈·오류·nosec 억제 0건",
 DATA_LINEAGE,원본→분할 데이터 계보,PASS,"원본·라벨·전처리 SHA-256, 행·열·값·median 재현, 모의 오염 탐지",
 ENVIRONMENT_REPRODUCIBILITY,실행환경 재현성·소프트웨어 명세,PASS,exact pin·설치 버전·pip 의존성·실행 파일 해시·역직렬화 전 해시 게이트 검증,
 WINDOWS_DEPENDENCY_LOCK,Windows 전이 의존성·wheel 무결성 잠금,PASS,Python 3.11.9용 80개 package와 80개 wheel 버전·SHA-256 고정,

@@ -120,6 +120,8 @@ class Wm811kBatchTests(unittest.TestCase):
     def test_dashboard_runs_real_demo_batch(self) -> None:
         app = AppTest.from_file(str(PROJECT_DIR / "app.py"), default_timeout=30)
         app.run()
+        # The page opens on single-wafer diagnosis; the batch tab is one click away.
+        app.query_params["section"] = "batch"
         app.switch_page("dashboard_ui/site_pages/wm811k.py")
         app.run()
         app.button(key="wm811k_batch_run").click()

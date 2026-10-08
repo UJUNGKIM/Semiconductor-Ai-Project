@@ -26,7 +26,7 @@ from dashboard_ui.components import (
     render_run_context,
 )
 from dashboard_ui import access as dashboard_access
-from dashboard_ui import site, wafer_view, wm_gallery
+from dashboard_ui import brand, site, wafer_view, wm_gallery
 from dashboard_ui.reports import build_diagnosis_bundle
 from dashboard_ui.independent_validation import (
     render_secom_independent_validation,
@@ -228,14 +228,10 @@ st.set_page_config(
     layout="wide",
 )
 
-# SHAPGPT_REQUIRE_LOGIN=1 turns on OIDC login. Administrator screens follow the
-# signed-in user's verified email or issuer|subject allowlist; see
-# dashboard_ui/access.py. SHAPGPT_ADMIN_MODE only works without login on a
-# loopback server address.
+# Administrator screens appear only with SHAPGPT_ADMIN_MODE=1 on a loopback
+# server address; see dashboard_ui/access.py.
 ACCESS = dashboard_access.resolve_access(
     env=os.environ,
-    claims=dashboard_access.current_user_claims(),
-    secrets=dashboard_access.streamlit_secrets(),
     server_address=st.get_option("server.address"),
 )
 
@@ -249,20 +245,24 @@ def format_model_score(value: float) -> str:
 
 
 def render_unified_xai_frame(*, explanation: str, input_limit: str) -> None:
-    """Show the common decision frame shared by both data modalities."""
-    st.markdown("#### 공통 SHAP 의사결정 프레임")
-    columns = st.columns(4)
-    steps = (
-        ("1. 입력 신뢰도", input_limit),
-        ("2. 모델 판정", "점수·임계값과 예측 결과"),
-        ("3. SHAP 기여", explanation),
-        ("4. 검토 행동", "자동 확정·전문가 검토·판정 보류"),
-    )
-    for column, (title, body) in zip(columns, steps):
-        with column:
-            with st.container(border=True):
-                st.markdown(f"**{title}**")
-                st.caption(body)
+    """Show the common decision frame shared by both data modalities.
+
+    The container keys only let dashboard_ui/brand.py style the frame.
+    """
+    with st.container(key="xai_frame"):
+        st.markdown("#### 공통 SHAP 의사결정 프레임")
+        columns = st.columns(4)
+        steps = (
+            ("1. 입력 신뢰도", input_limit),
+            ("2. 모델 판정", "점수·임계값과 예측 결과"),
+            ("3. SHAP 기여", explanation),
+            ("4. 검토 행동", "자동 확정·전문가 검토·판정 보류"),
+        )
+        for index, (column, (title, body)) in enumerate(zip(columns, steps), start=1):
+            with column:
+                with st.container(border=True, key=f"xai_step_{index}"):
+                    st.markdown(f"**{title}**")
+                    st.caption(body)
 
 
 def wm_xai_matches_deployment() -> bool:
@@ -325,13 +325,11 @@ def inject_dashboard_style() -> None:
             border-bottom: 1px solid var(--dashboard-line);
         }
 
-        [data-testid="stSidebar"] {
-            background: #f8fafc;
-            border-right: 1px solid var(--dashboard-line);
-        }
-
+        /* The green rail of dashboard_ui/brand.py, set here as well because
+           this block arrives before the sidebar first appears. */
+        [data-testid="stSidebar"],
         [data-testid="stSidebarContent"] {
-            padding-top: 1.25rem;
+            background: #14271f;
         }
 
         [data-testid="stSidebar"] h1,
@@ -1763,8 +1761,8 @@ XAI_SCOPE_NOTE = (
     "'모든 die 정상' 기준과 비교한 Gradient SHAP으로 기여를 표현합니다. "
     "두 모듈 모두 기여도를 원인 확률이 아닌 모델 판단 근거로 한정합니다."
 )
-# Detailed WM-811K validation screens stay on the WM page (login required when
-# SHAPGPT_REQUIRE_LOGIN=1); the project page links to them.
+# Detailed WM-811K validation screens stay on the WM page; the project page
+# links to them.
 WM_VALIDATION_SECTIONS = (
     ("핵심 성능", "evaluation"),
     ("안전·OOD", "evaluation_safety"),
@@ -1813,7 +1811,6 @@ def render_project_wm_evidence() -> None:
             icon=":material/arrow_forward:",
             query_params={"module": "wm811k", "section": section},
         )
-    st.caption("로그인 필수 모드에서는 상세 화면이 로그인 후 열립니다.")
 
 
 def render_wm_class_performance(class_report: pd.DataFrame) -> None:
@@ -1943,10 +1940,11 @@ def render_wm811k_dashboard() -> None:
         wm_navigation["관리자"] = (("전체 실험 기록", "research_log"),)
     elif query_value("section", "") in dashboard_access.WM_ADMIN_SECTIONS:
         st.warning("관리자 권한이 필요한 화면입니다. 기본 화면으로 이동했습니다.")
+    # The menu opens the page on single-wafer diagnosis with its SHAP evidence.
     wm_section = render_section_navigation(
         wm_navigation,
         module="wm811k",
-        default_section="batch",
+        default_section="diagnosis",
         key_prefix="wm_nav",
     )
 
@@ -4059,38 +4057,40 @@ def render_wm811k_dashboard() -> None:
 
 # Website navigation. Each page is a marker file under dashboard_ui/site_pages;
 # this script renders the page st.navigation returns, so the SECOM analysis
-# below keeps running as top-level code. Diagnosis pages need a signed-in user
-# when SHAPGPT_REQUIRE_LOGIN=1; the administrator page exists only for users
-# the access rules mark as administrators, so /admin falls back to the home
-# page for everyone else.
+# below keeps running as top-level code. "/" is the brand start screen and the
+# content pages share the dark sidebar menu (dashboard_ui/brand.py). The
+# administrator page exists only in the local administrator mode, so /admin
+# falls back to the start screen everywhere else.
 REPOSITORY_URL = os.environ.get("SHAPGPT_REPOSITORY_URL", "").strip()
 if not REPOSITORY_URL.startswith(("https://", "http://")):
     REPOSITORY_URL = "https://github.com/UJUNGKIM/Semiconductor-Ai-Project"
 SITE_PAGES_DIR = PROJECT_DIR / "dashboard_ui" / "site_pages"
-home_page = st.Page(SITE_PAGES_DIR / "home.py", title="홈", default=True)
+intro_page = st.Page(SITE_PAGES_DIR / "intro.py", title="SHAPGPT", default=True)
+home_page = st.Page(SITE_PAGES_DIR / "home.py", title="홈", url_path="home")
 secom_page = st.Page(SITE_PAGES_DIR / "secom.py", title="SECOM 진단", url_path="secom")
 wm_page = st.Page(SITE_PAGES_DIR / "wm811k.py", title="WM-811K 진단", url_path="wm811k")
 project_page = st.Page(
     SITE_PAGES_DIR / "project.py", title="프로젝트·검증", url_path="project"
 )
-site_pages = [home_page, secom_page, wm_page, project_page]
-account_page = None
-if ACCESS.login_required:
-    account_page = st.Page(
-        SITE_PAGES_DIR / "account.py",
-        title="계정" if ACCESS.logged_in else "로그인",
-        url_path="account",
-    )
-    site_pages.append(account_page)
+site_pages = [intro_page, home_page, secom_page, wm_page, project_page]
+# Menu names are English on the start screen and in the sidebar alike.
+brand_menu = (
+    brand.MenuItem("home", "Home", ":material/home:", home_page),
+    brand.MenuItem("secom", "SECOM Diagnosis", ":material/sensors:", secom_page),
+    brand.MenuItem("wm811k", "WM-811K Diagnosis", ":material/grid_on:", wm_page),
+    brand.MenuItem("project", "Project & Validation", ":material/fact_check:", project_page),
+)
+brand_extra = []
 admin_page = None
 if ACCESS.is_admin:
     admin_page = st.Page(SITE_PAGES_DIR / "admin.py", title="관리자", url_path="admin")
     site_pages.append(admin_page)
-site.render_logo()
-current_page = st.navigation(site_pages, position="top")
+    brand_extra.append(
+        brand.MenuItem("admin", "Admin", ":material/admin_panel_settings:", admin_page)
+    )
+current_page = st.navigation(site_pages, position="hidden")
 current_page.run()
 
-auth_ready = dashboard_access.auth_configured()
 site_links = {"secom": secom_page, "wm811k": wm_page, "project": project_page}
 # SECOM model and augmentation validation moved from the diagnosis page to the
 # project page; old links to those sections open their new location.
@@ -4099,8 +4099,7 @@ SECOM_MOVED_SECTIONS = {
     "augmentation": "secom_augmentation",
 }
 moved_secom_section = SECOM_MOVED_SECTIONS.get(query_value("section", ""))
-site.render_account_strip(ACCESS)
-if current_page is home_page:
+if current_page is intro_page:
     legacy_module = query_value("module", "")
     if legacy_module == "secom" and moved_secom_section is not None:
         st.switch_page(project_page, query_params={"section": moved_secom_section})
@@ -4108,12 +4107,20 @@ if current_page is home_page:
     if legacy_page is not None:
         # Old ?module=...&section=... links open the matching page and section.
         st.switch_page(legacy_page, query_params=st.query_params.to_dict())
-    site.render_home(
-        access=ACCESS,
-        auth_ready=auth_ready,
-        evidence=collect_site_evidence(),
-        pages=site_links,
-    )
+    brand.render_intro(brand_menu)
+    st.stop()
+# The shell sends the page styles, so it goes before the logo and the content.
+brand.render_shell(
+    brand_menu,
+    current=next(
+        item.slug for item in (*brand_menu, *brand_extra) if item.page is current_page
+    ),
+    extra=brand_extra,
+)
+site.render_logo()
+site.render_admin_strip(ACCESS)
+if current_page is home_page:
+    site.render_home(evidence=collect_site_evidence(), pages=site_links)
     site.render_footer(repository_url=REPOSITORY_URL, project_page=project_page)
     st.stop()
 if current_page is secom_page and moved_secom_section is not None:
@@ -4131,27 +4138,9 @@ if current_page is project_page:
     )
     site.render_footer(repository_url=REPOSITORY_URL, project_page=project_page)
     st.stop()
-if account_page is not None and current_page is account_page:
-    site.render_account(
-        access=ACCESS,
-        auth_ready=auth_ready,
-        provider_label=(
-            "Google 계정(OIDC)"
-            if dashboard_access.configured_login_provider() == dashboard_access.GOOGLE_PROVIDER
-            else "OIDC"
-        ),
-        admin_page=admin_page,
-    )
-    site.render_footer(repository_url=REPOSITORY_URL, project_page=project_page)
-    st.stop()
 if admin_page is not None and current_page is admin_page:
-    admin_emails, admin_subjects = dashboard_access.admin_allowlists(
-        os.environ, dashboard_access.streamlit_secrets()
-    )
     site.render_admin_hub(
         access=ACCESS,
-        auth_ready=auth_ready,
-        allowlist_counts=(len(admin_emails), len(admin_subjects)),
         links=(
             site.AdminLink(
                 "SECOM 운영 모니터링",
@@ -4178,9 +4167,6 @@ if admin_page is not None and current_page is admin_page:
     )
     site.render_footer(repository_url=REPOSITORY_URL, project_page=project_page)
     st.stop()
-if ACCESS.login_required and not ACCESS.logged_in:
-    site.render_login_gate(auth_ready=auth_ready)
-    st.stop()
 if current_page is wm_page:
     render_wm811k_dashboard()
     site.render_footer(repository_url=REPOSITORY_URL, project_page=project_page)
@@ -4202,7 +4188,9 @@ st.warning(
     "한계는 모델보다 원천 데이터의 제약에서 비롯됩니다."
 )
 
-with st.sidebar:
+# Settings sit on the light panel of the dark sidebar (dashboard_ui/brand.py).
+secom_side_panel = st.sidebar.container(key="brand_side_panel")
+with secom_side_panel:
     st.header("진단 설정")
     with st.form("secom_diagnosis_form", border=False):
         source = st.radio("데이터 소스", ("프로젝트 샘플", "파일 업로드"))
@@ -4338,13 +4326,13 @@ review_queue = diagnosis_run["review_queue"]
 batch_gate_result = diagnosis_run["batch_gate_result"]
 diagnosis_ran_at = diagnosis_run["ran_at"]
 
-st.sidebar.success(
+secom_side_panel.success(
     f"최근 실행 · {input_info['rows']}행 × 센서 {input_info['sensor_columns']}개"
 )
-st.sidebar.caption(f"인식 형식: {input_info['format']}")
-st.sidebar.caption(f"실행 시각: {diagnosis_ran_at}")
+secom_side_panel.caption(f"인식 형식: {input_info['format']}")
+secom_side_panel.caption(f"실행 시각: {diagnosis_ran_at}")
 if input_info["ignored_columns"]:
-    st.sidebar.caption(
+    secom_side_panel.caption(
         "자동 제외한 부가 열: " + ", ".join(input_info["ignored_columns"])
     )
 

@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import math
 import os
-import tomllib
 import unittest
 from io import BytesIO
 from pathlib import Path
@@ -13,39 +12,19 @@ from unittest.mock import patch
 
 import numpy as np
 from PIL import Image
+from streamlit import config
 from streamlit.testing.v1 import AppTest
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 
-from dashboard_ui import access, wafer_view, wm_gallery  # noqa: E402
+from dashboard_ui import wafer_view, wm_gallery  # noqa: E402
 
 APP = str(PROJECT_DIR / "app.py")
 PAGES = "dashboard_ui/site_pages"
 DEMO_DIR = PROJECT_DIR / "결과물" / "wm811k" / "demo_samples"
 MANIFEST = json.loads((DEMO_DIR / "manifest.json").read_text(encoding="utf-8"))
-ISSUER = "https://accounts.example.test"
-ADMIN_CLAIMS = {
-    "is_logged_in": True,
-    "name": "Owner Park",
-    "email": "owner@example.test",
-    "email_verified": True,
-    "iss": ISSUER,
-    "sub": "admin-subject",
-}
-VIEWER_CLAIMS = {
-    "is_logged_in": True,
-    "name": "Viewer Kim",
-    "email": "viewer@example.test",
-    "email_verified": True,
-    "iss": ISSUER,
-    "sub": "viewer-subject",
-}
 CLEAN_ENV = {key: value for key, value in os.environ.items() if not key.startswith("SHAPGPT_")}
-LOGIN_ENV = {
-    **CLEAN_ENV,
-    "SHAPGPT_REQUIRE_LOGIN": "1",
-    "SHAPGPT_ADMIN_EMAILS": "owner@example.test",
-}
+ADMIN_ENV = {**CLEAN_ENV, "SHAPGPT_ADMIN_MODE": "1"}
 PICK = wm_gallery.PICK_BUTTON_LABEL
 
 
@@ -274,82 +253,90 @@ class WmGalleryAppTests(unittest.TestCase):
 
 
 class SiteAccessAppTests(unittest.TestCase):
-    """Public pages, login gate and administrator page with identity variations."""
+    """Public pages for every visitor and the local administrator page."""
 
     @staticmethod
-    def run_app(env: dict, claims=None, page: str | None = None, app: AppTest | None = None) -> AppTest:
+    def run_app(env: dict, page: str | None = None, app: AppTest | None = None) -> AppTest:
         app = app or AppTest.from_file(APP, default_timeout=120)
-        with patch.dict(os.environ, env, clear=True), patch.object(
-            access, "current_user_claims", return_value=claims or {}
-        ):
+        with patch.dict(os.environ, env, clear=True):
             if page is not None:
                 app.run()
                 app.switch_page(f"{PAGES}/{page}.py")
             app.run()
         return app
 
-    def test_logged_out_visitor_sees_public_pages_but_cannot_diagnose(self) -> None:
-        app = self.run_app(LOGIN_ENV)
+    def serve_on_loopback(self) -> None:
+        """The local administrator mode needs a loopback server address."""
+        previous = config.get_option("server.address")
+        config.set_option("server.address", "127.0.0.1")
+        self.addCleanup(config.set_option, "server.address", previous)
+
+    def test_every_page_opens_for_a_visitor(self) -> None:
+        app = self.run_app(CLEAN_ENV, page="home")
         self.assertEqual(len(app.exception), 0)
         text = rendered_text(app)
         self.assertIn("설명 가능한 AI로 반도체 공정 데이터를 진단합니다", text)
         self.assertIn("입력 신뢰도", text)
-        login = app.button(key="home_login")
-        self.assertEqual(login.label, "Google로 로그인")
-        self.assertTrue(login.disabled)
+        self.assertEqual(
+            [link.proto.label for link in app.get_by_key("site_hero").get("page_link")],
+            ["SECOM 진단 시작", "WM-811K 진단 시작"],
+        )
+        self.assertEqual(len(app.button), 0)
         self.assertIn("WM-811K Macro-F1", [metric.label for metric in app.metric])
-        for page, forbidden in (("secom", "진단 실행"), ("wm811k", PICK)):
-            with self.subTest(page=page):
-                gated = self.run_app(LOGIN_ENV, page=page)
-                self.assertEqual(len(gated.exception), 0)
-                self.assertIn("SHAPGPT 로그인", [title.value for title in gated.title])
-                self.assertNotIn(forbidden, [button.label for button in gated.button])
-                self.assertNotIn("wm811k_batch_run", [button.key for button in gated.button])
-                self.assertTrue(any("OIDC 로그인 설정이 없어" in str(e.value) for e in gated.error))
-        project = self.run_app(LOGIN_ENV, page="project")
+        secom = self.run_app(CLEAN_ENV, page="secom")
+        self.assertEqual(len(secom.exception), 0)
+        self.assertIn("SECOM 공정 센서 SHAP 진단", [title.value for title in secom.title])
+        self.assertIn("진단 실행", [button.label for button in secom.button])
+        wm = self.run_app(CLEAN_ENV, page="wm811k")
+        self.assertEqual(len(wm.exception), 0)
+        # The menu opens WM-811K on single-wafer diagnosis with its SHAP evidence.
+        self.assertEqual(wm.segmented_control(key="wm_nav_분석").value, "웨이퍼 진단·SHAP")
+        self.assertTrue(pick_buttons(wm))
+        self.assertIn("CNN 판정", [metric.label for metric in wm.metric])
+        self.assertNotIn("wm811k_batch_run", [button.key for button in wm.button])
+        project = self.run_app(CLEAN_ENV, page="project")
         self.assertIn("프로젝트·검증", [title.value for title in project.title])
 
-    def test_logged_in_viewer_gets_no_admin_menu(self) -> None:
-        app = self.run_app(LOGIN_ENV, claims=VIEWER_CLAIMS)
+    def test_visitor_gets_no_admin_menu(self) -> None:
+        self.serve_on_loopback()
+        app = self.run_app(CLEAN_ENV, page="home")
         self.assertEqual(len(app.exception), 0)
-        self.assertIn("로그인: viewer@example.test · 일반 사용자", [c.value for c in app.caption])
+        self.assertNotIn("로컬 개발 관리자 모드", [caption.value for caption in app.caption])
         with self.assertRaises(ValueError):
             app.switch_page(f"{PAGES}/admin.py")
-        secom = self.run_app(LOGIN_ENV, claims=VIEWER_CLAIMS, page="secom")
-        self.assertIn("SECOM 공정 센서 SHAP 진단", [title.value for title in secom.title])
+        secom = self.run_app(CLEAN_ENV, page="secom")
         self.assertNotIn("관리자", secom.segmented_control[0].options)
 
-    def test_account_page_shows_profile_without_raw_claims(self) -> None:
-        app = self.run_app(LOGIN_ENV, claims=VIEWER_CLAIMS, page="account")
-        self.assertEqual(len(app.exception), 0)
-        metrics = {metric.label: metric.value for metric in app.metric}
-        self.assertEqual(metrics["이름"], "Viewer Kim")
-        self.assertEqual(metrics["이메일"], "viewer@example.test")
-        self.assertEqual(metrics["역할"], "일반 사용자")
-        self.assertIn("로그아웃", [button.label for button in app.button])
-        text = rendered_text(app) + " ".join(metrics.values())
-        self.assertNotIn("viewer-subject", text)
-        self.assertNotIn(ISSUER, text)
-
-    def test_allowlisted_admin_sees_admin_page(self) -> None:
-        app = self.run_app(LOGIN_ENV, claims=ADMIN_CLAIMS, page="admin")
+    def test_local_admin_mode_opens_admin_page(self) -> None:
+        self.serve_on_loopback()
+        app = self.run_app(ADMIN_ENV, page="admin")
         self.assertEqual(len(app.exception), 0)
         self.assertIn("관리자", [title.value for title in app.title])
-        metrics = {metric.label: metric.value for metric in app.metric}
-        self.assertEqual(metrics["권한 근거"], "인증된 이메일 허용 목록")
-        self.assertEqual(metrics["허용 목록"], "이메일 1개 · 주체 0개")
-        self.assertNotIn("owner@example.test", rendered_text(app).replace("로그인: owner@example.test", ""))
-        secom = self.run_app(LOGIN_ENV, claims=ADMIN_CLAIMS, page="secom")
+        self.assertIn("로컬 개발 관리자 모드", [caption.value for caption in app.caption])
+        self.assertEqual(
+            {metric.label: metric.value for metric in app.metric},
+            {"권한 근거": "로컬 개발 모드(루프백 주소 전용)"},
+        )
+        self.assertEqual(
+            [link.proto.label for link in app.get_by_key("brand_side_nav").get("page_link")][-1],
+            "Admin",
+        )
+        secom = self.run_app(ADMIN_ENV, page="secom")
         self.assertIn("관리자", secom.segmented_control[0].options)
 
-    def test_admin_url_falls_back_for_a_regular_user(self) -> None:
-        app = self.run_app(LOGIN_ENV, claims=ADMIN_CLAIMS, page="admin")
+    def test_admin_url_falls_back_without_admin_mode(self) -> None:
+        self.serve_on_loopback()
+        app = self.run_app(ADMIN_ENV, page="admin")
         self.assertIn("관리자", [title.value for title in app.title])
-        app = self.run_app(LOGIN_ENV, claims=VIEWER_CLAIMS, app=app)
+        app = self.run_app(CLEAN_ENV, app=app)
         self.assertEqual(len(app.exception), 0)
         self.assertNotIn("관리자", [title.value for title in app.title])
         self.assertNotIn("권한 근거", [metric.label for metric in app.metric])
-        self.assertIn("설명 가능한 AI로 반도체 공정 데이터를 진단합니다", rendered_text(app))
+        # The start screen is the default page.
+        self.assertEqual(
+            [link.proto.label for link in app.get_by_key("brand_menu").get("page_link")],
+            ["Home", "SECOM Diagnosis", "WM-811K Diagnosis", "Project & Validation"],
+        )
 
     def test_legacy_module_links_open_the_matching_page(self) -> None:
         app = AppTest.from_file(APP, default_timeout=120)
@@ -360,52 +347,6 @@ class SiteAccessAppTests(unittest.TestCase):
         self.assertEqual(len(app.exception), 0)
         self.assertIn("WM-811K 웨이퍼 맵 SHAP 진단", [title.value for title in app.title])
         self.assertIn("운영 성능 요약", rendered_text(app))
-
-
-class LoginConfigurationTests(unittest.TestCase):
-    SHARED = {"redirect_uri": "https://app.example.test/oauth2callback", "cookie_secret": "x" * 32}
-    PROVIDER = {
-        "client_id": "client",
-        "client_secret": "secret",
-        "server_metadata_url": "https://accounts.google.com/.well-known/openid-configuration",
-    }
-
-    def test_only_complete_configurations_enable_login(self) -> None:
-        self.assertEqual(access.login_provider({**self.SHARED, "google": self.PROVIDER}), "google")
-        self.assertEqual(access.login_provider({**self.SHARED, **self.PROVIDER}), "")
-        self.assertIsNone(access.login_provider(None))
-        self.assertIsNone(access.login_provider({"google": self.PROVIDER}))
-        self.assertIsNone(access.login_provider({**self.SHARED, "google": {**self.PROVIDER, "client_secret": " "}}))
-        self.assertIsNone(access.login_provider({**self.SHARED}))
-
-    def test_login_callback_does_nothing_without_configuration(self) -> None:
-        with patch.object(access, "configured_login_provider", return_value=None), patch(
-            "streamlit.login"
-        ) as login:
-            access.start_login()
-        login.assert_not_called()
-        with patch.object(access, "configured_login_provider", return_value="google"), patch(
-            "streamlit.login"
-        ) as login:
-            access.start_login()
-        login.assert_called_once_with("google")
-
-    def test_secrets_template_holds_placeholders_only(self) -> None:
-        template_path = PROJECT_DIR / ".streamlit" / "secrets.toml.example"
-        template = tomllib.loads(template_path.read_text(encoding="utf-8"))
-        self.assertEqual(access.login_provider(template["auth"]), "google")
-        google = template["auth"]["google"]
-        for value in (
-            template["auth"]["redirect_uri"],
-            template["auth"]["cookie_secret"],
-            google["client_id"],
-            google["client_secret"],
-        ):
-            self.assertIn("<", value)
-        self.assertEqual(google["server_metadata_url"], self.PROVIDER["server_metadata_url"])
-        ignored = (PROJECT_DIR / ".gitignore").read_text(encoding="utf-8").splitlines()
-        self.assertIn(".streamlit/secrets.toml", ignored)
-        self.assertNotIn(".streamlit/secrets.toml.example", ignored)
 
 
 if __name__ == "__main__":

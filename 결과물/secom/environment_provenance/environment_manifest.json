@@ -165,8 +165,8 @@
     },
     {
       "path": "app.py",
-      "size_bytes": 322927,
-      "sha256": "B0C64C359C5DA07A8F6EB8AF17A236D72FD16EA0CB7BF2DA4FC34FFC197D3540"
+      "size_bytes": 322901,
+      "sha256": "AAC86079F4C036E92B87241CAEB69D4D7D126012DA6248E4239748E04A64DC07"
     },
     {
       "path": "dashboard_ui/__init__.py",
@@ -175,8 +175,13 @@
     },
     {
       "path": "dashboard_ui/access.py",
-      "size_bytes": 7907,
-      "sha256": "09B107DFD2C036B4F7A2110E6744EF650E607D13B39F39DFDA080602A3ECBA61"
+      "size_bytes": 1686,
+      "sha256": "4A90241B8F6BCE9B3CAFB3F7DDA61C1B6C034B08DC6D8180F1999104092CEEAC"
+    },
+    {
+      "path": "dashboard_ui/brand.py",
+      "size_bytes": 59135,
+      "sha256": "A2A0899942B9E92982FD5D860DA26A168C0ADD67B640DB851A36E992CA471443"
     },
     {
       "path": "dashboard_ui/components.py",
@@ -205,8 +210,8 @@
     },
     {
       "path": "dashboard_ui/site.py",
-      "size_bytes": 37361,
-      "sha256": "13C9C8AA808CF2C57DA68363C4D84D10884B6D88F13E9CB82834F34BA54E62EB"
+      "size_bytes": 35268,
+      "sha256": "51500C107E41F31B6FA44E64E3CEBCCAB370E8C452F33EBAC130013CD9AEBA39"
     },
     {
       "path": "dashboard_ui/wafer_view.py",
@@ -219,11 +224,6 @@
       "sha256": "D528BE83174AEFAF07AF840BA004B4EFC5D985410495E8F456ECE221B8FF2ACC"
     },
     {
-      "path": "dashboard_ui/site_pages/account.py",
-      "size_bytes": 195,
-      "sha256": "02BA6EF8857BDB1AAEAC05CD4DD30552D86AB7ABA13968A88109E3FBE8841460"
-    },
-    {
       "path": "dashboard_ui/site_pages/admin.py",
       "size_bytes": 201,
       "sha256": "40BC1D8372949CE3361142190507EEFCB32551D3A58F02E2FAE2104616ADB35F"
@@ -232,6 +232,11 @@
       "path": "dashboard_ui/site_pages/home.py",
       "size_bytes": 199,
       "sha256": "BC65949348120F60BC19A7AC0C31C7E02C659C97454C4205EAEE1B1851CBEA34"
+    },
+    {
+      "path": "dashboard_ui/site_pages/intro.py",
+      "size_bytes": 201,
+      "sha256": "564AEBD7CC2C3CE00E5D19A1A876D93E274F9D9D9DB5268C592EFCC2130996E3"
     },
     {
       "path": "dashboard_ui/site_pages/project.py",
@@ -255,8 +260,8 @@
     },
     {
       "path": "코드/secom/build_environment_provenance.py",
-      "size_bytes": 11091,
-      "sha256": "E9A4E452F912AFE42BC5E69076528A3F0B2EF0A64245FA7FF3F143839CB2EFA6"
+      "size_bytes": 11118,
+      "sha256": "C0C30DA710142BFF1587D9BCFDDE2A74D3807C671FF614028363BF822A6F77E1"
     },
     {
       "path": "코드/secom/environment_provenance.py",

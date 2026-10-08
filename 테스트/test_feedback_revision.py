@@ -73,8 +73,8 @@ class FeedbackRevisionTests(unittest.TestCase):
         self.assertNotIn("ADMIN_MODE = os.getenv", self.app_source)
         self.assertIn('secom_navigation["\uAD00\uB9AC\uC790"]', self.app_source)
         self.assertIn('wm_navigation["\uAD00\uB9AC\uC790"]', self.app_source)
-        self.assertIn("SHAPGPT_REQUIRE_LOGIN", self.app_source)
-        self.assertIn('REQUIRE_LOGIN_ENV = "SHAPGPT_REQUIRE_LOGIN"', access_source)
+        self.assertIn("dashboard_access.resolve_access(", self.app_source)
+        self.assertIn('LOCAL_ADMIN_ENV = "SHAPGPT_ADMIN_MODE"', access_source)
         self.assertEqual(
             self.app_source.count("dashboard_access.section_allowed("), 2
         )

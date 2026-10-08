@@ -1,6 +1,6 @@
 """Public website pages around the SHAPGPT analysis dashboards.
 
-The home, project, account and administrator pages only present evidence
+The home, project and administrator pages only present evidence
 that the dashboard already produced: every number comes from a result file
 passed in by ``app.py`` and nothing here recomputes models or thresholds.
 """
@@ -10,21 +10,21 @@ from __future__ import annotations
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from html import escape
+from io import BytesIO
+from pathlib import Path
 
+import numpy as np
 import streamlit as st
+from PIL import Image
 
 from dashboard_ui import access as dashboard_access
 from dashboard_ui.components import render_dashboard_header
 from dashboard_ui.navigation import render_flat_navigation
 
 
-LOGO_SVG = (
-    '<svg xmlns="http://www.w3.org/2000/svg" width="150" height="32" '
-    'viewBox="0 0 150 32" role="img" aria-label="SHAPGPT">'
-    '<text x="0" y="24" font-family="Segoe UI, Pretendard, Apple SD Gothic Neo, '
-    'Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="0.6" '
-    'fill="#0F766E">SHAP<tspan fill="#0B2545">GPT</tspan></text></svg>'
-)
+# Original 1039x148 artwork. The start screen shows it as is; the content
+# pages show it without the dark rectangle around the letters (logo_cutout_png).
+LOGO_PATH = Path(__file__).resolve().parent / "assets" / "shapgpt_logo.png"
 HERO_SENTENCE = (
     "SHAPGPT는 반도체 공정 센서(SECOM)와 웨이퍼 맵(WM-811K)을 AI로 진단하고, "
     "각 판정의 근거를 SHAP으로 함께 보여 주는 설명 가능한 AI 프로젝트입니다."
@@ -74,10 +74,6 @@ PRODUCTION_READINESS_LABELS = {
     "READY_WITH_WARNINGS": "생산 배포 가능 · 경고 있음",
     "BLOCKED": "생산 배포 승인 전",
 }
-LOGIN_UNAVAILABLE_MESSAGE = (
-    "OIDC 로그인 설정이 없어 로그인할 수 없습니다. 배포 관리자가 Streamlit "
-    "secrets의 [auth] 항목을 설정해야 합니다."
-)
 
 SITE_CSS = """
 <style>
@@ -92,6 +88,18 @@ SITE_CSS = """
     --site-soft: #f5f8fa;
     --site-alert: #b42318;
     --site-alert-soft: #fef3f2;
+}
+
+/* st.logo image: width is set per breakpoint and the height follows the
+   original 1039x148 ratio, so the logo is never squeezed or cropped. */
+img[data-testid="stHeaderLogo"],
+img[data-testid="stSidebarLogo"] {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 1039 / 148;
+    object-fit: contain;
 }
 
 .st-key-site_hero {
@@ -352,11 +360,11 @@ SITE_CSS = """
     font-size: 0.72rem;
 }
 
-.st-key-site_account_strip {
+.st-key-site_mode_strip {
     margin: -0.4rem 0 0.6rem;
 }
 
-.st-key-site_account_strip [data-testid="stCaptionContainer"] {
+.st-key-site_mode_strip [data-testid="stCaptionContainer"] {
     text-align: right;
 }
 
@@ -503,6 +511,11 @@ SITE_CSS = """
 }
 
 @media (max-width: 640px) {
+    img[data-testid="stHeaderLogo"],
+    img[data-testid="stSidebarLogo"] {
+        width: 155px;
+    }
+
     .st-key-site_hero {
         padding: 1.5rem 1.1rem 1.3rem;
     }
@@ -519,7 +532,7 @@ SITE_CSS = """
         min-height: 0;
     }
 
-    .st-key-site_account_strip [data-testid="stCaptionContainer"] {
+    .st-key-site_mode_strip [data-testid="stCaptionContainer"] {
         text-align: left;
     }
 }
@@ -559,8 +572,52 @@ def inject_site_style() -> None:
     st.markdown(SITE_CSS, unsafe_allow_html=True)
 
 
+def _dilate(mask: np.ndarray, radius: int) -> np.ndarray:
+    padded = np.pad(mask, radius)
+    grown = np.zeros_like(mask)
+    height, width = mask.shape
+    for dy in range(-radius, radius + 1):
+        for dx in range(-radius, radius + 1):
+            if dx * dx + dy * dy <= radius * radius:
+                grown |= padded[radius + dy : radius + dy + height, radius + dx : radius + dx + width]
+    return grown
+
+
+def logo_outline(rgb: np.ndarray) -> np.ndarray:
+    """Where the letters and the "#" are: the area the cut-out logo keeps.
+
+    The letters are 9-10 px squares on a 1-2 px dark grid, and letters lie
+    15 px or more apart. Closing the bright pixels with a 2 px disc fills the
+    grid lines inside a letter but not the space between letters; one more
+    pixel keeps the soft letter edges.
+    """
+    ink = np.abs(rgb.astype(np.int16) - np.array([14, 23, 20])).sum(axis=-1) > 120
+    closed = ~_dilate(~_dilate(ink, 2), 2)
+    return _dilate(closed, 1)
+
+
+@st.cache_data(show_spinner=False)
+def logo_cutout_png(path: str, modified_ns: int) -> bytes:
+    """The logo without the dark rectangle around the letters.
+
+    Every pixel of the letters is the original pixel; only the background
+    outside the letter outlines becomes transparent, so the logo sits on the
+    light top bar and the green sidebar without a dark box.
+    """
+    del modified_ns  # cache key only
+    with Image.open(path) as image:
+        rgba = np.asarray(image.convert("RGBA")).copy()
+    rgba[..., 3] = np.where(logo_outline(rgba[..., :3]), 255, 0)
+    buffer = BytesIO()
+    Image.fromarray(rgba).save(buffer, format="PNG", optimize=True)
+    return buffer.getvalue()
+
+
 def render_logo() -> None:
-    st.logo(LOGO_SVG, size="large")
+    st.logo(
+        logo_cutout_png(str(LOGO_PATH), LOGO_PATH.stat().st_mtime_ns),
+        size="large",
+    )
 
 
 def readiness_summary(report: Mapping[str, object] | None) -> ReadinessSummary | None:
@@ -744,42 +801,11 @@ def _section_title(title: str, lead: str | None = None) -> None:
     st.markdown(html, unsafe_allow_html=True)
 
 
-def render_login_button(*, auth_ready: bool, key: str, width: str = "content") -> None:
-    st.button(
-        "Google로 로그인",
-        type="primary",
-        key=key,
-        on_click=dashboard_access.start_login,
-        disabled=not auth_ready,
-        width=width,
-    )
-
-
-def render_login_gate(*, auth_ready: bool) -> None:
-    """Shown instead of a diagnosis page to viewers who are not signed in."""
-    render_dashboard_header(
-        "SHAPGPT 로그인",
-        "진단 기능은 로그인한 사용자만 사용할 수 있습니다. 홈과 프로젝트·검증 "
-        "페이지는 로그인 없이 볼 수 있습니다. 관리자 화면은 로그인한 계정이 관리자 "
-        "허용 목록에 있을 때만 열립니다.",
-    )
-    render_login_button(auth_ready=auth_ready, key="gate_login")
-    if not auth_ready:
-        st.error(LOGIN_UNAVAILABLE_MESSAGE)
-
-
-def render_account_strip(access: dashboard_access.AccessContext) -> None:
-    """One compact line with the signed-in account and a logout button."""
-    if access.login_required and access.logged_in:
-        with st.container(key="site_account_strip"):
-            columns = st.columns((5, 1), vertical_alignment="center")
-            columns[0].caption(f"로그인: {access.user_label} · {access.role_label}")
-            columns[1].button(
-                "로그아웃", key="strip_logout", on_click=st.logout, type="tertiary"
-            )
-    elif access.is_admin:
-        with st.container(key="site_account_strip"):
-            st.caption("로컬 개발 관리자 모드 · 로그인 없음")
+def render_admin_strip(access: dashboard_access.AccessContext) -> None:
+    """One compact line that marks the local administrator mode."""
+    if access.is_admin:
+        with st.container(key="site_mode_strip"):
+            st.caption("로컬 개발 관리자 모드")
 
 
 def _flow_html() -> str:
@@ -891,13 +917,7 @@ def _render_scope(readiness: ReadinessSummary | None) -> None:
         st.caption(readiness.interpretation)
 
 
-def render_home(
-    *,
-    access: dashboard_access.AccessContext,
-    auth_ready: bool,
-    evidence: Mapping[str, object],
-    pages: Mapping[str, object],
-) -> None:
+def render_home(*, evidence: Mapping[str, object], pages: Mapping[str, object]) -> None:
     with st.container(key="site_hero"):
         st.markdown(
             '<p class="site-eyebrow">SEMICONDUCTOR EXPLAINABLE AI</p>'
@@ -906,23 +926,10 @@ def render_home(
             unsafe_allow_html=True,
         )
         actions = st.columns((1, 1, 3), vertical_alignment="center")
-        if access.login_required and not access.logged_in:
-            with actions[0]:
-                render_login_button(auth_ready=auth_ready, key="home_login", width="stretch")
-            with actions[1], st.container(key="site_cta_secondary"):
-                st.page_link(pages["project"], label="프로젝트·검증 보기", width="stretch")
-            if not auth_ready:
-                st.caption(
-                    "로그인 설정 전입니다. 배포 관리자가 Google OIDC(secrets의 [auth])를 "
-                    "설정하면 버튼이 활성화됩니다."
-                )
-        else:
-            with actions[0], st.container(key="site_cta_primary"):
-                st.page_link(pages["secom"], label="SECOM 진단 시작", width="stretch")
-            with actions[1], st.container(key="site_cta_secondary"):
-                st.page_link(pages["wm811k"], label="WM-811K 진단 시작", width="stretch")
-            if not access.login_required:
-                st.caption("로그인 없는 데모 모드로 실행 중입니다.")
+        with actions[0], st.container(key="site_cta_primary"):
+            st.page_link(pages["secom"], label="SECOM 진단 시작", width="stretch")
+        with actions[1], st.container(key="site_cta_secondary"):
+            st.page_link(pages["wm811k"], label="WM-811K 진단 시작", width="stretch")
 
     _section_title("두 가지 진단", "공정 센서 기록과 웨이퍼 맵, 서로 다른 두 데이터를 같은 방식으로 설명합니다.")
     _render_project_cards(evidence, pages)
@@ -1007,38 +1014,6 @@ def render_project(
         area_renderers[area]()
 
 
-def render_account(
-    *,
-    access: dashboard_access.AccessContext,
-    auth_ready: bool,
-    provider_label: str,
-    admin_page=None,
-) -> None:
-    if not access.logged_in:
-        render_dashboard_header(
-            "로그인",
-            "Google 계정으로 로그인하면 SECOM·WM-811K 진단을 사용할 수 있습니다. 이 서비스는 "
-            "비밀번호를 저장하지 않습니다.",
-        )
-        render_login_button(auth_ready=auth_ready, key="account_login")
-        if not auth_ready:
-            st.error(LOGIN_UNAVAILABLE_MESSAGE)
-        return
-    render_dashboard_header("계정", "로그인한 계정과 권한을 확인합니다.")
-    with st.container(border=True, key="site_account_card"):
-        columns = st.columns(3)
-        columns[0].metric("이름", access.display_name or "제공되지 않음")
-        columns[1].metric("이메일", access.email or "제공되지 않음")
-        columns[2].metric("역할", access.role_label)
-        st.caption(
-            f"로그인 방식: {provider_label} · 관리자 권한은 배포 관리자가 설정한 허용 목록으로만 "
-            "부여됩니다."
-        )
-        st.button("로그아웃", key="account_logout", on_click=st.logout)
-    if access.is_admin and admin_page is not None:
-        st.page_link(admin_page, label="관리자 페이지 열기", icon=":material/arrow_forward:")
-
-
 @dataclass(frozen=True)
 class AdminLink:
     title: str
@@ -1048,29 +1023,18 @@ class AdminLink:
 
 
 def render_admin_hub(
-    *,
-    access: dashboard_access.AccessContext,
-    auth_ready: bool,
-    allowlist_counts: tuple[int, int],
-    links: Sequence[AdminLink],
+    *, access: dashboard_access.AccessContext, links: Sequence[AdminLink]
 ) -> None:
     render_dashboard_header(
         "관리자",
-        "관리자 허용 목록에 있는 계정에만 보이는 운영 화면입니다. 일반 사용자에게는 이 "
+        "로컬 개발 관리자 모드에서만 보이는 운영 화면입니다. 일반 사용자에게는 이 "
         "메뉴가 표시되지 않습니다.",
     )
-    status = st.columns(4)
-    status[0].metric(
+    st.metric(
         "권한 근거",
         dashboard_access.ADMIN_BASIS_LABELS.get(access.admin_basis, access.admin_basis),
+        width="content",
     )
-    status[1].metric("로그인 방식", "OIDC 로그인 필수" if access.login_required else "로그인 없음")
-    status[2].metric(
-        "허용 목록", f"이메일 {allowlist_counts[0]}개 · 주체 {allowlist_counts[1]}개"
-    )
-    status[3].metric("OIDC 설정", "완료" if auth_ready else "없음")
-    if access.notice:
-        st.caption(access.notice)
     _section_title("관리자 화면")
     columns = st.columns(len(links) or 1, gap="small")
     for column, link in zip(columns, links):

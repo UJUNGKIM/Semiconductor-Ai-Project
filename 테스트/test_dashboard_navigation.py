@@ -248,6 +248,7 @@ class SecomValidationRelocationTests(unittest.TestCase):
         app = AppTest.from_file(APP, default_timeout=180)
         with patch.dict(os.environ, CLEAN_ENV, clear=True):
             app.run()
+            app.switch_page(f"{PAGES}/home.py").run()
         sources = [str(m.value) for m in app.markdown if "site-source" in str(m.value)]
         self.assertTrue(sources)
         self.assertTrue(all("결과물/" not in source for source in sources), sources)

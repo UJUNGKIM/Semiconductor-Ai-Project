@@ -1,6 +1,6 @@
 # SECOM 통합 릴리스 준비도
 
-- Release ID: `A724719F29289321`
+- Release ID: `5D0D2618DECAE48F`
 - 대학생 대회 데모: **READY_WITH_WARNINGS**
 - 실제 생산 배포: **BLOCKED**
 - 생산 차단 항목: 3개
